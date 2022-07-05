@@ -14,10 +14,9 @@ while name[-1] != "0":
     
 name = name[:-1]
     
-tipsum = float(input("total tip="))
+tipsum = float(input("total tip = "))
 
 ratio = tipsum / sum(hour)
-print(f'tip ratio= {ratio:.4} €/h')
 
 realtip = np.array([ratio * i for i in hour])
 real = np.array([ratio * i for i in hour])
@@ -42,6 +41,13 @@ if np.around(sum(roundtip), decimals=3) > tipsum:
         check += 1
 
 maxstr = len(max(name, key=len))
-print('-' * (maxstr + 27))
+
+
+print('-' * (maxstr + 28))
+
 for i in range(len(name)):
-    print('{num:{width}}'.format(num = name[i], width = maxstr), f' {hour[i]}h', f' -> {roundtip[i]:5.1f}€', f' %  {realtip[i]:5.2f}')
+    print('{num:{width}}'.format(num = name[i], width = maxstr), f' {hour[i]:4.2f}h', f' -> {roundtip[i]:5.1f}€', f' #  {realtip[i]:5.2f}')
+    
+print('-' * (maxstr + 28))
+print(f'total hours = {sum(hour):} h')   
+print(f'tip ratio = {ratio:.4} €/h')   

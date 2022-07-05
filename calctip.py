@@ -24,7 +24,7 @@ real = np.array([ratio * i for i in hour])
 
 roundtip = np.around(realtip, decimals=1)
 
-if sum(roundtip) > tipsum:
+if np.around(sum(roundtip), decimals=3) > tipsum:
     print("tip rounded correctly")
     
     check = 5

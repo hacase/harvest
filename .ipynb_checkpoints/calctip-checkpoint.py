@@ -136,8 +136,8 @@ maxstr = len(max(name, key=len))
 print('-' * (maxstr + 28))
 
 for i in range(len(name)):
-    print('{num:{width}}'.format(num = name[i], width = maxstr), f' {hour[i]:4.2f}h', f' -> {roundtip[i]:5.1f}€', f' #  {realtip[i]:5.2f}')
+    print('{num:{width}}'.format(num = name[i], width = maxstr), f' {hour[i]:4.2f}h', f' -> {roundtip[i]:5.1f}€', f' #  {realtip[i]:5.3f}')
     
-print('-' * (maxstr + 28))
+print('-' * (maxstr + 29))
 print(f'total hours = {sum(hour):} h')   
 print(f'tip ratio = {ratio:.4} €/h')   

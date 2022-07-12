@@ -14,14 +14,16 @@ def pinted(text):
 def abort(var):
     labort = ['exit', 'Exit', 'EXIT',
               'stop', 'Stop', 'STOP',
-              'stopp', 'Stopp', 'STOPP']
+              'stopp', 'Stopp', 'STOPP',
+              'abbruch', 'Abbruch', 'ABBRUCH']
     
     lhelp = ['help', 'Help', 'HELP',
-                 'hilfe', 'Hilfe', 'HILFE']
+             'hilfe', 'Hilfe', 'HILFE']
     
     if var in labort:
         print('Exited session.')
         sys.exit()
+        
     elif var in lhelp:
         print('\n')
         print('CALCTIP WIKI\n')
@@ -37,7 +39,7 @@ def abort(var):
         print('EINGABE NAME, HOUR')
         text = 'Geben Sie bei \033[1;3mName\033[0m einen Namen und bei \033[1;3mHour\033[0m die zugehörigen Stunden als Zahl ein. Bei den Stunden dürfen keine Einheiten oder Buchstaben eingegeben werden; Dezimaltrennzeichen kann ein Komma oder Punkt sein. Gleiche Namen können eingegeben werden.'
         pinted(text)
-        text = 'Als Name kann  \033[1;3mhelp\033[0m,  \033[1;3mexit\033[0m und  \033[1;3mstop\033[0m NICHT verwendet werden.'
+        text = 'Als Name kann \033[1;3mhelp\033[0m, \033[1;3mexit\033[0m, \033[1;3mabbruch\033[0m und \033[1;3mstop\033[0m NICHT verwendet werden.'
         pinted(text)
         text = 'Nach vollständiger Eingabe der Namen mit den Stunden muss bei dem Eingabefeld \033[1;3mName\033[0m eine 0 (die Zahl Null) eingegeben werden, um die Eingabe der Namen und Stunden zu beenden.'
         pinted(text)
@@ -74,35 +76,70 @@ def abort(var):
         return var
     
 
+def easteregg(string):
+    lthor = ['thor', 'thor, god of thunder', 'son of odin', 'strongest avenger']
+    
+    if string in lthor:
+        print('access denied.')
+    elif string == 'point break':
+        print('I love you 3000')
+    elif string == 'banner':
+        print('welcome, strongest avenger')
+    else:
+        return False
+    
+    
 name = []
 hour = []
 i = 1
 
-name.append(abort(input('{}{} = '.format(i, ". Name"))))
-while name[-1] != "0":
+value = abort(input('{}{} = '.format(i, ". Name")))
+    
+while easteregg(value) != False:
+    value = abort(input('{}{} = '.format(i, ". Name")))
+
+name.append(value)
+    
+while '0' not in name:    
     while True:
         try:
-            value = abort(input('{} = '.format("   Hour"))).replace(',', '.')
-            float(value)
+            value = abort(input('{} = '.format("   Hour")))
+            
+            if easteregg(value) != False:
+                continue
+            
+            hour.append(float(value.replace(',', '.')))
+            
         except ValueError:
             print('Gib nur eine Zahl ein für die Stunden!')
             continue
+            
         else:
-            hour.append(float(value))
             break
     
     i += 1
-    name.append(abort(input('{}{} = '.format(i, ". Name"))))
+    value = abort(input('{}{} = '.format(i, ". Name")))
+    
+    while easteregg(value) != False:
+        value = abort(input('{}{} = '.format(i, ". Name")))
+        
+    name.append(value)
     
 name = name[:-1]
     
 while True:
     try:
-        tipsum = float(abort(input("total tip = ")).replace(',', '.'))
-        float(tipsum)
+        tipsum = abort(input("total tip = "))
+        
+        if easteregg(tipsum) != False:
+            continue
+            
+        tipsum = float(tipsum.replace(',', '.'))
+        
     except ValueError:
         print('Gib nur eine Zahl ein für das gesamte Trinkgeld!')
         continue
+        
     else:
         break
 

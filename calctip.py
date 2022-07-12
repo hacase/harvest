@@ -122,9 +122,8 @@ if np.around(sum(roundtip), decimals=3) > tipsum:
         deci = [int(i * 100) % 10 for i in real]
         hit = [i for i, j in enumerate(deci) if j == check]
         
-        for i in range(len(roundtip)):
-            if i in hit:
-                real[i] = int(real[i] * 10) / 10
+        for i in hit:
+            real[i] = int(real[i] * 10) / 10
                 
         roundtip = np.around(real, decimals=1)
         

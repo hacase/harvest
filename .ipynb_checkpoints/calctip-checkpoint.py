@@ -32,7 +32,7 @@ def abort(var):
               '\033[1;3mpython3 calctip.py\033[0m\n\n\n')
         
         print('EINGABE ABBRECHEN')
-        text = 'Bei jeglicher Eingabe kann \033[1;3mexit\033[0m oder \033[1;3mstop\033[0m eingegeben werden, um den gesamten Vorgang abzubrechen. Die Daten gehen dabei verloren.'
+        text = 'Bei jeglicher Eingabe kann \033[1;3mexit\033[0m, \033[1;3mabbruch\033[0m oder \033[1;3mstop\033[0m eingegeben werden, um den gesamten Vorgang abzubrechen. Die Daten gehen dabei verloren.'
         pinted(text)
         print('\n')        
         

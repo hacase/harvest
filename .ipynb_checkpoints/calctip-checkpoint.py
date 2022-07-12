@@ -64,7 +64,7 @@ def abort(var):
         print('\n          Trinkgeld pro Stunde * gearbeitete Stunden = Trinkgeld\n')
         text = 'Das berechnete Trinkgeld wird dabei angepasst, sodass das herausgegebene gerundete Trinkgeld aller Personen nicht das ursprüngliche eingegebene Trinkgeld übersteigt. Falls das herausgegebene Trinkgeld das Eingegebene übersteigen sollte, wird die Rundungsregel angepasst. In diesem Program werden bei den auf 1ct gerundeten Beträgen nach 5ct Beträgen gesucht, welche nun auf 10ct abgerundet werden. Falls weiterhin das Trinkgeld übersteigt, wird nach 6ct, 7ct... Beträgen gesucht. Nach der Suche nach 9ct Beträgen kann das herausgegebene auf 10ct gerundete Trinkgeld nicht das ursprünglich eingegebene Trinkgled übersteigen.'
         pinted(text)
-        text = 'Falls das Trinkgeld nicht nach den Regeln des Kaufmännischen Rundens gerundet wurde, wird vor der Trinkgeldtabelle die Ausgabe  \033[1;3mtip adjusted correctly\033[0m gedruckt. Das in der Trinkgeldtabelle angezeigte Trinkgeld, welches auf ganze 1ct gerundet ist, bleibt zum Zweck der Kontrolle bei dem ganzen Prozess invariant.'
+        text = 'Falls das Trinkgeld nicht nach den Regeln des Kaufmännischen Rundens gerundet wurde, wird vor der Trinkgeldtabelle die Ausgabe \033[1;3mtip adjusted correctly\033[0m gedruckt. Das in der Trinkgeldtabelle angezeigte Trinkgeld, welches auf ganze 1ct gerundet ist, bleibt zum Zweck der Kontrolle bei dem ganzen Prozess invariant.'
         pinted(text)
         print('\n\n\n\n\n')
         

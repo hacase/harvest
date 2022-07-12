@@ -265,8 +265,8 @@ ________________[_]_[_]_[_]________/_]_[_\_________________________'''
         print(father)
     elif string == 'the force is strong with this one':
         print(yoda)
-        
-    elif string == 'wer ist bester barista':
+            
+    elif string == 'wer ist bester barista' or 'wer ist der beste barista':
         print(barista)
     elif string == 'who you gonna call':
         print(ghostbusters)

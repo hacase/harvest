@@ -94,9 +94,17 @@ hour = []
 i = 1
 
 value = abort(input('{}{} = '.format(i, ". Name")))
+
+while True:
+    if value == '0':
+        print('Gib mindestens einen Namen ein!\nBei Eingabe von 0 wird die Nameneingabe abgebrochen!')
+        value = abort(input('{}{} = '.format(i, ". Name")))
     
-while easteregg(value) != False:
-    value = abort(input('{}{} = '.format(i, ". Name")))
+    elif easteregg(value) != False:
+        value = abort(input('{}{} = '.format(i, ". Name")))
+    
+    else:
+        break
 
 name.append(value)
     

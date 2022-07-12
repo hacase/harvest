@@ -108,9 +108,7 @@ while True:
 
 ratio = tipsum / sum(hour)
 
-realtip = np.array([ratio * i for i in hour])
-realtip = [int(i * 1000) / 1000 for i in realtip]
-                   
+realtip = np.array([ratio * i for i in hour])                   
 real = np.array([ratio * i for i in hour])
 
 roundtip = np.around(realtip, decimals=1)

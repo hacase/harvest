@@ -15,7 +15,8 @@ def abort(var):
     labort = ['exit', 'Exit', 'EXIT',
               'stop', 'Stop', 'STOP',
               'stopp', 'Stopp', 'STOPP',
-              'abbruch', 'Abbruch', 'ABBRUCH']
+              'abbruch', 'Abbruch', 'ABBRUCH',
+              'abbrechen', 'Abbrechen', 'ABBRECHEN']
     
     lhelp = ['help', 'Help', 'HELP',
              'hilfe', 'Hilfe', 'HILFE']
@@ -39,7 +40,7 @@ def abort(var):
         print('EINGABE NAME, HOUR')
         text = 'Geben Sie bei \033[1;3mName\033[0m einen Namen und bei \033[1;3mHour\033[0m die zugehörigen Stunden als Zahl ein. Bei den Stunden dürfen keine Einheiten oder Buchstaben eingegeben werden; Dezimaltrennzeichen kann ein Komma oder Punkt sein. Gleiche Namen können eingegeben werden.'
         pinted(text)
-        text = 'Als Name kann \033[1;3mhelp\033[0m, \033[1;3mexit\033[0m, \033[1;3mabbruch\033[0m und \033[1;3mstop\033[0m NICHT verwendet werden.'
+        text = 'Als Name kann \033[1;3mhelp\033[0m, \033[1;3mexit\033[0m \033[1;3mabbruch\033[0m und \033[1;3mstop\033[0m NICHT verwendet werden.'
         pinted(text)
         text = 'Nach vollständiger Eingabe der Namen mit den Stunden muss bei dem Eingabefeld \033[1;3mName\033[0m eine 0 (die Zahl Null) eingegeben werden, um die Eingabe der Namen und Stunden zu beenden.'
         pinted(text)
@@ -244,6 +245,8 @@ ________________[_]_[_]_[_]________/_]_[_\_________________________'''
                   ""VXXXXXXXXXXXXXXXXXXV""
                   """
     
+    bestbarista = ['bester barista', 'besten barista', 'beste barista', 'best barista']
+    
     
     if string in lthor:
         print('access denied.')
@@ -266,7 +269,7 @@ ________________[_]_[_]_[_]________/_]_[_\_________________________'''
     elif string == 'the force is strong with this one':
         print(yoda)
             
-    elif ('bester barista' or 'beste barista') or 'besten barista' in string:
+    elif any(s in string for s in bestbarista):
         print(barista)
     elif string == 'who you gonna call':
         print(ghostbusters)

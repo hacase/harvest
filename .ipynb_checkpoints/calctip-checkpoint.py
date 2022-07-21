@@ -8,7 +8,7 @@ import textwrap
 
 def pinted(text):
     wrapper = textwrap.TextWrapper(initial_indent='\t', subsequent_indent='\t')
-    wrapped = wrapper.fill(text)
+    wrapped = textwrap.fill(text=text, width=55)
     print(wrapped)
 
 def abort(var):

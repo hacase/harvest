@@ -4,6 +4,7 @@ import numpy as np
 import sys
 import os
 import textwrap
+from datetime import date, datetime
 
 
 def pinted(text):
@@ -281,6 +282,9 @@ ________________[_]_[_]_[_]________/_]_[_\_________________________'''
 name = []
 hour = []
 i = 1
+
+today = date.today().strftime("%d.%m.%Y") + ', ' + date.today().strftime("%A") + ', time: ' + datetime.now().strftime("%H:%M")
+print(today)
 
 value = abort(input('{}{} = '.format(i, ". Name")))
 

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+ #!/usr/bin/env python
 
 import numpy as np
 import sys
@@ -279,6 +279,157 @@ ________________[_]_[_]_[_]________/_]_[_\_________________________'''
         return False
     
     
+def tmode():
+    for i in range(1, 100):
+        while True:
+            try:
+                value = float(abort(input('{}{}{}{} = '.format(i, '.', ' ' * (3 - len(str(i))), "Hour"))).replace(',', '.'))
+            except ValueError:
+                print('input error')
+                continue
+            else:
+                break
+            
+        hour.append(float(str(value)))
+        
+        if hour[-1] > 11:
+            tipsum = float(hour.pop())
+            break
+    
+    ratio = tipsum / sum(hour)
+
+    realtip = np.array([ratio * i for i in hour])                   
+    real = np.array([ratio * i for i in hour])
+
+    roundtip = np.around(realtip, decimals=1)
+
+    if np.around(sum(roundtip), decimals=3) > tipsum:
+        print("tip adjusted correctly")
+
+        check = 5
+
+        while np.around(sum(roundtip), decimals=3) > tipsum:
+            deci = [int(i * 100) % 10 for i in real]
+            hit = [i for i, j in enumerate(deci) if j == check]
+
+            for i in hit:
+                real[i] = int(real[i] * 10) / 10
+
+            roundtip = np.around(real, decimals=1)
+
+            check += 1
+
+    realtip = [int(i * 1000) / 1000. for i in realtip]
+    
+    space = '.' + ' '
+            
+    print('-' *  32)
+
+    for i in range(len(hour)):
+        print(i+1, '"', ' ' * (4 - len(str(i+1))), f'{hour[i]:4.2f}h ', f' -> {roundtip[i]:5.1f}€ ', f' #  {realtip[i]:6.3f}', sep='')
+
+    print('-' * 32)
+
+    print(f'total hours = {sum(hour):} h')   
+    print(f'tip ratio = {ratio:.4} €/h')
+            
+            
+def normal(value, name, hour):
+    i = 1
+    
+    while True:
+        if value == '0':
+            print('Gib mindestens einen Namen ein!\nBei Eingabe von 0 wird die Nameneingabe abgebrochen!')
+            value = abort(input('{}{} = '.format(i, ".  Name")))
+
+        elif easteregg(value) != False:
+            value = abort(input('{}{} = '.format(i, ".  Name")))
+
+        else:
+            break
+
+    name.append(value)
+    
+    while '0' not in name:    
+        while True:
+            try:
+                value = abort(input('{} = '.format("   Hour")))
+
+                if easteregg(value) != False:
+                    continue
+
+                hour.append(float(value.replace(',', '.')))
+
+            except ValueError:
+                print('Gib nur eine Zahl ein für die Stunden!')
+                continue
+
+            else:
+                break
+
+        i += 1
+        value = abort(input('{}{}{}{} = '.format(i, '.', ' ' * (2 - len(str(i))), "Name")))
+
+        while easteregg(value) != False:
+            value = abort(input('{}{}{}{} = '.format(i, '.', ' ' * (2 - len(str(i))), "Name")))
+
+        name.append(value)
+
+    name = name[:-1]
+
+    while True:
+        try:
+            tipsum = abort(input("total tip = "))
+
+            if easteregg(tipsum) != False:
+                continue
+
+            tipsum = float(tipsum.replace(',', '.'))
+
+        except ValueError:
+            print('Gib nur eine Zahl ein für das gesamte Trinkgeld!')
+            continue
+
+        else:
+            break
+
+    ratio = tipsum / sum(hour)
+
+    realtip = np.array([ratio * i for i in hour])                   
+    real = np.array([ratio * i for i in hour])
+
+    roundtip = np.around(realtip, decimals=1)
+
+    if np.around(sum(roundtip), decimals=3) > tipsum:
+        print("tip adjusted correctly")
+
+        check = 5
+
+        while np.around(sum(roundtip), decimals=3) > tipsum:
+            deci = [int(i * 100) % 10 for i in real]
+            hit = [i for i, j in enumerate(deci) if j == check]
+
+            for i in hit:
+                real[i] = int(real[i] * 10) / 10
+
+            roundtip = np.around(real, decimals=1)
+
+            check += 1
+
+    realtip = [int(i * 1000) / 1000. for i in realtip]        
+
+    maxstr = len(max(name, key=len))
+
+    print('-' * (maxstr + 29))
+
+    for i in range(len(name)):
+        print('{num:{width}}'.format(num = name[i], width = maxstr), f' {hour[i]:4.2f}h', f' -> {roundtip[i]:5.1f}€', f' #  {realtip[i]:6.3f}')
+
+    print('-' * (maxstr + 29))
+
+    print(f'total hours = {sum(hour):} h')   
+    print(f'tip ratio = {ratio:.4} €/h')
+
 name = []
 hour = []
 i = 1
@@ -288,95 +439,7 @@ print(today)
 
 value = abort(input('{}{} = '.format(i, ". Name")))
 
-while True:
-    if value == '0':
-        print('Gib mindestens einen Namen ein!\nBei Eingabe von 0 wird die Nameneingabe abgebrochen!')
-        value = abort(input('{}{} = '.format(i, ". Name")))
-    
-    elif easteregg(value) != False:
-        value = abort(input('{}{} = '.format(i, ". Name")))
-    
-    else:
-        break
-
-name.append(value)
-    
-while '0' not in name:    
-    while True:
-        try:
-            value = abort(input('{} = '.format("   Hour")))
-            
-            if easteregg(value) != False:
-                continue
-            
-            hour.append(float(value.replace(',', '.')))
-            
-        except ValueError:
-            print('Gib nur eine Zahl ein für die Stunden!')
-            continue
-            
-        else:
-            break
-    
-    i += 1
-    value = abort(input('{}{} = '.format(i, ". Name")))
-    
-    while easteregg(value) != False:
-        value = abort(input('{}{} = '.format(i, ". Name")))
-        
-    name.append(value)
-    
-name = name[:-1]
-    
-while True:
-    try:
-        tipsum = abort(input("total tip = "))
-        
-        if easteregg(tipsum) != False:
-            continue
-            
-        tipsum = float(tipsum.replace(',', '.'))
-        
-    except ValueError:
-        print('Gib nur eine Zahl ein für das gesamte Trinkgeld!')
-        continue
-        
-    else:
-        break
-
-ratio = tipsum / sum(hour)
-
-realtip = np.array([ratio * i for i in hour])                   
-real = np.array([ratio * i for i in hour])
-
-roundtip = np.around(realtip, decimals=1)
-
-if np.around(sum(roundtip), decimals=3) > tipsum:
-    print("tip adjusted correctly")
-    
-    check = 5
-    
-    while np.around(sum(roundtip), decimals=3) > tipsum:
-        deci = [int(i * 100) % 10 for i in real]
-        hit = [i for i, j in enumerate(deci) if j == check]
-        
-        for i in hit:
-            real[i] = int(real[i] * 10) / 10
-                
-        roundtip = np.around(real, decimals=1)
-        
-        check += 1
-
-realtip = [int(i * 1000) / 1000. for i in realtip]        
-        
-maxstr = len(max(name, key=len))
-
-print('-' * (maxstr + 29))
-
-for i in range(len(name)):
-    print('{num:{width}}'.format(num = name[i], width = maxstr), f' {hour[i]:4.2f}h', f' -> {roundtip[i]:5.1f}€', f' #  {realtip[i]:6.3f}')
-    
-print('-' * (maxstr + 29))
-
-print(f'total hours = {sum(hour):} h')   
-print(f'tip ratio = {ratio:.4} €/h')   
+if value == 'tmode':
+    tmode()
+else:
+    normal(value, name, hour)

@@ -283,7 +283,7 @@ def tmode():
     for i in range(1, 100):
         while True:
             try:
-                value = float(abort(input('{}{}{}{} = '.format(i, '.', ' ' * (3 - len(str(i))), "Hour"))).replace(',', '.'))
+                value = float(abort(input('{}{}{}{} = '.format(i, '.', ' ' * (2 - len(str(i))), "Hour"))).replace(',', '.'))
             except ValueError:
                 print('input error')
                 continue

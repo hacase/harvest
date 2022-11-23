@@ -77,12 +77,90 @@ def abort(var):
         
     else:
         return var
+ 
+
+def datereasteregg():
+    valentine = r'''
+    ☆　+
+　+　   _. ☆
+☆  へ. /～ヽへ+
++ノ从`(｡ﾟ-ﾟ)从丶 Happy Valentine's day
+ノ从从( つ ｨ⌒v⌒,丶 
+""""" ﾉ ﾉ ﾉ ＼／""
++　 ☆ し"Ｊ+ ☆
+　+　　☆　　+
+    '''
     
+    santa = r"""
+    　o　　　。　　　 　.__o　　O　　 。　 　　。　°
+　。　○　　o　　　　○  ／ ｨ　　　　　○　　o　　　　○
+　　　　　　　　o 　  /ニﾆ)⌒⌒⌒ヽ　　　　　　　　o
+　　　　o　　　　　 　(^_^)____） Merry Christmas!!
+　　○　  　。  ○   ／○    ○） ／|,　O　 o
+。　　o　　　　 o ∠ ∠____∠_／ ／　　　　　○
+　　　　　　o  　 |／   /　|／　　○　　　。　　o　　O　
+　o　　O　　　 　／￣￣/￣￣　o　　　 。 
+　　　　　　　  ノ  　/　　　 o　　　　　　　　　O
+　o　　　o  ∧ ∧___ﾉ)∧ ∧___ﾉ)　　　　。　　　o　　　　　
+　　　o　　(ﾟ-ﾟ) 　(ﾟДﾟ*)   つ　　o　　　°　　　　　 o
+　。　　　o ∪-∪'"~~ ∪-∪'"~~/　。　　。　o　　。
+　　　 ___. .__.　。 　 ___.　.__.     o___.     ☆    ♪　°
+  ___. |ﾛﾛ|／ ~ ＼ ___. |ﾛﾛ| ／ ~ ＼ ___|ﾛﾛL_. \(♥♥)(**)/
+＿|田|_|ﾛﾛ|_| ﾛﾛ|＿|田|.|ﾛﾛ|__| ﾛﾛ|＿|田|. |ﾛ|. (__)(__)
+"""   
+    
+    newyear = r"""
+     *°*”˜˜”*°•.¸☆ ★ ☆¸.•°*”˜˜”*°•.¸☆
+     ╔╗╔╦══╦═╦═╦╗╔╗ ★ ★ ★
+     ║╚╝║══║═║═║╚╝║ ☆¸.•°*”˜˜”*°•.¸☆
+     ║╔╗║╔╗║╔╣╔╩╗╔╝ ★ NEW YEAR ☆
+     ╚╝╚╩╝╚╩╝╚╝═╚╝ ♥￥☆★☆★☆￥♥ ★☆❤♫❤♫❤
+     .•*¨`*•..¸☼ ¸.•*¨`*•.♫❤♫❤♫❤
+                                 .''.
+       .''.             *''*    :_\/_:     .
+      :_\/_:   .    .:.*_\/_*   : /\ :  .'.:.'.
+  .''.: /\ : _\(/_  ':'* /\ *  : '..'.  -=:o:=-
+ :_\/_:'.:::. /)\*''*  .|.* '.\'/.'_\(/_'.':'.'
+ : /\ : :::::  '*_\/_* | |  -= o =- /)\    '  *
+  '..'  ':::'   * /\ * |'|  .'/.\'.  '._____
+      *        __*..* |  |     :      |.   |' .---"|
+       _*   .-'   '-. |  |     .--'|  ||   | _|    |
+    .-'|  _.|  |    ||   '-__  |   |  |    ||      |
+    |' | |.    |    ||       | |   |  |    ||      |
+ ___|  '-'     '    ""       '-'   '-.'    '`      |____
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          ~~               ~-~-~-~-~-~-~-~-~-~   /|
+  ~~~~        (      ~-~-~-~-~-~-~-~  /|~       /_|\
+        ~~~~_-H-__  -~-~-~-~-~-~     /_|\    -~======-~
+~~~~~-\XXXXXXXXXX/~     ~-~-~-~     /__|_\ ~-~-~-~
+~~~-~~~-~-~-~-~    ~-~~-~-~-~-~    ========  ~-~-~-~
+"""
+
+    if 1220 <= int(date.today().strftime("%m%d")) <= 1225:
+        print(santa)
+    elif 1229 <= int(date.today().strftime("%m%d")) or int(date.today().strftime("%m%d")) <= 105:
+        print(newyear)
+    elif int(date.today().strftime("%m%d")) == 214:
+        print(valentine)
 
 def easteregg(string):
     string = string.lower()
     
     lthor = ['thor', 'thor, god of thunder', 'son of odin', 'strongest avenger']
+    
+    bday = r"""
+                    ∩,,,∩
+                   (´･ω･｀)
+              ┌-----〇--○-----┐
+　　　　　　 ∫│HAPPY BIRTHDAY!│(o)
+　　 　　 　(┃└-(o)--(o)--(o)─┘ ┃)
+　　　　　　|\☆  ┃ ☆  ┃  ★ ┃  ☆ ノ♪
+　　　 　(::|"''--,,_____,,--―''~☆∂♪
+　　　 ( )- |　　　　 　 　　 。◎+
+　　  　.:O★ヽ　 　 　　 　 　o♭∴☆
+　　  ☆ :∂ｉo,"'--,,_____,,--''"◇｡♪◎o
+    　◇♭。:゜◎::O☆♪★∝ ☆｡∂:o゜♪☆◇｡∂ ◎
+"""
     
     kid = r'''
 　　 l￣￣￣￣￣l
@@ -251,6 +329,8 @@ ________________[_]_[_]_[_]________/_]_[_\_________________________'''
     
     bestbarista = ['bester barista', 'besten barista', 'beste barista', 'best barista']
     
+    lbday = ['bday', 'b-day', 'birthday', 'geburtstag', 'geburtstagskind']
+    
     
     if string in lthor:
         print('access denied.')
@@ -277,6 +357,8 @@ ________________[_]_[_]_[_]________/_]_[_\_________________________'''
         print(barista)
     elif string == 'who you gonna call':
         print(ghostbusters)
+    elif any(s in string for s in lbday):
+        print(bday)
         
     else:
         return False
@@ -442,6 +524,8 @@ def normal(value, name, hour):
     print(f'tip ratio = {ratio:.4} €/h')
     
 
+datereasteregg()
+    
 name = []
 hour = []
 i = 1

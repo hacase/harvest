@@ -6,6 +6,9 @@ import os
 import textwrap
 from datetime import date, datetime
 
+# Wrtten by Taro Watanabe, would be nice if you take the code
+# with the eastereggs secret, addings are allowed, if you tell me^^
+
 
 def pinted(text):
     wrapper = textwrap.TextWrapper(initial_indent='\t', subsequent_indent='\t')
@@ -13,23 +16,21 @@ def pinted(text):
     print(wrapped)
 
 def abort(var):
-    labort = ['exit', 'Exit', 'EXIT',
-              'stop', 'Stop', 'STOP',
-              'stopp', 'Stopp', 'STOPP',
-              'abbruch', 'Abbruch', 'ABBRUCH',
-              'abbrechen', 'Abbrechen', 'ABBRECHEN']
+    var = str(var).lower()
     
-    lhelp = ['help', 'Help', 'HELP',
-             'hilfe', 'Hilfe', 'HILFE']
+    labort = ['exit', 'stop', 'stopp', 'abbruch', 'abbrechen']
     
     if var in labort:
         print('Exited session.')
         sys.exit()
+    
+    lhelp = ['help', 'hilfe']
         
     elif var in lhelp:
         print('\n')
         print('CALCTIP WIKI\n')
         print('-*- Program zum Ausrechnen vom Trinkgeld bei Mayras Wohnzimmercafe.')
+        print('Daten werden nicht gespeichert.')
         print('Zum Starten muss der Befehl aufgerufen werden:',
               '\033[1;3mpython3 calctip.py\033[0m\n\n\n')
         
@@ -74,11 +75,14 @@ def abort(var):
               '\033[1;3mpython3 calctip.py\033[0m\n\n\n\n')
         
         sys.exit()
+        
     else:
         return var
     
 
 def easteregg(string):
+    string = string.lower()
+    
     lthor = ['thor', 'thor, god of thunder', 'son of odin', 'strongest avenger']
     
     kid = r'''
@@ -280,17 +284,25 @@ ________________[_]_[_]_[_]________/_]_[_\_________________________'''
     
     
 def tmode():
+    count = 0
     for i in range(1, 100):
         while True:
             try:
-                value = float(abort(input('{}{}{}{} = '.format(i, '.', ' ' * (2 - len(str(i))), "Hour"))).replace(',', '.'))
+                value = abort(input('{}{}{}{} = '.format(i + count, '.', ' ' * (2 - len(str(i))), "Hour"))).replace(',', '.')
+                
+                if ' ' in value:
+                    thour, times = value.split(' ', 1)
+                    count += int(times)
+                    for j in range(int(times)):
+                        hour.append(float(str(thour)))
+                else:
+                    hour.append(float(str(value)))
+                    
             except ValueError:
                 print('input error')
                 continue
             else:
                 break
-            
-        hour.append(float(str(value)))
         
         if hour[-1] > 11:
             tipsum = float(hour.pop())
@@ -429,6 +441,7 @@ def normal(value, name, hour):
 
     print(f'total hours = {sum(hour):} h')   
     print(f'tip ratio = {ratio:.4} €/h')
+    
 
 name = []
 hour = []
@@ -441,5 +454,6 @@ value = abort(input('{}{} = '.format(i, ". Name")))
 
 if value == 'tmode':
     tmode()
+    
 else:
     normal(value, name, hour)

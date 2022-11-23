@@ -19,12 +19,11 @@ def abort(var):
     var = str(var).lower()
     
     labort = ['exit', 'stop', 'stopp', 'abbruch', 'abbrechen']
+    lhelp = ['help', 'hilfe']
     
     if var in labort:
         print('Exited session.')
         sys.exit()
-    
-    lhelp = ['help', 'hilfe']
         
     elif var in lhelp:
         print('\n')

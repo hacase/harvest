@@ -373,7 +373,7 @@ def tmode():
                 
                 if ' ' in value:
                     thour, times = value.split(' ', 1)
-                    count += int(times)
+                    count += int(times) - 1
                     for j in range(int(times)):
                         hour.append(float(str(thour)))
                 else:

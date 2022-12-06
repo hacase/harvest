@@ -136,7 +136,7 @@ def datereasteregg():
 ~~~-~~~-~-~-~-~    ~-~~-~-~-~-~    ========  ~-~-~-~
 """
 
-    if 1220 <= int(date.today().strftime("%m%d")) <= 1226:
+    if 1215 <= int(date.today().strftime("%m%d")) <= 1226:
         print(santa)
     elif 1229 <= int(date.today().strftime("%m%d")) or int(date.today().strftime("%m%d")) <= 104:
         print(newyear)

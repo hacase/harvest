@@ -136,12 +136,32 @@ def datereasteregg():
 ~~~-~~~-~-~-~-~    ~-~~-~-~-~-~    ========  ~-~-~-~
 """
 
+    leia = r"""
+    
+
+ 
+                            ,===
+                           (@o o@
+                          / \_-/       ___
+                         /| |) )      /() \
+                        |  \ \/__   _|_____|_
+                        |   \____@=| | === | |
+                        |   |      |_|  O  |_|
+                        | | |       ||  O  ||
+                        | | |       ||__*__||
+                       /  |  \     |~ \___/ ~|
+                       ~~~~~~~     /=\     /=\
+_______________________(_)(__\_____[_]_____[_]_____________________
+""""
+    
     if 1215 <= int(date.today().strftime("%m%d")) <= 1226:
         print(santa)
     elif 1229 <= int(date.today().strftime("%m%d")) or int(date.today().strftime("%m%d")) <= 104:
         print(newyear)
     elif int(date.today().strftime("%m%d")) == 214:
         print(valentine)
+    elif int(date.today().strftime("%m%d")) == 504:
+        print(leia)
 
 def easteregg(string):
     string = string.lower()

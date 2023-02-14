@@ -1,6 +1,8 @@
+ #!/usr/bin/env python
 # text used in calctip.py
 
 import textwrap
+from datetime import date, datetime
 
 def pinted(text):
     wrapper = textwrap.TextWrapper(initial_indent='\t', subsequent_indent='\t')
@@ -54,6 +56,20 @@ def helpman():
 
     print('Zum Starten den Befehl eingeben:',
           '\033[1;3mpython3 calctip.py\033[0m\n\n\n\n')
+
+    
+def datereasteregg():
+    if 1215 <= int(date.today().strftime("%m%d")) <= 1226:
+        santa()
+        
+    elif 1229 <= int(date.today().strftime("%m%d")) or int(date.today().strftime("%m%d")) <= 104:
+        newyear()
+        
+    elif int(date.today().strftime("%m%d")) == 214:
+        valentine()
+        
+    elif int(date.today().strftime("%m%d")) == 504:
+        leia()
     
     
 def santa():
@@ -117,6 +133,48 @@ def valentine():
 　+　　☆　　+
     '''
     print(valentine)
+    
+
+def easteregg(string):
+    string = string.lower()
+    
+    lthor = ['thor', 'thor, god of thunder', 'son of odin', 'strongest avenger']
+    bestbarista = ['bester barista', 'besten barista', 'beste barista', 'best barista']
+    lbday = ['bday', 'b-day', 'birthday', 'geburtstag', 'geburtstagskind']
+    
+    
+    if string in lthor:
+        print('access denied.')
+    elif string == 'point break':
+        print('I love you 3000')
+    elif string == 'banner':
+        print('welcome, strongest avenger')
+        
+    elif any(s in string for s in bestbarista):
+        barista()
+        
+    elif any(s in string for s in lbday):
+        bday()
+        
+    elif string == 'kaitou1412':
+        kid()
+    elif string == 'shellingford':
+        conan()
+    
+    elif string == 'order 66':
+        order66()
+    elif string == 'may the force be with you':
+        vader()
+    elif string == 'i am your father':
+        father()
+    elif string == 'the force is strong with this one':
+        yoda()
+            
+    elif string == 'who you gonna call':
+        ghostbusters()
+        
+    else:
+        return False
 
 def leia():
     leia = r"""

@@ -1,13 +1,12 @@
  #!/usr/bin/env python
+# Wrtten by Taro Watanabe, would be nice if you take the code
+# with the eastereggs secret, addings are allowed ^^
 
 import numpy as np
 import sys
 import os
 from datetime import date, datetime
 import texts as tx
-
-# Wrtten by Taro Watanabe, would be nice if you take the code
-# with the eastereggs secret, addings are allowed ^^
 
 
 def abort(var):
@@ -26,16 +25,6 @@ def abort(var):
         
     else:
         return var
-    
-def datereasteregg():
-    if 1215 <= int(date.today().strftime("%m%d")) <= 1226:
-        tx.santa()
-    elif 1229 <= int(date.today().strftime("%m%d")) or int(date.today().strftime("%m%d")) <= 104:
-        tx.newyear()
-    elif int(date.today().strftime("%m%d")) == 214:
-        tx.valentine()
-    elif int(date.today().strftime("%m%d")) == 504:
-        tx.leia()
 
 def easteregg(string):
     string = string.lower()
@@ -239,7 +228,7 @@ def normal(value, name, hour):
     print(f'tip ratio = {ratio:.4} €/h')
     
 
-datereasteregg()
+tx.datereasteregg()
     
 name = []
 hour = []

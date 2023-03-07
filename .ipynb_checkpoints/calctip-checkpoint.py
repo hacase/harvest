@@ -14,6 +14,9 @@ def abort(var):
     
     labort = ['exit', 'stop', 'stopp', 'abbruch', 'abbrechen']
     lhelp = ['help', 'hilfe']
+    lcorr = ['korr', 'korrektur', 'korektur', 'korrigieren',
+            'korigieren', 'correction', 'corection', 'corr',
+            'korrection', 'korection', 'corrigieren', 'corigieren']
     
     if var in labort:
         print('Exited session.')
@@ -23,49 +26,11 @@ def abort(var):
         tx.helpman()
         sys.exit()
         
+    elif var in lcorr:
+        print(name)
+        
     else:
         return var
-
-def easteregg(string):
-    string = string.lower()
-    
-    lthor = ['thor', 'thor, god of thunder', 'son of odin', 'strongest avenger']
-    bestbarista = ['bester barista', 'besten barista', 'beste barista', 'best barista']
-    lbday = ['bday', 'b-day', 'birthday', 'geburtstag', 'geburtstagskind']
-    
-    
-    if string in lthor:
-        print('access denied.')
-    elif string == 'point break':
-        print('I love you 3000')
-    elif string == 'banner':
-        print('welcome, strongest avenger')
-        
-    elif any(s in string for s in bestbarista):
-        tx.barista()
-        
-    elif any(s in string for s in lbday):
-        tx.bday()
-        
-    elif string == 'kaitou1412':
-        tx.kid()
-    elif string == 'shellingford':
-        tx.conan()
-    
-    elif string == 'order 66':
-        tx.order66()
-    elif string == 'may the force be with you':
-        tx.vader()
-    elif string == 'i am your father':
-        tx.father()
-    elif string == 'the force is strong with this one':
-        tx.yoda()
-            
-    elif string == 'who you gonna call':
-        tx.ghostbusters()
-        
-    else:
-        return False
     
     
 def tmode():
@@ -139,7 +104,7 @@ def normal(value, name, hour):
             print('Gib mindestens einen Namen ein!\nBei Eingabe von 0 wird die Nameneingabe abgebrochen!')
             value = abort(input('{}{} = '.format(i, ".  Name")))
 
-        elif easteregg(value) != False:
+        elif tx.easteregg(value) != False:
             value = abort(input('{}{} = '.format(i, ".  Name")))
 
         else:
@@ -152,7 +117,7 @@ def normal(value, name, hour):
             try:
                 value = abort(input('{} = '.format("   Hour")))
 
-                if easteregg(value) != False:
+                if tx.easteregg(value) != False:
                     continue
 
                 hour.append(float(value.replace(',', '.')))
@@ -167,7 +132,7 @@ def normal(value, name, hour):
         i += 1
         value = abort(input('{}{}{}{} = '.format(i, '.', ' ' * (2 - len(str(i))), "Name")))
 
-        while easteregg(value) != False:
+        while tx.easteregg(value) != False:
             value = abort(input('{}{}{}{} = '.format(i, '.', ' ' * (2 - len(str(i))), "Name")))
 
         name.append(value)
@@ -178,7 +143,7 @@ def normal(value, name, hour):
         try:
             tipsum = abort(input("total tip = "))
 
-            if easteregg(tipsum) != False:
+            if tx.easteregg(tipsum) != False:
                 continue
 
             tipsum = float(tipsum.replace(',', '.'))

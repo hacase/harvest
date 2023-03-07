@@ -1,6 +1,7 @@
  #!/usr/bin/env python
 # Wrtten by Taro Watanabe, would be nice if you take the code
 # with the eastereggs secret, addings are allowed ^^
+# all texts and eastereggs stored in texts.py
 
 import numpy as np
 import sys

@@ -6,7 +6,7 @@
 import numpy as np
 import sys
 import os
-from datetime import date, datetime
+from datetime import datetime as dt
 import texts as tx
 
 

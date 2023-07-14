@@ -33,6 +33,25 @@ def abort(var):
     else:
         return var
     
+def adjust_tip(roundtip, tipsum, real):
+    if np.around(sum(roundtip), decimals=3) > tipsum:
+        print("tip adjusted correctly")
+
+        check = 5
+
+        while np.around(sum(roundtip), decimals=3) > tipsum:
+            deci = [int(i * 100) % 10 for i in real]
+            hit = [i for i, j in enumerate(deci) if j == check]
+
+            for i in hit:
+                real[i] = int(real[i] * 10) / 10
+
+            roundtip = np.around(real, decimals=1)
+
+            check += 1
+            
+    return roundtip, tipsum, real
+    
     
 def tmode():
     count = 0
@@ -66,25 +85,9 @@ def tmode():
 
     roundtip = np.around(realtip, decimals=1)
 
-    if np.around(sum(roundtip), decimals=3) > tipsum:
-        print("tip adjusted correctly")
-
-        check = 5
-
-        while np.around(sum(roundtip), decimals=3) > tipsum:
-            deci = [int(i * 100) % 10 for i in real]
-            hit = [i for i, j in enumerate(deci) if j == check]
-
-            for i in hit:
-                real[i] = int(real[i] * 10) / 10
-
-            roundtip = np.around(real, decimals=1)
-
-            check += 1
+    roundtip, tipsum, real = adjust_tip(roundtip, tipsum, real)
 
     realtip = [int(i * 1000) / 1000. for i in realtip]
-    
-    space = '.' + ' '
             
     print('-' *  32)
 
@@ -163,21 +166,7 @@ def normal(value, name, hour):
 
     roundtip = np.around(realtip, decimals=1)
 
-    if np.around(sum(roundtip), decimals=3) > tipsum:
-        print("tip adjusted correctly")
-
-        check = 5
-
-        while np.around(sum(roundtip), decimals=3) > tipsum:
-            deci = [int(i * 100) % 10 for i in real]
-            hit = [i for i, j in enumerate(deci) if j == check]
-
-            for i in hit:
-                real[i] = int(real[i] * 10) / 10
-
-            roundtip = np.around(real, decimals=1)
-
-            check += 1
+    roundtip, tipsum, real = adjust_tip(roundtip, tipsum, real)
 
     realtip = [int(i * 1000) / 1000. for i in realtip]        
 

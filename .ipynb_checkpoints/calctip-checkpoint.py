@@ -6,8 +6,9 @@
 import numpy as np
 import sys
 import os
-from datetime import date, datetime
+from datetime import datetime as dt
 import texts as tx
+import report as rp
 
 
 def abort(var):
@@ -50,7 +51,7 @@ def adjust_tip(roundtip, tipsum, real):
 
             check += 1
             
-    return roundtip, tipsum, real
+    return roundtip, tipsum, real        
     
     
 def tmode():
@@ -89,17 +90,39 @@ def tmode():
 
     realtip = [int(i * 1000) / 1000. for i in realtip]
     
-    space = '.' + ' '
+    
+    text = list()
+    
+    today = dt.today().strftime("%d.%m.%Y") + ', ' + dt.today().strftime("%A") + ', time: ' + dt.now().strftime("%H:%M")
+    text.append(today + '\n')
             
     print('-' *  32)
+    text.append('-' *  32 + '\n')
 
     for i in range(len(hour)):
-        print(i+1, '"', ' ' * (4 - len(str(i+1))), f'{hour[i]:4.2f}h ', f' -> {roundtip[i]:5.1f}€ ', f' #  {realtip[i]:6.3f}', sep='')
+        t = f'{i+1}"{" " * (4 - len(str(i+1)))}{hour[i]:4.2f}h  -> {roundtip[i]:5.1f}€  #  {realtip[i]:6.3f}'
+        print(t)
+        text.append(t + '\n')
 
-    print('-' * 32)
+    print('-' *  32)
+    text.append('-' *  32 + '\n')
 
-    print(f'total hours = {sum(hour):} h')   
-    print(f'tip ratio = {ratio:.4} €/h')
+    t = f'total hours = {sum(hour):} h'
+    print(t)
+    text.append(t + '\n')
+    
+    
+    t = f'tip ratio = {ratio:.4} €/h'
+    print(t)
+    text.append(t + '\n')
+    
+    timestamp = dt.today().strftime("%d") + '-' + dt.today().strftime("%a") + '-' + dt.now().strftime("%H-%M")
+    dirname = './txt/'+ dt.today().strftime("%Y") + '/' + dt.today().strftime("%m") + '/'
+    path = dirname + '/' + timestamp +'.txt'
+
+    os.makedirs(os.path.dirname(dirname), exist_ok=True)
+    with open(path, 'w+') as f:
+        f.writelines(text)
             
             
 def normal(value, name, hour):
@@ -191,13 +214,16 @@ name = []
 hour = []
 i = 1
 
-today = date.today().strftime("%d.%m.%Y") + ', ' + date.today().strftime("%A") + ', time: ' + datetime.now().strftime("%H:%M")
+today = dt.today().strftime("%d.%m.%Y") + ', ' + dt.today().strftime("%A") + ', time: ' + dt.now().strftime("%H:%M")
 print(today)
 
 value = abort(input('{}{} = '.format(i, ". Name")))
 
 if value == 'tmode':
     tmode()
+    
+elif value == 'report':
+    rp.report()
     
 else:
     normal(value, name, hour)

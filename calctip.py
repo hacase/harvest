@@ -60,22 +60,28 @@ def tmode():
     for i in range(1, 100):
         while True:
             try:
-                value = abort(input('{}{}{}{} = '.format(i + count, '.', ' ' * (2 - len(str(i))), "Hour"))).replace(',', '.')
-                
-                if ' ' in value:
+                value = input('{}{}{}{} = '.format(i + count, '.', ' ' * (2 - len(str(i))), "Hour")).replace(',', '.')
+                if '+' not in value:
+                    value = abort(value)
+
+                if eval(value) > 11:
+                    hour.append(eval(value))
+
+                elif ' ' in value:
                     thour, times = value.split(' ', 1)
                     count += int(times) - 1
                     for j in range(int(times)):
                         hour.append(float(str(thour)))
+
                 else:
                     hour.append(float(str(value)))
-                    
-            except ValueError:
+
+            except (ValueError, NameError) as error:
                 print('input error')
                 continue
             else:
                 break
-        
+
         if hour[-1] > 11:
             tipsum = float(hour.pop())
             break

@@ -65,6 +65,9 @@ def tmode():
                     value = abort(value)
 
                 if eval(value) > 11:
+                    if '+' in value:
+                        bar, card = value.replace(' ', '').split('+', 1)
+                
                     hour.append(eval(value))
 
                 elif ' ' in value:
@@ -124,6 +127,8 @@ def tmode():
     text.append(t + '\n')
     
     text.append('sum = ' + str(tipsum) + '\n')
+    text.append('bar = ' + str(bar) + '\n')
+    text.append('card = ' + str(card) + '\n')
     
     timestamp = dt.today().strftime("%d") + '-' + dt.today().strftime("%a") + '-' + dt.now().strftime("%H-%M")
     dirname = './txt/'+ dt.today().strftime("%Y") + '/' + dt.today().strftime("%m") + '/'

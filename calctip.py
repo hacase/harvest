@@ -57,6 +57,9 @@ def adjust_tip(roundtip, tipsum, real):
     
 def tmode():
     count = 0
+    bar = None
+    card = None
+    
     for i in range(1, 100):
         while True:
             try:

@@ -117,6 +117,8 @@ def tmode():
     print(t)
     text.append(t + '\n')
     
+    text.append('sum = ' + str(tipsum) + '\n')
+    
     timestamp = dt.today().strftime("%d") + '-' + dt.today().strftime("%a") + '-' + dt.now().strftime("%H-%M")
     dirname = './txt/'+ dt.today().strftime("%Y") + '/' + dt.today().strftime("%m") + '/'
     path = dirname + '/' + timestamp +'.txt'

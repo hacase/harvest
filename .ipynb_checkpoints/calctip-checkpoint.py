@@ -9,6 +9,7 @@ import os
 from datetime import datetime as dt
 import texts as tx
 import report as rp
+import subprocess
 
 
 def abort(var):
@@ -116,6 +117,8 @@ def tmode():
     print(t)
     text.append(t + '\n')
     
+    text.append('sum = ' + str(tipsum) + '\n')
+    
     timestamp = dt.today().strftime("%d") + '-' + dt.today().strftime("%a") + '-' + dt.now().strftime("%H-%M")
     dirname = './txt/'+ dt.today().strftime("%Y") + '/' + dt.today().strftime("%m") + '/'
     path = dirname + '/' + timestamp +'.txt'
@@ -123,6 +126,8 @@ def tmode():
     os.makedirs(os.path.dirname(dirname), exist_ok=True)
     with open(path, 'w+') as f:
         f.writelines(text)
+        
+    subprocess.call(['sh', './update_tip.sh'])
             
             
 def normal(value, name, hour):

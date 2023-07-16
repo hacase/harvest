@@ -11,3 +11,5 @@
 total hours = 19.0 h
 tip ratio = 5.256 €/h
 sum = 99.87
+bar = 19.7
+card = 80

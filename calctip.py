@@ -100,7 +100,7 @@ def tmode():
     text.append('-' *  32 + '\n')
 
     for i in range(len(hour)):
-        t = f'{i+1}"{" " * (4 - len(str(i+1)))}{hour[i]:4.2f}h  -> {roundtip[i]:5.1f}€  #  {realtip[i]:6.3f}'
+        t = f'{i+1}"{" " * (4 - len(str(i+1)))}{hour[i]:4.2f}h  -> {roundtip[i]:5.1f}€  ;  {realtip[i]:6.3f}'
         print(t)
         text.append(t + '\n')
 
@@ -200,7 +200,7 @@ def normal(value, name, hour):
     print('-' * (maxstr + 29))
 
     for i in range(len(name)):
-        print('{num:{width}}'.format(num = name[i], width = maxstr), f' {hour[i]:4.2f}h', f' -> {roundtip[i]:5.1f}€', f' #  {realtip[i]:6.3f}')
+        print('{num:{width}}'.format(num = name[i], width = maxstr), f' {hour[i]:4.2f}h', f' -> {roundtip[i]:5.1f}€', f' ;  {realtip[i]:6.3f}')
 
     print('-' * (maxstr + 29))
 

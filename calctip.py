@@ -64,7 +64,7 @@ def internet_on():
         return False
 
 def git_delayed():
-    if !internet_on():
+    if not internet_on():
         print('no internet connection\nunsaved data still on device')
         return 0
     

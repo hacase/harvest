@@ -11,6 +11,7 @@ import texts as tx
 import report
 import statistic
 import subprocess
+from urllib import request
 
 
 def abort(var):
@@ -53,7 +54,17 @@ def adjust_tip(roundtip, tipsum, real):
 
             check += 1
             
-    return roundtip, tipsum, real        
+    return roundtip, tipsum, real
+
+def internet_on():
+    try:
+        request.urlopen('https://github.com/hacase/calctip', timeout=1)
+        return True
+    except request.URLError as err: 
+        return False
+
+def git_delayed():
+    
     
     
 def tmode():
@@ -140,7 +151,19 @@ def tmode():
     with open(path, 'w+') as f:
         f.writelines(text)
         
-    subprocess.call(['sh', './update_tip.sh'])
+    if internet_on():
+        subprocess.call(['sh', './update_tip.sh'])
+        
+    else:
+        text = """
+        git add .\n
+        git commit -m 'delayed update tip data'\n
+        git push\n"""
+
+        with open('./delayed_update_tip.sh', 'w+') as f:
+                f.writelines(text)
+                
+        print('no internet connection detected\ndata stored on device')
             
             
 def normal(value, name, hour):

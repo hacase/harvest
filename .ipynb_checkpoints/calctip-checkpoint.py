@@ -8,7 +8,8 @@ import sys
 import os
 from datetime import datetime as dt
 import texts as tx
-import report as rp
+import report
+import statistic
 import subprocess
 
 
@@ -67,10 +68,8 @@ def tmode():
                 if '+' not in value:
                     value = abort(value)
 
-                if eval(value) > 11:
-                    if '+' in value:
-                        bar, card = value.replace(' ', '').split('+', 1)
-                
+                if '+' in value:
+                    bar, card = value.replace(' ', '').split('+', 1)
                     hour.append(eval(value))
 
                 elif ' ' in value:
@@ -242,7 +241,10 @@ if value == 'tmode':
     tmode()
     
 elif value == 'report':
-    rp.report()
+    report.report()
+    
+elif value == 'statistic':
+    statistic.statistic()
     
 else:
     normal(value, name, hour)

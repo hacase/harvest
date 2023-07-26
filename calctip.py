@@ -64,7 +64,15 @@ def internet_on():
         return False
 
 def git_delayed():
+    if !internet_on():
+        print('no internet connection\nunsaved data still on device')
+        return 0
     
+    if os.path.isfile('./delayed_update_tip.sh'):
+        print('sending stored data')
+        subprocess.call(['sh', './delayed_update_tip.sh'])
+        subprocess.call('rm ./delayed_update_tip.sh', shell=True)
+        print('updated.')
     
     
 def tmode():
@@ -113,6 +121,7 @@ def tmode():
 
     realtip = [int(i * 1000) / 1000. for i in realtip]
     
+    git_delayed()
     
     text = list()
     

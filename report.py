@@ -39,11 +39,16 @@ def listdays(month, year):
     for dirpath, dirnames, filenames in os.walk(path):
         for f in filenames:
             if 'checkpoint' not in f:
-                i += 1
-                print(str(i) + '.', f)
-
                 files.append(os.path.join(dirpath, f))
                 flag = False
+    
+    files = sorted(files, key=sorterkey)
+    
+    i = 0
+    for f in files:
+        i += 1
+        print(f'{str(i):>2}.  {f}')
+        
     if flag:
         print("directory does not exist")
 
@@ -58,15 +63,27 @@ def listfiles(day, month, year):
     for dirpath, dirnames, filenames in os.walk(path):
         for f in [f for f in filenames if day in f[:2]]:
             if 'ipynb_checkpoints' not in dirpath:
-                i += 1
-                print(str(i) + '.', f)
-
                 files.append(os.path.join(dirpath, f))
                 flag = False
+                
+    files = sorted(files, key=sorterkey)
+    
+    i = 0
+    for f in files:
+        i += 1
+        print(f'{str(i):>2}.  {f}')
+        
     if flag:
         print("file does not exist")
 
     print_hit(files, i)
+    
+def sorterkey(line):
+    day = line[14:16]
+    time = line[21:26].replace('-', '')
+    
+    return (int(day), int(time))
+    
 
 def report():
     date = abort(input('month or date: '))

@@ -63,16 +63,31 @@ def internet_on():
     except request.URLError as err: 
         return False
 
+def git_update():
+    if internet_on():
+        subprocess.call(['sh', './update_tip.sh'])
+        
+    else:
+        text = """
+        git add .\n
+        git commit -m 'delayed update tip data'\n
+        git push\n"""
+
+        with open('./delayed_update_tip.sh', 'w+') as f:
+                f.writelines(text)
+                
+        print('no internet connection detected\ndata stored on device')
+        
 def git_delayed():
     if not internet_on():
-        print('no internet connection\nunsaved data still on device')
+        print('\nno internet connection\nunsaved data may be still on device\n')
         return 0
     
     if os.path.isfile('./delayed_update_tip.sh'):
-        print('sending stored data')
+        print('\nsending stored data')
         subprocess.call(['sh', './delayed_update_tip.sh'])
         subprocess.call('rm ./delayed_update_tip.sh', shell=True)
-        print('updated.')
+        print('\nupdate completed.\n')
     
     
 def tmode():
@@ -120,8 +135,7 @@ def tmode():
     roundtip, tipsum, real = adjust_tip(roundtip, tipsum, real)
 
     realtip = [int(i * 1000) / 1000. for i in realtip]
-    
-    git_delayed()
+
     
     text = list()
     
@@ -152,6 +166,8 @@ def tmode():
     text.append('bar = ' + str(bar) + '\n')
     text.append('card = ' + str(card) + '\n')
     
+    git_delayed()
+    
     timestamp = dt.today().strftime("%d") + '-' + dt.today().strftime("%a") + '-' + dt.now().strftime("%H-%M")
     dirname = './txt/'+ dt.today().strftime("%Y") + '/' + dt.today().strftime("%m") + '/'
     path = dirname + '/' + timestamp +'.txt'
@@ -160,19 +176,7 @@ def tmode():
     with open(path, 'w+') as f:
         f.writelines(text)
         
-    if internet_on():
-        subprocess.call(['sh', './update_tip.sh'])
-        
-    else:
-        text = """
-        git add .\n
-        git commit -m 'delayed update tip data'\n
-        git push\n"""
-
-        with open('./delayed_update_tip.sh', 'w+') as f:
-                f.writelines(text)
-                
-        print('no internet connection detected\ndata stored on device')
+    git_update()
             
             
 def normal(value, name, hour):

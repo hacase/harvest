@@ -19,9 +19,9 @@ string = """ H opefully
  A ll
  R espectful
  V isitors
- E mit
+ E njoy
  S ome
- T ip"""
+ T ipping"""
 
 typing_speed = 375
 

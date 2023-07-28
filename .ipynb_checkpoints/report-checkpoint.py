@@ -17,7 +17,7 @@ def abort(var):
     else:
         return var
     
-def print_hit(files, i):
+def print_hit(files, i, repair=None):
     if i > 1:
         number = input('-> select wich file: ')
         hit = files[int(number) - 1]
@@ -31,7 +31,10 @@ def print_hit(files, i):
     for t in data:
         print(t)
     
-def listdays(month, year):
+    if repair:
+        return hit
+    
+def listdays(month, year, repair=None):
     path = './txt/'+ year + '/' + month + '/'
 
     flag = True
@@ -54,9 +57,12 @@ def listdays(month, year):
         print("directory does not exist")
         exit()
 
-    print_hit(files, i)
+    hit = print_hit(files, i, repair)
+    
+    if repair:
+        return hit
 
-def listfiles(day, month, year):
+def listfiles(day, month, year, repair=None):
     path = './txt/'+ year + '/' + month + '/'
 
     flag = True
@@ -79,7 +85,10 @@ def listfiles(day, month, year):
         print("file does not exist")
         exit()
 
-    print_hit(files, i)
+    hit = print_hit(files, i, repair)
+        
+    if repair:
+        return hit
     
 def sorterkey(line):
     day = line[14:16]
@@ -88,7 +97,7 @@ def sorterkey(line):
     return (int(day), int(time))
     
 
-def report():
+def report(repair=None):
     date = abort(input('month or date: '))
     
     if date.count('.') == 2:
@@ -99,7 +108,9 @@ def report():
         if len(month) == 1:
             month = '0' + month
 
-        listfiles(day, month, year)
+        hit = listfiles(day, month, year, repair)
+        if repair:
+            return hit
 
     elif date.count('.') == 1:
         month, year = date.split('.', 1)
@@ -109,7 +120,9 @@ def report():
         if len(month) == 1:
             month = '0' + month
 
-        listdays(month, year)
+        hit = listdays(month, year, repair)
+        if repair:
+            return hit
 
     else:
         month = date
@@ -117,4 +130,6 @@ def report():
             month = '0' + month
         year = dt.today().strftime("%Y")
 
-        listdays(month, year)
+        hit = listdays(month, year, repair)
+        if repair:
+            return hit

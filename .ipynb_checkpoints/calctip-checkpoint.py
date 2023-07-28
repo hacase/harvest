@@ -11,9 +11,10 @@ from datetime import datetime as dt
 import texts as tx
 import report
 import statistic
+import repair
+import ferienfeiertage as ff
 import subprocess
 from urllib import request
-import ferienfeiertage as ff
 
 def opening():
     string = """     H opefully
@@ -112,7 +113,20 @@ def git_delayed():
         subprocess.call(['sh', './delayed_update_tip.sh'])
         subprocess.call('rm ./delayed_update_tip.sh', shell=True)
         print('\nupdate completed.\n')
+        
+def calctip(hour, tipsum):
+    ratio = tipsum / sum(hour)
+
+    realtip = np.array([ratio * i for i in hour])                   
+    real = np.array([ratio * i for i in hour])
+
+    roundtip = np.around(realtip, decimals=1)
+
+    roundtip, tipsum, real = adjust_tip(roundtip, tipsum, real)
+
+    realtip = [int(i * 1000) / 1000. for i in realtip]
     
+    return roundtip, tipsum, real, realtip, ratio
     
 def tmode():
     count = 0
@@ -149,17 +163,8 @@ def tmode():
             tipsum = float(hour.pop())
             break
     
-    ratio = tipsum / sum(hour)
-
-    realtip = np.array([ratio * i for i in hour])                   
-    real = np.array([ratio * i for i in hour])
-
-    roundtip = np.around(realtip, decimals=1)
-
-    roundtip, tipsum, real = adjust_tip(roundtip, tipsum, real)
-
-    realtip = [int(i * 1000) / 1000. for i in realtip]
-
+    roundtip, tipsum, real, realtip, ratio = calctip(hour, tipsum)
+    
     
     text = list()
     
@@ -308,6 +313,9 @@ elif value == 'report':
     
 elif value == 'statistic':
     statistic.statistic()
+
+elif value == 'repair':
+    repair.repair()
     
 else:
     normal(value, name, hour)

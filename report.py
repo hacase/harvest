@@ -47,7 +47,7 @@ def listdays(month, year):
     i = 0
     for f in files:
         i += 1
-        print(f'{str(i):>2}.  {f}')
+        print(f'{str(i):>2}.  {f[14:]}')
         
     if flag:
         print("directory does not exist")
@@ -72,7 +72,7 @@ def listfiles(day, month, year):
     i = 0
     for f in files:
         i += 1
-        print(f'{str(i):>2}.  {f}')
+        print(f'{str(i):>2}.  {f[14:]}')
         
     if flag:
         print("file does not exist")

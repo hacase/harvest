@@ -3,6 +3,22 @@
 # with the eastereggs secret, addings are allowed ^^
 # all texts and eastereggs stored in texts.py
 
+import time
+
+string = """Hopefully
+All
+Respectful
+Visitors
+Emit
+Some
+Tip"""
+
+print('')
+for char in string:
+    print(char, end='')
+    time.sleep(.15)
+print('')
+
 import numpy as np
 import sys
 import os

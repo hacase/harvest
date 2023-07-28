@@ -30,6 +30,8 @@ def print_hit(files, i, repair=None):
     data = np.genfromtxt(hit, dtype='str', delimiter='\n')
     for t in data:
         print(t)
+        
+    print('')
     
     if repair:
         return hit

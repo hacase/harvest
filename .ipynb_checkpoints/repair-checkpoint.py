@@ -2,6 +2,8 @@
     
 import numpy as np
 import report
+import ferienfeiertage as ff
+from calctip import calctip
 import sys
 import os
 from datetime import datetime as dt
@@ -26,6 +28,7 @@ def repair():
     
     newdata = np.genfromtxt(hit, dtype='str', delimiter='\n')
     
+    
     print(newdata[0])
     date = abort(input('change date:'))
     
@@ -45,6 +48,10 @@ def repair():
         print(newdata[0][:-13]) #= date.strftime("%d.%m.%Y")
         print(date.strftime("%d.%m.%Y, %A"))
         
+        print(ff.check(date, name=1))
+        newdata[-1] = 'holiday =' + ff.check(date, name=1)
+        
+        
     time = abort(input('change time:'))
     
     if time.count(':') == 1:
@@ -57,7 +64,8 @@ def repair():
         print(newdata[0][-5:])
         print(time.strftime("%H:%M"))
         
-    for member in range(len(newdata[2:-7])):
+        
+    for member in range(0, 100):
         print(newdata[2:-7][member])
         hour = abort(input('change hour:'))
 
@@ -69,3 +77,5 @@ def repair():
                 raise ValueError
 
             newdata[2:-7][member] = hour
+            
+    

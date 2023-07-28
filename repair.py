@@ -3,6 +3,7 @@
 import numpy as np
 import report
 import ferienfeiertage as ff
+from calctip import calctip
 import sys
 import os
 from datetime import datetime as dt
@@ -64,7 +65,7 @@ def repair():
         print(time.strftime("%H:%M"))
         
         
-    for member in range(len(newdata[2:-7])):
+    for member in range(0, 100):
         print(newdata[2:-7][member])
         hour = abort(input('change hour:'))
 

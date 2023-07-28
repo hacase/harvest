@@ -12,4 +12,4 @@ tip ratio = 2.377 €/h
 sum = 41.6
 bar = None
 card = None
-holiday =sommerferien
+holiday = sommerferien

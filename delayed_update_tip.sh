@@ -1,6 +1,5 @@
+git add .
 
-        git add .
+git commit -m 'delayed update tip data'
 
-        git commit -m 'delayed update tip data'
-
-        git push
+git push

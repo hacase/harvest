@@ -11,3 +11,4 @@ tip ratio = 3.0 €/h
 sum = 54.0
 bar = None
 card = None
+holiday =False

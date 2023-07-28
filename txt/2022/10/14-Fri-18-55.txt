@@ -12,3 +12,4 @@ tip ratio = 3.64 €/h
 sum = 81.9
 bar = None
 card = None
+holiday =herbstferien

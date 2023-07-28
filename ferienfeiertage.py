@@ -10,15 +10,17 @@ configuration = ft.Configuration(
 )
 
 def check(date, name=None):
+    year = int(date.strftime('%Y'))
+    
     ferien = []
-    for i in fr.state_vacations('NW', 2022):
+    for i in fr.state_vacations('NW', year):
         ferien.append((i.name, i.start, i.end))
 
     # Enter a context with an instance of the API client
     with ft.ApiClient(configuration) as api_client:
         # Create an instance of the API class
         api_instance = default_api.DefaultApi(api_client)
-        jahr = "2022" # str | Welches Jahr?
+        jahr = str(year) # str | Welches Jahr?
         nur_land = "NW" # str | Welches Bundesland? (optional)
         nur_daten = 1 # int | Nur Daten oder auch Hinweise? (optional)
 
@@ -35,16 +37,14 @@ def check(date, name=None):
 
     for i in ferien:
         if i[1].replace(tzinfo=None) <= date <= i[2].replace(tzinfo=None):
-            returnname = i
+            returnname, _ = i[0].split(' ', 1)
             flag = True
             
     for i in feiertage:
         if date.strftime('%d%m%Y') == i[1].strftime('%d%m%Y'):
             returnname = i[0]
             flag = True
-    
-    
-    
+            
     
     if name:
         return returnname

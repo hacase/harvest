@@ -16,7 +16,7 @@ from urllib import request
 import ferienfeiertage as ff
 
 def opening():
-    string = """ H opefully
+    string = """     H opefully
      A ll
      R espectful
      V isitors

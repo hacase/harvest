@@ -199,7 +199,8 @@ def tmode():
     os.makedirs(os.path.dirname(dirname), exist_ok=True)
     with open(path, 'w+') as f:
         f.writelines(text)
-        
+    
+    print('')
     git_update()
             
             

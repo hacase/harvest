@@ -195,7 +195,9 @@ def tmode():
     text.append('bar = ' + str(bar) + '\n')
     text.append('card = ' + str(card) + '\n')
     
-    text.append('holiday = ' + ff.check(dt.now(), name=1) + '\n')
+    t = 'holiday = ' + ff.check(dt.now(), name=1) + '\n'
+    print(t)
+    text.append(t)
     
     git_delayed()
     

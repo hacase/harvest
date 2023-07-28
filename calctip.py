@@ -20,7 +20,7 @@ def opening():
      A ll
      R espectful
      V isitors
-     E njoy
+     E njoyed
      S ome
      T ipping"""
 

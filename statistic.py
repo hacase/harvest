@@ -106,11 +106,12 @@ def statistic():
     line = '-'*3 + '+' + '-'*9 + '+' + '-'*10 + '+' + '-'*18
     print(line)
 
-    top = sorted(zip(total, ratio, date, time), reverse=True)[:3]
+    top = sorted(zip(total, ratio, date, time, holiday), reverse=True)[:3]
     for i in range(len(top)):
         wkday = dt.strptime(top[i][2], '%d.%m.%Y').strftime('%a')
         print(f'{i+1}":  {float(top[i][0]):6.2f}€   {float(top[i][1]):5.3f}€/h   {top[i][2]:10} {wkday} {top[i][3]}')
-        print(f'{" "*5}holiday -> {holiday[i].capitalize()}')
+        print(f'{" "*5}holiday -> {top[i][4].capitalize()}')
+        
 
     print('')
 
@@ -159,3 +160,4 @@ def statistic():
         print(f'ratio: {np.mean(ratio[mask]):7.3f} +/- {np.std(ratio[mask]):6.3f}')
 
         print('')
+        

@@ -1,3 +1,3 @@
-cd /data/data/com.termux/files/home/kevin
+cd /data/data/com.termux/files/home/harvest
 
 python3 calctip.py

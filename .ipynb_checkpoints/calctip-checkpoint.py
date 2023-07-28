@@ -15,26 +15,28 @@ import subprocess
 from urllib import request
 import ferienfeiertage as ff
 
-string = """ H opefully
- A ll
- R espectful
- V isitors
- E njoy
- S ome
- T ipping"""
+def opening():
+    string = """ H opefully
+     A ll
+     R espectful
+     V isitors
+     E njoy
+     S ome
+     T ipping"""
 
-typing_speed = 375
+    typing_speed = 375
 
-def slow_type(t):
-    for l in t:
-        sys.stdout.write(l)
-        sys.stdout.flush()
-        time.sleep(10.0/typing_speed)
-    print('\n')
+    def slow_type(t):
+        for l in t:
+            sys.stdout.write(l)
+            sys.stdout.flush()
+            time.sleep(10.0/typing_speed)
+        print('\n')
 
-print('')
-slow_type(string)
+    print('')
+    slow_type(string)
 
+opening()
 
 def abort(var):
     var = str(var).lower()

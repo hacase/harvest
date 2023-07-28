@@ -6,7 +6,6 @@
 import numpy as np
 import sys
 import time
-import random
 import os
 from datetime import datetime as dt
 import texts as tx
@@ -24,16 +23,16 @@ string = """ H opefully
  S ome
  T ip"""
 
-typing_speed = 160 #wpm
+typing_speed = 375
 
 def slow_type(t):
-    print('')
     for l in t:
         sys.stdout.write(l)
         sys.stdout.flush()
-        time.sleep(random.random()*10.0/typing_speed)
+        time.sleep(10.0/typing_speed)
     print('\n')
 
+print('')
 slow_type(string)
 
 

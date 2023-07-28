@@ -1,3 +1,4 @@
+import ferien as fr
 import time
 from datetime import datetime as dt
 from deutschland import feiertage as ft

@@ -12,6 +12,7 @@ import report
 import statistic
 import subprocess
 from urllib import request
+import ferienfeiertage as ff
 
 
 def abort(var):
@@ -165,6 +166,8 @@ def tmode():
     text.append('sum = ' + str(tipsum) + '\n')
     text.append('bar = ' + str(bar) + '\n')
     text.append('card = ' + str(card) + '\n')
+    
+    text.append('holida = ' + ff.check(dt.now(), name=1) + '\n')
     
     git_delayed()
     

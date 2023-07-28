@@ -167,7 +167,7 @@ def tmode():
     text.append('bar = ' + str(bar) + '\n')
     text.append('card = ' + str(card) + '\n')
     
-    text.append('holida = ' + ff.check(dt.now(), name=1) + '\n')
+    text.append('holiday = ' + ff.check(dt.now(), name=1) + '\n')
     
     git_delayed()
     

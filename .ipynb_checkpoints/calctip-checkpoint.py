@@ -3,24 +3,10 @@
 # with the eastereggs secret, addings are allowed ^^
 # all texts and eastereggs stored in texts.py
 
-import time
-
-string = """Hopefully
-All
-Respectful
-Visitors
-Emit
-Some
-Tip"""
-
-print('')
-for char in string:
-    print(char, end='')
-    time.sleep(.15)
-print('')
-
 import numpy as np
 import sys
+import time
+import random
 import os
 from datetime import datetime as dt
 import texts as tx
@@ -29,6 +15,26 @@ import statistic
 import subprocess
 from urllib import request
 import ferienfeiertage as ff
+
+string = """ H opefully
+ A ll
+ R espectful
+ V isitors
+ E mit
+ S ome
+ T ip"""
+
+typing_speed = 160 #wpm
+
+def slow_type(t):
+    print('')
+    for l in t:
+        sys.stdout.write(l)
+        sys.stdout.flush()
+        time.sleep(random.random()*10.0/typing_speed)
+    print('\n')
+
+slow_type(string)
 
 
 def abort(var):

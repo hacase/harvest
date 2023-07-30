@@ -1,4 +1,4 @@
-31.08.2023, Thursday, time: 17:51
+30.07.2023, Sunday, time: 17:54
 --------------------------------
 1"   1.50h  ->   8.4€  ;   8.466
 2"   4.00h  ->  22.6€  ;  22.576
@@ -12,4 +12,4 @@ tip ratio = 5.644 €/h
 sum = 121.35
 bar = 49.5
 card = 71.85
-holiday = False
+holiday = sommerferien

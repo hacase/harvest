@@ -3,7 +3,7 @@
 import numpy as np
 import report
 import ferienfeiertage as ff
-from calctip import calctip
+from calctip import fcalctip
 import sys
 import os
 from datetime import datetime as dt
@@ -13,9 +13,14 @@ def abort(var):
     var = str(var).lower()
     
     labort = ['exit', 'stop', 'stopp', 'abbruch', 'abbrechen']
+    ldone = ['done']
     
     if var in labort:
         print('Exited session.')
+        sys.exit()
+        
+    elif var in ldone:
+        print('repair is done.')
         sys.exit()
         
     else:
@@ -65,17 +70,45 @@ def repair():
         print(time.strftime("%H:%M"))
         
         
-    for member in range(0, 100):
-        print(newdata[2:-7][member])
-        hour = abort(input('change hour:'))
+    print(newdata[-4])
+    print(newdata[-3], ';', print(newdata[-2]))
+    tipsum = abort(input('change tip:')).replace(',', '.')
 
-        if hour != '':
+    if '+' in tipsum:
+        bar, card = tipsum.replace(' ', '').split('+', 1)
+        
+    
+    hour = []
+    for i in newdata[2:-7]:
+        hour.append(i[5:9])
+
+    i = 0
+    for member in range(len(newdata[2:-7])):
+        i += 1
+        print(newdata[2:-7][member])
+        value = abort(input('change hour:'))
+
+        if value != '':
             try:
-                hour = float(hour)
+                value = float(value)
             except ValueError:
                 print('\ninvalid hour\n')
                 raise ValueError
 
-            newdata[2:-7][member] = hour
+            hour[member] = value
+
+    for member in range(i, 100):
+        i += 1
+        print(f'{i+1}"{" " * (4 - len(str(i+1)))}* empty *')
+        value= abort(input('add hour:'))
+
+        if value != '':
+            try:
+                value = float(value)
+            except ValueError:
+                print('\ninvalid hour\n')
+                raise ValueError
+
+            hour.append(value)
             
     

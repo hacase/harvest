@@ -9,9 +9,6 @@ import time
 import os
 from datetime import datetime as dt
 import texts as tx
-import report
-import statistic
-import repair
 import ferienfeiertage as ff
 import subprocess
 from urllib import request
@@ -36,8 +33,6 @@ def opening():
 
     print('')
     slow_type(string)
-
-opening()
 
 def abort(var):
     var = str(var).lower()
@@ -129,6 +124,8 @@ def fcalctip(hour, tipsum):
     return roundtip, tipsum, real, realtip, ratio
     
 def tmode():
+    hour = []
+    i = 1
     count = 0
     bar = None
     card = None
@@ -153,7 +150,7 @@ def tmode():
                 else:
                     hour.append(float(str(value)))
 
-            except (ValueError, NameError) as error:
+            except (ValueError) as error:
                 print('input error')
                 continue
             else:
@@ -294,32 +291,3 @@ def normal(value, name, hour):
 
     print(f'total hours = {sum(hour):} h')   
     print(f'tip ratio = {ratio:.4} €/h')
-    
-
-tx.datereasteregg()
-    
-name = []
-hour = []
-i = 1
-
-today = dt.today().strftime("%d.%m.%Y") + ', ' + dt.today().strftime("%A") + ', time: ' + dt.now().strftime("%H:%M")
-print(today)
-
-value = abort(input('{}{} = '.format(i, ". Name")))
-
-if value == 'tmode':
-    tmode()
-    
-elif value == 'report':
-    report.report()
-    
-elif value == 'statistic':
-    statistic.statistic()
-
-elif value == 'repair':
-    repair.repair()
-    
-else:
-    normal(value, name, hour)
-
-print('here')

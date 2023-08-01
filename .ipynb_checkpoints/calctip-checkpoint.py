@@ -114,7 +114,7 @@ def git_delayed():
         subprocess.call('rm ./delayed_update_tip.sh', shell=True)
         print('\nupdate completed.\n')
         
-def calctip(hour, tipsum):
+def fcalctip(hour, tipsum):
     ratio = tipsum / sum(hour)
 
     realtip = np.array([ratio * i for i in hour])                   
@@ -163,7 +163,7 @@ def tmode():
             tipsum = float(hour.pop())
             break
     
-    roundtip, tipsum, real, realtip, ratio = calctip(hour, tipsum)
+    roundtip, tipsum, real, realtip, ratio = fcalctip(hour, tipsum)
     
     
     text = list()

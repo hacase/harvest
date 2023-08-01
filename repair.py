@@ -3,7 +3,7 @@
 import numpy as np
 import report
 import ferienfeiertage as ff
-from calctip import calctip
+from calctip import fcalctip
 import sys
 import os
 from datetime import datetime as dt

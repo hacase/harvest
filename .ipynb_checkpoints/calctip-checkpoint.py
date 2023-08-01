@@ -321,3 +321,5 @@ elif value == 'repair':
     
 else:
     normal(value, name, hour)
+
+print('here')

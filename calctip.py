@@ -44,7 +44,7 @@ def abort(var):
             'korrection', 'korection', 'corrigieren', 'corigieren']
     
     if var in labort:
-        print('Exited session.')
+        print('exited session.')
         sys.exit()
         
     elif var in lhelp:

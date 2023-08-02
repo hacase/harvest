@@ -30,8 +30,8 @@ print(today)
 
 value = ct.abort(input('{}{} = '.format(i, ". Name")))
 
-if value == 'tmode':
-    ct.tmode()
+if value == 'normal':
+    ct.normal(value, name, hour)
     
 elif value == 'report':
     report.report()
@@ -43,4 +43,4 @@ elif value == 'repair':
     repair.repair()
     
 else:
-    ct.normal(value, name, hour)
+    ct.tmode()

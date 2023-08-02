@@ -9,18 +9,20 @@ import os
 from datetime import datetime as dt
 from retry import retry
 
-def abort(var):
+def abort(var, newdata=None, path=None):
     var = str(var).lower()
     
     labort = ['exit', 'stop', 'stopp', 'abbruch', 'abbrechen']
     ldone = ['done']
     
     if var in labort:
-        print('Exited session.')
+        print('exited session.')
         sys.exit()
         
     elif var in ldone:
-        print('repair is done.')
+        print('repair is done.\n\n')
+        for line in newdata:
+            print(line)
         sys.exit()
         
     else:
@@ -50,14 +52,16 @@ def repair():
             print('\ninvalid date\n')
             raise ValueError
         
-        print(newdata[0][:-13]) #= date.strftime("%d.%m.%Y")
-        print(date.strftime("%d.%m.%Y, %A"))
+        oldtime = newdata[0][-5:]
+        newdata = np.char.replace(newdata, newdata[0], date.strftime("%d.%m.%Y, %A, time: ") + oldtime)
         
         print(ff.check(date, name=1))
-        newdata[-1] = 'holiday =' + ff.check(date, name=1)
+        newdata[-1] = 'holiday = ' + ff.check(date, name=1)
+        
+        print(' --> changed data\n')
         
         
-    time = abort(input('change time:'))
+    time = abort(input('change time:'), newdata=newdata, path=hit)
     
     if time.count(':') == 1:
         try:
@@ -66,13 +70,14 @@ def repair():
             print('\ninvalid time\n')
             raise ValueError
         
-        print(newdata[0][-5:])
-        print(time.strftime("%H:%M"))
+        newdata = np.char.replace(newdata, newdata[0][-5:], time.strftime("%H:%M"))
+                           
+        print(' --> changed data\n')
         
         
     print(newdata[-4])
     print(newdata[-3], ';', print(newdata[-2]))
-    tipsum = abort(input('change tip:')).replace(',', '.')
+    tipsum = abort(input('change tip:'), newdata=newdata, path=hit).replace(',', '.')
 
     if '+' in tipsum:
         bar, card = tipsum.replace(' ', '').split('+', 1)
@@ -86,7 +91,7 @@ def repair():
     for member in range(len(newdata[2:-7])):
         i += 1
         print(newdata[2:-7][member])
-        value = abort(input('change hour:'))
+        value = abort(input('change hour:'), newdata=newdata, path=hit)
 
         if value != '':
             try:
@@ -100,7 +105,7 @@ def repair():
     for member in range(i, 100):
         i += 1
         print(f'{i+1}"{" " * (4 - len(str(i+1)))}* empty *')
-        value= abort(input('add hour:'))
+        value= abort(input('add hour:'), newdata=newdata, path=hit)
 
         if value != '':
             try:

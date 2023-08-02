@@ -11,7 +11,7 @@ def abort(var):
     labort = ['exit', 'stop']
     
     if var in labort:
-        print('Exited session.')
+        print('exited session.')
         sys.exit()
         
     else:

@@ -22,7 +22,7 @@ def opening():
      S ome
      T ipping"""
 
-    typing_speed = 375
+    typing_speed = 450
 
     def slow_type(t):
         for l in t:
@@ -129,7 +129,7 @@ def tmode(value):
     
     hour = []
     i = 2
-    count = 0
+    count = 1
     bar = None
     card = None
     

@@ -1,4 +1,6 @@
 git pull
 git add .
-git commit -m 'update tip data'
+git commit -m &> /dev/null 'update tip data'
 git push &> /dev/null
+
+echo sent data.

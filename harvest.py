@@ -16,18 +16,17 @@ from urllib import request
 ct.opening()
 
 tx.datereasteregg()
+   
     
-name = []
-hour = []
 i = 1
 
 today = dt.today().strftime("%d.%m.%Y") + ', ' + dt.today().strftime("%A") + ', time: ' + dt.now().strftime("%H:%M")
 print(today)
 
-value = ct.abort(input('{}{} = '.format(i, ". Name")))
+value = ct.abort(input('{}{} = '.format(i, ". Hour")))
 
-if value == 'tmode':
-    ct.tmode()
+if value == 'normal':
+    ct.normal()
     
 elif value == 'report':
     import report
@@ -42,4 +41,4 @@ elif value == 'repair':
     repair.repair()
     
 else:
-    ct.normal(value, name, hour)
+    ct.tmode(value)

@@ -123,12 +123,24 @@ def fcalctip(hour, tipsum):
     
     return roundtip, tipsum, real, realtip, ratio
     
-def tmode():
+def tmode(value):
+    if '+' not in value:
+        value = abort(value)
+    
     hour = []
-    i = 1
+    i = 2
     count = 0
     bar = None
     card = None
+    
+    if ' ' in value:
+        thour, times = value.split(' ', 1)
+        count += int(times) - 1
+        for j in range(int(times)):
+            hour.append(float(str(thour)))
+
+    else:
+        hour.append(float(str(value)))
     
     for i in range(1, 100):
         while True:
@@ -210,8 +222,9 @@ def tmode():
     git_update()
             
             
-def normal(value, name, hour):
+def normal():
     i = 1
+    value = abort(input('{}{} = '.format(i, ".  Name")))
     
     while True:
         if value == '0':

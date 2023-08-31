@@ -33,7 +33,7 @@ def check(date, name=None):
             
     
     flag = False
-    returnname = False
+    returnname = 'False'
 
     for i in ferien:
         if i[1].replace(tzinfo=None) <= date <= i[2].replace(tzinfo=None):

@@ -150,7 +150,7 @@ def tmode():
                 else:
                     hour.append(float(str(value)))
 
-            except (ValueError) as error:
+            except (ValueError, NameError) as error:
                 print('input error')
                 continue
             else:

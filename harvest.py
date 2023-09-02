@@ -10,10 +10,6 @@ import os
 from datetime import datetime as dt
 import calctip as ct
 import texts as tx
-import report
-import statistic
-import repair
-import ferienfeiertage as ff
 from urllib import request
 
 
@@ -30,17 +26,20 @@ print(today)
 
 value = ct.abort(input('{}{} = '.format(i, ". Name")))
 
-if value == 'normal':
-    ct.normal(value, name, hour)
+if value == 'tmode':
+    ct.tmode()
     
 elif value == 'report':
+    import report
     report.report()
     
 elif value == 'statistic':
+    import statistic
     statistic.statistic()
 
 elif value == 'repair':
+    import repair
     repair.repair()
     
 else:
-    ct.tmode()
+    ct.normal(value, name, hour)

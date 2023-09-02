@@ -57,7 +57,7 @@ def listdays(month, year, repair=None):
         
     if flag:
         print("directory does not exist")
-        exit()
+        sys.exit()
 
     hit = print_hit(files, i, repair)
     
@@ -85,7 +85,7 @@ def listfiles(day, month, year, repair=None):
         
     if flag:
         print("file does not exist")
-        exit()
+        sys.exit()
 
     hit = print_hit(files, i, repair)
         

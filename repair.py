@@ -37,7 +37,7 @@ def repair():
     
     
     print(newdata[0])
-    date = abort(input('change date:'))
+    date = abort(input('change date: '))
     
     if date.count('.') == 2:
         day, month, year = date.split('.', 2)
@@ -61,7 +61,7 @@ def repair():
         print(' --> changed data\n')
         
         
-    time = abort(input('change time:'), newdata=newdata, path=hit)
+    time = abort(input('change time: '), newdata=newdata, path=hit)
     
     if time.count(':') == 1:
         try:

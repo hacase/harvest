@@ -90,7 +90,7 @@ def rewrite_table(newdata, hour, tipsum, bar, card, holiday):
     newdata[-1] = np.char.replace(newdata[-1], newdata[-1], t)
 
 
-#@retry((ValueError), delay=0)
+@retry((ValueError), delay=0)
 def repair():
     hit = report.report(repair=True)
     print('')

@@ -39,8 +39,9 @@ def statistic():
     for dirpath, dirnames, filenames in os.walk(path):
         for f in filenames:
             if 'ipynb_checkpoints' not in dirpath:
-                files.append(os.path.join(dirpath, f))
-                flag = False
+                if 'LOG' not in dirpath:
+                    files.append(os.path.join(dirpath, f))
+                    flag = False
 
     files = sorted(files, key=sorterkey)
 

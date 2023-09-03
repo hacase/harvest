@@ -20,7 +20,7 @@ def abort(var, newdata=None, path=None):
         sys.exit()
         
     elif var in ldone:
-        print('doen repairing.\n\n')
+        print('done repairing.\n\n')
         
         newpath = path[:-4] + '-LOG.txt'
         os.rename(path, newpath)
@@ -28,7 +28,7 @@ def abort(var, newdata=None, path=None):
         text = list()
         
         text.append('\n\n')
-        text.append('-< edited on ')
+        text.append('-< edit ')
         text.append(dt.today().strftime("%d.%m.%Y") + ', ' + dt.today().strftime("%A") + ', time: ' + dt.now().strftime("%H:%M"))
         text.append(' >-')
         text.append('\n\n\n')

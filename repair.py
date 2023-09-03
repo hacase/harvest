@@ -34,6 +34,7 @@ def abort(var, newdata=None, path=None):
         text.append(' >-')
         text.append('\n')
         text.append('\n')
+        text.append('\n')
         
         for line in newdata:
             text.append(line + '\n')

@@ -27,27 +27,28 @@ def abort(var, newdata=None, path=None):
         
         text = list()
         
-        text.append(' \n')
-        text.append(' \n')
+        text.append('\n')
+        text.append('\n')
         text.append('-< edit ')
         text.append(dt.today().strftime("%d.%m.%Y") + ', ' + dt.today().strftime("%A") + ', time: ' + dt.now().strftime("%H:%M"))
-        text.append(' >-\n')
-        text.append('\n ')
-        text.append('\n ')
-        text.append('\n ')
+        text.append(' >-')
+        text.append('\n')
+        text.append('\n')
         
         for line in newdata:
             text.append(line + '\n')
         
         with open(newpath, "a") as f:
-            data = f.writelines(text)
+            f.writelines(text)
             
+        data = np.genfromtxt(newpath, dtype='str', delimiter='\n')
         
-        with open(newpath, 'r', encoding='utf-8-sig') as f:
-            data = f.readlines()
-            
-        [print(line) for line in data]
-        
+        for line in data:
+            if '-< edit' in line:
+                print('\n\n' + line + '\n\n')
+                
+            else:
+                print(line)
             
         date = dt.strptime(newdata[0], "%d.%m.%Y, %A, time: %H:%M")
         

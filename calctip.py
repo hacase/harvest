@@ -39,9 +39,6 @@ def abort(var):
     
     labort = ['exit', 'stop', 'stopp', 'abbruch', 'abbrechen']
     lhelp = ['help', 'hilfe']
-    lcorr = ['korr', 'korrektur', 'korektur', 'korrigieren',
-            'korigieren', 'correction', 'corection', 'corr',
-            'korrection', 'korection', 'corrigieren', 'corigieren']
     
     if var in labort:
         print('exited session.')
@@ -51,30 +48,8 @@ def abort(var):
         tx.helpman()
         sys.exit()
         
-    elif var in lcorr:
-        print(name)
-        
     else:
         return var
-    
-def adjust_tip(roundtip, tipsum, real):
-    if np.around(sum(roundtip), decimals=3) > tipsum:
-        print("tip adjusted correctly")
-
-        check = 5
-
-        while np.around(sum(roundtip), decimals=3) > tipsum:
-            deci = [int(i * 100) % 10 for i in real]
-            hit = [i for i, j in enumerate(deci) if j == check]
-
-            for i in hit:
-                real[i] = int(real[i] * 10) / 10
-
-            roundtip = np.around(real, decimals=1)
-
-            check += 1
-            
-    return roundtip, tipsum, real
 
 def internet_on():
     try:
@@ -108,6 +83,26 @@ def git_delayed():
         subprocess.call(['sh', './delayed_update_tip.sh'])
         subprocess.call('rm ./delayed_update_tip.sh', shell=True)
         print('\nupdate completed.\n')
+        
+        
+def adjust_tip(roundtip, tipsum, real):
+    if np.around(sum(roundtip), decimals=3) > tipsum:
+        print("tip adjusted correctly")
+
+        check = 5
+
+        while np.around(sum(roundtip), decimals=3) > tipsum:
+            deci = [int(i * 100) % 10 for i in real]
+            hit = [i for i, j in enumerate(deci) if j == check]
+
+            for i in hit:
+                real[i] = int(real[i] * 10) / 10
+
+            roundtip = np.around(real, decimals=1)
+
+            check += 1
+            
+    return roundtip, tipsum, real
         
 def fcalctip(hour, tipsum):
     ratio = tipsum / sum(hour)

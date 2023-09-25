@@ -194,8 +194,7 @@ def tmode(value, date):
     t = f'tip ratio = {ratio:.4} €/h'
     print(t)
     text.append(t + '\n')
-    
-    text.append('sum = ' + str(tipsum) + '\n')
+    text.append('sum = ' + '{0:.2f}'.format(tipsum) + '\n')
     text.append('bar = ' + str(bar) + '\n')
     text.append('card = ' + str(card) + '\n')
     

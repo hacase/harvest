@@ -9,7 +9,7 @@
 --------------------------------
 total hours = 15.75 h
 tip ratio = 4.303 €/h
-sum = 67.77000000000001
+sum = 67.77
 bar = 40.6
 card = 27.17
 holiday = False

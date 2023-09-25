@@ -40,5 +40,10 @@ elif value == 'repair':
     import repair
     repair.repair()
     
+elif value == 'submit':
+    import submit
+    
 else:
-    ct.tmode(value)
+    ct.tmode(value, dt.today())
+
+    

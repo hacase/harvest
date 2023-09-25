@@ -118,7 +118,7 @@ def fcalctip(hour, tipsum):
     
     return roundtip, tipsum, real, realtip, ratio
     
-def tmode(value):
+def tmode(value, date):
     if '+' not in value:
         value = abort(value)
     
@@ -172,7 +172,7 @@ def tmode(value):
     
     text = list()
     
-    today = dt.today().strftime("%d.%m.%Y") + ', ' + dt.today().strftime("%A") + ', time: ' + dt.now().strftime("%H:%M")
+    today = date.strftime("%d.%m.%Y") + ', ' + date.strftime("%A") + ', time: ' + date.strftime("%H:%M")
     text.append(today + '\n')
             
     print('-' *  32)
@@ -199,14 +199,14 @@ def tmode(value):
     text.append('bar = ' + str(bar) + '\n')
     text.append('card = ' + str(card) + '\n')
     
-    t = 'holiday = ' + ff.check(dt.now(), name=1) + '\n'
+    t = 'holiday = ' + ff.check(date, name=1) + '\n'
     print(t)
     text.append(t)
     
     git_delayed()
     
-    timestamp = dt.today().strftime("%d") + '-' + dt.today().strftime("%a") + '-' + dt.now().strftime("%H-%M")
-    dirname = './txt/'+ dt.today().strftime("%Y") + '/' + dt.today().strftime("%m") + '/'
+    timestamp = date.strftime("%d") + '-' + date.strftime("%a") + '-' + date.strftime("%H-%M")
+    dirname = './txt/'+ date.strftime("%Y") + '/' + date.strftime("%m") + '/'
     path = dirname + '/' + timestamp +'.txt'
 
     os.makedirs(os.path.dirname(dirname), exist_ok=True)

@@ -5,8 +5,7 @@ import os
 from datetime import datetime as dt
 import calendar
 import warnings
-import matplotlib.pyplot as plt
-import fit
+from calctip import abort
 
 warnings.filterwarnings("ignore", category=RuntimeWarning)
 
@@ -190,7 +189,20 @@ def statistic():
         print('')
         
     print('')
-    print('rendering plots')
+    
+    render = abort(input('render plot? '))
+    if render == 'android':
+        os.environ["MPLBACKEND"] = "TkAgg"
+        os.environ["DISPLAY"] = ":0.0"
+        print('Loading X server...')
+        os.system("am start --user 0 -n x.org.server/.RunFromOtherApp 2>/dev/null")
+        os.environ["DISPLAY"] = ":0.0"
+        sleep(8) # give the X server an opportunity to start
+        print('Done')
+        
+    
+    import matplotlib.pyplot as plt
+    import fit
     
     Ptime = [[] for _ in range(4)]
     Ptotal = [[] for _ in range(7)]

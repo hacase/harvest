@@ -203,7 +203,6 @@ def statistic():
         
     
     import matplotlib.pyplot as plt
-    import fit
     
     Ptime = [[] for _ in range(4)]
     Ptotal = [[] for _ in range(7)]
@@ -256,8 +255,6 @@ def statistic():
         Pall[i *2 -1] = Pcard[i -1]
 
     c = ['tab:blue', 'tab:orange', 'tab:green', 'tab:red', 'tab:purple', 'tab:brown', 'tab:pink']
-
-    fit.saveplot(fig_width=6.5)
 
     fig, ax = plt.subplots()
     for i in range(4):

@@ -203,6 +203,7 @@ def statistic():
     
     import matplotlib.pyplot as plt
     import fit
+    from time import sleep
     
     Ptime = [[] for _ in range(4)]
     Ptotal = [[] for _ in range(7)]

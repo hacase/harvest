@@ -192,18 +192,18 @@ def statistic():
     
     render = abort(input('render plot? '))
     if render == 'android':
+        from time import sleep
         os.environ["MPLBACKEND"] = "TkAgg"
         os.environ["DISPLAY"] = ":0.0"
-        print('Loading X server...')
+        print('loading X server...')
         os.system("am start --user 0 -n x.org.server/.RunFromOtherApp 2>/dev/null")
         os.environ["DISPLAY"] = ":0.0"
         sleep(8) # give the X server an opportunity to start
-        print('Done')
+        print('done')
         
     
     import matplotlib.pyplot as plt
     import fit
-    from time import sleep
     
     Ptime = [[] for _ in range(4)]
     Ptotal = [[] for _ in range(7)]

@@ -77,7 +77,7 @@ def rewrite():
         newdata = np.genfromtxt(file, dtype='str', delimiter='\n')
 
         date = newdata[0][:10]
-        newdata[-1] = 'holiday = ' + ff.check(dt.strptime(date, "%d.%m.%Y"), name=1)
+        newdata[-1] = 'holiday = ' + check(dt.strptime(date, "%d.%m.%Y"), name=1)
 
         with open(file, "w+") as f:
             f.writelines(newdata)

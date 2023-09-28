@@ -6,6 +6,7 @@ from datetime import datetime as dt
 import calendar
 import warnings
 from calctip import abort
+import subprocess
 
 warnings.filterwarnings("ignore", category=RuntimeWarning)
 
@@ -340,6 +341,8 @@ def statistic():
     fig.tight_layout()
     if render == 'android':
         plt.savefig('harvest.png')
+        subprocess.call(['sh', 'termux-open harvest.png'])
+        
     else:
         plt.show()
     

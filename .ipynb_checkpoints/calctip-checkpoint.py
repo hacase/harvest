@@ -214,6 +214,7 @@ def tmode(value, date):
     
     print('')
     git_update()
+    print('over')
             
             
 def normal():

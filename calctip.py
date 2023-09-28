@@ -198,7 +198,10 @@ def tmode(value, date):
     text.append('bar = ' + str(bar) + '\n')
     text.append('card = ' + str(card) + '\n')
     
-    t = 'holiday = ' + ff.check(date, name=1) + '\n'
+    if internet_on():
+        t = 'holiday = ' + ff.check(date, name=1) + '\n'
+    else:
+        t = 'holiday = ' + 'offline' + '\n'
     print(t)
     text.append(t)
     

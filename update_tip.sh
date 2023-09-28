@@ -1,8 +1,8 @@
-git pull &> /dev/null
+git pull --quiet
 git add .
 echo sending data
-git commit -m  'update tip data' &> /dev/null
+git commit --quiet -m  'update tip data'
 sleep 7
-git push &> /dev/null
+git push --quiet
 
 echo sent data.

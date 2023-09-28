@@ -215,17 +215,8 @@ def statistic():
     print('')
     print('')
 
-    render = abort(input('render plot? '))
-    if render == 'android':
-        from time import sleep
-        os.environ["MPLBACKEND"] = "TkAgg"
-        os.environ["DISPLAY"] = ":0.0"
-        print('loading X server...')
-        os.system("am start --user 0 -n x.org.server/.RunFromOtherApp 2>/dev/null")
-        os.environ["DISPLAY"] = ":0.0"
-        sleep(8) # give the X server an opportunity to start
-        print('done')
-        
+    
+    render = abort(input('render plot? '))        
     
     import matplotlib.pyplot as plt
     
@@ -347,7 +338,10 @@ def statistic():
 
 
     fig.tight_layout()
-    plt.show()
+    if render == 'android':
+        plt.savefig('harvest.png')
+    else:
+        plt.show()
     
     
     print('render plots done.')

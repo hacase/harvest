@@ -341,7 +341,7 @@ def statistic():
     fig.tight_layout()
     if render == 'android':
         plt.savefig('harvest.png')
-        subprocess.call(['sh', 'termux-open harvest.png'])
+        subprocess.call('termux-open harvest.png', shell=True)
         
     else:
         plt.show()

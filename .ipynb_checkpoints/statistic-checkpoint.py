@@ -190,6 +190,31 @@ def statistic():
         
     print('')
     
+    print('frequency')
+    print('total:', len(weekday),
+          ', AM:', (np.array(time) == 'AM').sum(),
+          ', PM:', (np.array(time) == 'PM').sum())
+
+    def chunker(part, full):
+        chunks, remain = divmod(int(part * 8 / full * 100), 8)
+        bar = '█' * chunks
+
+        if remain > 0:
+            bar += chr(ord('█') + (8 - remain))
+
+        return bar
+
+    for i in range(7):
+        day = (np.array(weekday) == i).sum()
+        s = chunker(day, len(weekday))
+        s += f'{(np.array(weekday) == i).sum():3}, '
+        s += f'{(np.array(weekday) == i).sum() / len(weekday)*100:3.1f}%'
+
+        print(s)
+        
+    print('')
+    print('')
+
     render = abort(input('render plot? '))
     if render == 'android':
         from time import sleep
@@ -256,94 +281,72 @@ def statistic():
 
     c = ['tab:blue', 'tab:orange', 'tab:green', 'tab:red', 'tab:purple', 'tab:brown', 'tab:pink']
 
-    fig, ax = plt.subplots()
-    for i in range(4):
-        ax.plot(np.ones(len(Ptime[i])) *i +1, Ptime[i], ms=4, marker='o', mew=0.5, ls="none", color=c[i])
-    ax.boxplot(Ptime)
+
+    fig, axs = plt.subplots(2, 2)
+
+    axs[0, 0].set_title('time, total')
+    axs[0, 0].boxplot(Ptime)
+    plt.sca(axs[0, 0])
+    plt.xticks(range(5), ['', 'AM', 'PM', 'special', 'normal'], rotation=45)
+    plt.ylabel('€')
+    plt.grid(axis = 'y', which = 'major', alpha = 0.7)
+    plt.grid(axis = 'y', which = 'minor', alpha = 0.3)
     temp = [item for row in Ptime for item in row]
-
     major, minor = ticker(20, temp)
-    ax.set_yticks(major)
-    ax.set_yticks(minor, minor = True)
-    plt.xticks(np.arange(5), ['', 'AM', 'PM', 'holiday', 'normal'])
-
-    plt.ylabel('€')
-    plt.grid(axis = 'y', which = 'major', alpha = 0.7)
-    plt.grid(axis = 'y', which = 'minor', alpha = 0.3)
-    plt.show()
-
-
-    fig, ax = plt.subplots()
+    axs[0, 0].set_yticks(major)
+    axs[0, 0].set_yticks(minor, minor = True)
     for i in range(4):
-        ax.plot(np.ones(len(Rtime[i])) *i +1, Rtime[i], ms=4, marker='o', mew=0.5, ls="none", color=c[i])
-    ax.boxplot(Rtime)
+        axs[0, 0].plot(np.ones(len(Ptime[i])) *i +1, Ptime[i], ms=4, marker='o', mew=0.5, ls="none", color=c[i])
+
+
+    axs[1, 0].set_title('time, ratio')
+    axs[1, 0].boxplot(Rtime)
+    plt.sca(axs[1, 0])
+    plt.xticks(range(5), ['', 'AM', 'PM', 'special', 'normal'], rotation=45)
+    plt.ylabel('€/h')
+    plt.grid(axis = 'y', which = 'major', alpha = 0.7)
+    plt.grid(axis = 'y', which = 'minor', alpha = 0.3)
     temp = [item for row in Rtime for item in row]
-
     major, minor = ticker(1, temp)
-    ax.set_yticks(major)
-    ax.set_yticks(minor, minor = True)
-    plt.xticks(np.arange(5), ['', 'AM', 'PM', 'holiday', 'normal'])
+    axs[1, 0].set_yticks(major)
+    axs[1, 0].set_yticks(minor, minor = True)
+    for i in range(4):
+        axs[1, 0].plot(np.ones(len(Rtime[i])) *i +1, Rtime[i], ms=4, marker='o', mew=0.5, ls="none", color=c[i])
 
-    plt.ylabel('€/h')
+
+    axs[0, 1].set_title('weekday, total')
+    axs[0, 1].boxplot(Ptotal)
+    plt.sca(axs[0, 1])
+    plt.xticks(np.arange(8), ['', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], rotation=45)
+    plt.ylabel('€')
     plt.grid(axis = 'y', which = 'major', alpha = 0.7)
     plt.grid(axis = 'y', which = 'minor', alpha = 0.3)
-    plt.show()
-
-
-    fig, ax = plt.subplots()
-    for i in range(7):
-        ax.plot(np.ones(len(Ptotal[i])) *i +1, Ptotal[i], ms=4, marker='o', mew=0.5, ls="none", color=c[i])
-    ax.boxplot(Ptotal)
     temp = [item for row in Ptotal for item in row]
-
     major, minor = ticker(20, temp)
-    ax.set_yticks(major)
-    ax.set_yticks(minor, minor = True)
-    plt.xticks(np.arange(8), ['', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'])
-
-    plt.title("total tip")
-    plt.xlabel('weekday')
-    plt.ylabel('€')
-    plt.grid(axis = 'y', which = 'major', alpha = 0.7)
-    plt.grid(axis = 'y', which = 'minor', alpha = 0.3)
-    plt.show()
-
-
-    fig, ax = plt.subplots()
+    axs[0, 1].set_yticks(major)
+    axs[0, 1].set_yticks(minor, minor = True)
+    #axs[0, 1].set_xticks(range(8))
+    #axs[0, 1].set_xticklabels(['', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], rotation=45)
     for i in range(7):
-        ax.plot(np.ones(len(Rtotal[i])) *i +1, Rtotal[i], ms=4, marker='o', mew=0.5, ls="none", color=c[i])
-    ax.boxplot(Rtotal)
-    temp = [item for row in Rtotal for item in row]
+        axs[0, 1].plot(np.ones(len(Ptotal[i])) *i +1, Ptotal[i], ms=4, marker='o', mew=0.5, ls="none", color=c[i])
 
-    major, minor = ticker(1, temp)
-    ax.set_yticks(major)
-    ax.set_yticks(minor, minor = True)
-    plt.xticks(np.arange(8), ['', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'])
 
-    plt.title("total tip")
-    plt.xlabel('weekday')
+    axs[1, 1].set_title('weekday, ratio')
+    axs[1, 1].boxplot(Rtotal)
+    plt.sca(axs[1, 1])
+    plt.xticks(np.arange(8), ['', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], rotation=45)
     plt.ylabel('€/h')
     plt.grid(axis = 'y', which = 'major', alpha = 0.7)
     plt.grid(axis = 'y', which = 'minor', alpha = 0.3)
-    plt.show()
+    temp = [item for row in Rtotal for item in row]
+    major, minor = ticker(1, temp)
+    axs[1, 1].set_yticks(major)
+    axs[1, 1].set_yticks(minor, minor = True)
+    for i in range(7):
+        axs[1, 1].plot(np.ones(len(Rtotal[i])) *i +1, Rtotal[i], ms=4, marker='o', mew=0.5, ls="none", color=c[i])
 
 
-    fig, ax = plt.subplots()
-    for i in range(14):
-        ax.plot(np.ones(len(Pall[i])) *i +1, Pall[i], ms=4, marker='o', mew=0.5, ls="none", color=c[(i)//2])
-    ax.boxplot(Pall)
-    temp = [item for row in Pall for item in row]
-
-    major, minor = ticker(20, temp)
-    ax.set_yticks(major)
-    ax.set_yticks(minor, minor = True)
-    plt.xticks(np.arange(15), ['', 'Mon','' , 'Tue', '', 'Wed', '', 'Thu', '', 'Fri', '', 'Sat', '', 'Sun', ''])
-
-    plt.title("bar, card")
-    plt.xlabel('weekday')
-    plt.ylabel('€')
-    plt.grid(axis = 'y', which = 'major', alpha = 0.7)
-    plt.grid(axis = 'y', which = 'minor', alpha = 0.3)
+    fig.tight_layout()
     plt.show()
     
     

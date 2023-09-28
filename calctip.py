@@ -65,7 +65,7 @@ def git_update():
     else:
         text = """
         git add .\n
-        git commit -- quiet -m 'delayed update tip data'\n
+        git commit --quiet -m 'delayed update tip data'\n
         git push --quiet\n"""
 
         with open('./delayed_update_tip.sh', 'w+') as f:

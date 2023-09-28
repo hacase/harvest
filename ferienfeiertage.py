@@ -82,7 +82,7 @@ def rewrite():
         with open(file, "w+") as f:
             f.writelines(newdata)
             
-    if len(rewrite) > 0:
+    if len(offline) > 0:
         return True
     else:
         return False

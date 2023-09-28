@@ -65,8 +65,8 @@ def git_update():
     else:
         text = """
         git add .\n
-        git commit -m 'delayed update tip data'\n
-        git push\n"""
+        git commit -- quiet -m 'delayed update tip data'\n
+        git push --quiet\n"""
 
         with open('./delayed_update_tip.sh', 'w+') as f:
                 f.writelines(text)
@@ -82,7 +82,17 @@ def git_delayed():
         print('\nsending stored data')
         subprocess.call(['sh', './delayed_update_tip.sh'])
         subprocess.call('rm ./delayed_update_tip.sh', shell=True)
-        print('\nupdate completed.\n')
+        print('\nupdate completed.')
+        
+        if ff.rewrite():
+            subprocess.call('git add .', shell=True)
+            subprocess.call('git commit --quiet -m "rewrite holidays"', shell=True)
+            subprocess.call('git push --quiet', shell=True)
+            print('done rewriting offline holidays.')
+        else:
+            print('no offline holidays.')
+        
+        print('\n')
         
         
 def adjust_tip(roundtip, tipsum, real):

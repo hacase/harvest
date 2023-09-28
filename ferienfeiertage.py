@@ -1,5 +1,7 @@
 import ferien as fr
 import time
+import os
+import numpy as np
 from datetime import datetime as dt
 from deutschland import feiertage as ft
 from deutschland.feiertage.api import default_api
@@ -50,3 +52,37 @@ def check(date, name=None):
         return returnname
     else:
         return flag
+    
+def rewrite():
+    offline = []
+
+    root_dir = './txt/'
+    for root, dirs, files in os.walk(root_dir, onerror=None):
+        for filename in files:
+            file_path = os.path.join(root, filename)
+            try:
+                with open(file_path, "rb") as f:
+                    for line in f:
+                        try:
+                            line = line.decode("utf-8")
+                        except ValueError:
+                            continue
+                        if 'offline' in line:
+                            offline.append(file_path)
+                            break
+            except (IOError, OSError):
+                pass
+
+    for file in offline:
+        newdata = np.genfromtxt(file, dtype='str', delimiter='\n')
+
+        date = newdata[0][:10]
+        newdata[-1] = 'holiday = ' + ff.check(dt.strptime(date, "%d.%m.%Y"), name=1)
+
+        with open(file, "w+") as f:
+            f.writelines(newdata)
+            
+    if len(rewrite) > 0:
+        return True
+    else:
+        return False

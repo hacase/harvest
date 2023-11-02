@@ -65,8 +65,11 @@ def statistic():
     holiday = []
 
     for file in files:
-        data = np.genfromtxt(file, dtype='str', delimiter='\n')
-        s_date, s_time = data[0].split(', ', 1)
+        try:
+            data = np.genfromtxt(file, dtype='str', delimiter='\n')
+            s_date, s_time = data[0].split(', ', 1)
+        except IndexError:
+            print(file)
         date.append(s_date)
 
         weekday.append(dt.strptime(s_date, "%d.%m.%Y").weekday())

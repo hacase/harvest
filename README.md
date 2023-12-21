@@ -1,10 +1,14 @@
-# Statistic  Holiday: Holiday in Germany and Friday till Sunday## Overview  total: 106.275 +/- 30.977  
+# Statistic  
+Holiday: Holiday in Germany and Friday till Sunday  
+## Overview  
+total: 106.275 +/- 30.977  
 ratio:   4.892 +/-  1.079  
 bar:    43.451 +/- 22.051  
 card:   53.411 +/- 27.804  
   
   
-## top three: total        total      ratio        timestamp  
+### Top three: total  
+      total      ratio        timestamp  
 ---+---------+----------+------------------  
 1":  184.50€   6.099€/h   13.08.2023 Sun AM  
      holiday -> False  
@@ -14,7 +18,8 @@ card:   53.411 +/- 27.804
      holiday -> Herbstferien  
   
   
-### top three: ratio        ratio      total        timestamp  
+### Top three: ratio  
+      ratio      total        timestamp  
 ---+---------+----------+------------------  
 1":  8.27€/h   140.530€   25.09.2023 Mon AM  
      holiday -> False  
@@ -24,20 +29,20 @@ card:   53.411 +/- 27.804
      holiday -> False  
   
   
-AM  
+### AM  
 total: 109.212 +/- 27.879  
 ratio:   4.976 +/-  0.972  
   
-PM  
+### PM  
 total: 101.402 +/- 34.986  
 ratio:   4.753 +/-  1.224  
   
   
-holidays with weekends (Fri - Sun)  
+### Holidays with weekends (Fri - Sun)  
 total: 114.283 +/- 31.179  
 ratio:   4.931 +/-  1.053  
   
-normal days  
+### Normal days  
 total:  89.628 +/- 22.870  
 ratio:   4.811 +/-  1.127  
   
@@ -71,7 +76,7 @@ total: 132.547 +/- 28.192
 ratio:   5.258 +/-  1.034  
   
   
-frequency  
+### frequency  
 total: 117, AM: 73, PM: 44  
 ████████▌ 10, 8.5%  
 ████████████▊ 15, 12.8%  
@@ -82,4 +87,5 @@ total: 117, AM: 73, PM: 44
 ██████████████████████▏ 26, 22.2%  
   
   
-## Plot![Image](harvest.png)
+## Plot  
+![Image](harvest.png)

@@ -43,8 +43,8 @@ def statistic():
     path = './json/'
 
     text_README = list()
-    text_README.append('# Statistic  ')
-    text_README.append('Holiday: Holiday in Germany and Friday till Sunday')
+    text_README.append('# Statistic  \n')
+    text_README.append('Holiday: Holiday in Germany and Friday till Sunday  \n')
     
     flag = True
     files = []
@@ -103,7 +103,7 @@ def statistic():
     bar = list(filter(lambda item: item != 'None', bar))
     card = list(filter(lambda item: item != 'None', card))
 
-    text_README.append('## Overview  ')
+    text_README.append('## Overview  \n')
     
     PandR(text_README, f'total: {np.mean(total):7.3f} +/- {np.std(total):6.3f}')
     PandR(text_README, f'ratio: {np.mean(ratio):7.3f} +/- {np.std(ratio):6.3f}')
@@ -114,7 +114,7 @@ def statistic():
     PandR(text_README, '')
 
     print('top three: total')
-    text_README.append('## top three: total  ')
+    text_README.append('### Top three: total  \n')
     line = ' '*6 + 'total' + ' '*6 + 'ratio' + ' '*8 + 'timestamp'
     PandR(text_README, line)
     line = '-'*3 + '+' + '-'*9 + '+' + '-'*10 + '+' + '-'*18
@@ -130,7 +130,7 @@ def statistic():
     PandR(text_README, '')
 
     print('top three: ratio')
-    text_README.append('### top three: ratio  ')
+    text_README.append('### Top three: ratio  \n')
     line = ' '*6 + 'ratio' + ' '*6 + 'total' + ' '*8 + 'timestamp'
     PandR(text_README, line)
     line = '-'*3 + '+' + '-'*9 + '+' + '-'*10 + '+' + '-'*18
@@ -149,14 +149,16 @@ def statistic():
     total = np.array(total)
     ratio = np.array(ratio)
 
-    PandR(text_README, 'AM')
+    print('AM')
+    text_README.append('### AM  \n')
     AM = [i == 'AM' for i in time]
     PandR(text_README, f'total: {np.mean(total[AM]):7.3f} +/- {np.std(total[AM]):6.3f}')
     PandR(text_README, f'ratio: {np.mean(ratio[AM]):7.3f} +/- {np.std(ratio[AM]):6.3f}')
 
     PandR(text_README, '')
 
-    PandR(text_README, 'PM')
+    print('PM')
+    text_README.append('### PM  \n')
     PM = [i == 'PM' for i in time]
     PandR(text_README, f'total: {np.mean(total[PM]):7.3f} +/- {np.std(total[PM]):6.3f}')
     PandR(text_README, f'ratio: {np.mean(ratio[PM]):7.3f} +/- {np.std(ratio[PM]):6.3f}')
@@ -164,7 +166,8 @@ def statistic():
     PandR(text_README, '')
     PandR(text_README, '')
 
-    PandR(text_README, 'holidays with weekends (Fri - Sun)')   
+    print('holidays with weekends (Fri - Sun)')
+    text_README.append('### Holidays with weekends (Fri - Sun)  \n')
     mask = [i != 'False' for i in holiday]
     for i in range(len(weekday)):
         if 3 < weekday[i] < 7:
@@ -175,7 +178,8 @@ def statistic():
 
     PandR(text_README, '')
 
-    PandR(text_README, 'normal days')
+    print('normal days')
+    text_README.append('### Normal days  \n')
     mask = [not i for i in mask]
     PandR(text_README, f'total: {np.mean(total[mask]):7.3f} +/- {np.std(total[mask]):6.3f}')
     PandR(text_README, f'ratio: {np.mean(ratio[mask]):7.3f} +/- {np.std(ratio[mask]):6.3f}')
@@ -194,7 +198,8 @@ def statistic():
 
     PandR(text_README, '')
 
-    PandR(text_README, 'frequency')
+    print('frequency')
+    text_README.append('### frequency  \n')
     PandR(text_README, 'total: '+str(len(weekday))+', AM: '+str((np.array(time) == 'AM').sum())+', PM: '+str((np.array(time) == 'PM').sum()))
 
     def chunker(part, full):
@@ -216,8 +221,6 @@ def statistic():
 
     PandR(text_README, '')
     PandR(text_README, '')
-
-    print(text_README)
 
     render = abort(input('render plot? '))        
 
@@ -352,7 +355,7 @@ def statistic():
     print('render plots done.')
     
     
-    text_README.append('## Plot')
+    text_README.append('## Plot  \n')
     text_README.append('![Image](harvest.png)')
     
     with open('./README.md', 'w') as f:

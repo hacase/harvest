@@ -221,7 +221,7 @@ def tmode(value, date):
     git_delayed()
     
     timestamp = date.strftime("%d-%a-%H-%M")
-    dirname = date.strftime("'./txt/'%Y/%m/")
+    dirname = date.strftime("./txt/%Y/%m/")
     path = dirname + '/' + timestamp +'.json'
 
     os.makedirs(os.path.dirname(dirname), exist_ok=True)

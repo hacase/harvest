@@ -150,14 +150,12 @@ def tmode(value, date):
                 if '+' in value:
                     bar, card = value.replace(' ', '').split('+', 1)
                     hour.append(eval(value))
-                    print('got')
 
                 elif ' ' in value:
                     thour, times = value.split(' ', 1)
                     count += int(times) - 1
                     for j in range(int(times)):
                         hour.append(float(str(thour)))
-                    print('here', count)
 
                 else:
                     hour.append(float(str(value)))
@@ -189,9 +187,9 @@ def tmode(value, date):
         t = f'{i+1}"{" " * (4 - len(str(i+1)))}{hour[i]:4.2f}h  -> {roundtip[i]:5.1f}€  ;  {realtip[i]:6.3f}'
         print(t)
         
-        t_hour += f'{hour[i]:4.2f}, '
-        t_tip += f'{roundtip[i]:5.1f}, '
-        t_exact += f'{realtip[i]:6.3f}, '
+        t_hour += f'{hour[i]:.2f}, '
+        t_tip += f'{roundtip[i]:.1f}, '
+        t_exact += f'{realtip[i]:.3f}, '
         
     t_hour = t_hour[:-2] + '], '
     t_tip = t_tip[:-2] + '], '
@@ -222,9 +220,9 @@ def tmode(value, date):
     
     git_delayed()
     
-    timestamp = date.strftime("%d") + '-' + date.strftime("%a") + '-' + date.strftime("%H-%M")
-    dirname = './txt/'+ date.strftime("%Y") + '/' + date.strftime("%m") + '/'
-    path = dirname + '/' + timestamp +'.txt'
+    timestamp = date.strftime("%d-%a-%H-%M")
+    dirname = date.strftime("'./txt/'%Y/%m/")
+    path = dirname + '/' + timestamp +'.json'
 
     os.makedirs(os.path.dirname(dirname), exist_ok=True)
     with open(path, 'w+') as f:

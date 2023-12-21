@@ -140,31 +140,33 @@ def tmode(value, date):
         hour.append(float(str(value)))
     
     for i in range(1, 100):
-        try:
-            value = input('{}{}{}{} = '.format(i + count, '.', ' ' * (2 - len(str(i))), "Hour")).replace(',', '.')
-            
-            if '+' not in value:
-                value = abort(value)
+        while True:
+            try:
+                value = input('{}{}{}{} = '.format(i + count, '.', ' ' * (2 - len(str(i))), "Hour")).replace(',', '.')
 
-            if '+' in value:
-                bar, card = value.replace(' ', '').split('+', 1)
-                hour.append(eval(value))
-                tipsum = float(bar + card)
-                break
+                if '+' not in value:
+                    value = abort(value)
 
-            elif ' ' in value:
-                thour, times = value.split(' ', 1)
-                count += int(times) - 1
-                for j in range(int(times)):
-                    hour.append(float(str(thour)))
+                if '+' in value:
+                    bar, card = value.replace(' ', '').split('+', 1)
+                    hour.append(eval(value))
+                    print('got')
 
+                elif ' ' in value:
+                    thour, times = value.split(' ', 1)
+                    count += int(times) - 1
+                    for j in range(int(times)):
+                        hour.append(float(str(thour)))
+                    print('here', count)
+
+                else:
+                    hour.append(float(str(value)))
+
+            except (ValueError, NameError) as error:
+                print('input error')
+                continue
             else:
-                hour.append(float(str(value)))
-
-        except (ValueError, NameError) as error:
-            print('input error')
-            continue
-            
+                break
 
         if hour[-1] > 11:
             tipsum = float(hour.pop())
@@ -205,10 +207,10 @@ def tmode(value, date):
     
     t = f'tip ratio = {ratio:.4} €/h'
     print(t)
-    text += '"ratio": ' + f'{ratio:.4}, '
-    text += '"sum": ' + '{0:.2f}'.format(tipsum) + ', '
-    text += '"bar": ' + str(bar) + ', '
-    text += '"card": ' + str(card) + ', '
+    text += '"ratio": "' + f'{ratio:.4}, "'
+    text += '"sum": "' + '{0:.2f}'.format(tipsum) + ', "'
+    text += '"bar": "' + str(bar) + ', "'
+    text += '"card": "' + str(card) + ', "'
     
     if internet_on():
         holidayname = ff.check(date, name=1)

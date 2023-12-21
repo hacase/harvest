@@ -1,1 +1,0 @@
-{"timestamp": "21.12.2023-22:28, "hour": [4.50, 4.50, 4.50], "tip": [ 41.0,  41.0,  41.0], "tip_exact": [41.000, 41.000, 41.000], "ratio": 9.111, "sum": 123.00, "bar": None, "card": None, "holiday": "weihnachtsferien"}

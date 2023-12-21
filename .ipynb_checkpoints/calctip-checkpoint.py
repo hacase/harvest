@@ -176,7 +176,7 @@ def tmode(value, date):
     
     
     today = date.strftime("%d.%m.%Y, %A, time: %H:%M")
-    text = '{"timestamp": "' + date.strftime("%d.%m.%Y-%H:%M, ")
+    text = '{"timestamp": "' + date.strftime('%d.%m.%Y-%H:%M", ')
             
         
     print('-' *  32)
@@ -207,16 +207,16 @@ def tmode(value, date):
     
     t = f'tip ratio = {ratio:.4} €/h'
     print(t)
-    text += '"ratio": "' + f'{ratio:.4}, "'
-    text += '"sum": "' + '{0:.2f}'.format(tipsum) + ', "'
-    text += '"bar": "' + str(bar) + ', "'
-    text += '"card": "' + str(card) + ', "'
+    text += '"ratio": "' + f'{ratio:.4}, '
+    text += '"sum": "' + '{0:.2f}'.format(tipsum) + ', '
+    text += '"bar": "' + str(bar) + ', '
+    text += '"card": "' + str(card) + ', '
     
     if internet_on():
         holidayname = ff.check(date, name=1)
-        t = 'holiday = ' + holidayname + '\n'
     else:
-        t = 'holiday = ' + 'offline' + '\n'
+        holidayname = False
+    t = 'holiday = ' + holidayname + '\n'
     print(t)
     text += '"holiday": ' + '"' + holidayname + '"}'
     

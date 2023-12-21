@@ -21,7 +21,7 @@ def internet_on():
 
 def PandR(l, text):
     print(text)
-    l.append(text + '\n')    
+    l.append(text + '  ')    
     
 def sorterkey(line):
     year = line[7:11]
@@ -43,6 +43,9 @@ def statistic():
     path = './json/'
 
     text_README = list()
+    text_README.append('#Statistic')
+    text_README.append('Holiday: Holiday in Germany and Friday till Sunday')
+    
     flag = True
     files = []
     i = 0
@@ -100,6 +103,8 @@ def statistic():
     bar = list(filter(lambda item: item != 'None', bar))
     card = list(filter(lambda item: item != 'None', card))
 
+    text_README.append('##Overview')
+    
     PandR(text_README, f'total: {np.mean(total):7.3f} +/- {np.std(total):6.3f}')
     PandR(text_README, f'ratio: {np.mean(ratio):7.3f} +/- {np.std(ratio):6.3f}')
     PandR(text_README, f'bar:   {np.mean(bar):7.3f} +/- {np.std(bar):6.3f}')
@@ -108,7 +113,8 @@ def statistic():
     PandR(text_README, '')
     PandR(text_README, '')
 
-    PandR(text_README, 'top three: total')
+    print('top three: total')
+    text_README.append('##top three: total')
     line = ' '*6 + 'total' + ' '*6 + 'ratio' + ' '*8 + 'timestamp'
     PandR(text_README, line)
     line = '-'*3 + '+' + '-'*9 + '+' + '-'*10 + '+' + '-'*18
@@ -123,7 +129,8 @@ def statistic():
     PandR(text_README, '')
     PandR(text_README, '')
 
-    PandR(text_README, 'top three: ratio')
+    print('top three: ratio')
+    text_README.append('###top three: ratio')
     line = ' '*6 + 'ratio' + ' '*6 + 'total' + ' '*8 + 'timestamp'
     PandR(text_README, line)
     line = '-'*3 + '+' + '-'*9 + '+' + '-'*10 + '+' + '-'*18

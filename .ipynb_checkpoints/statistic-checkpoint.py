@@ -8,8 +8,20 @@ import warnings
 from calctip import abort
 import subprocess
 import json
+from urllib import request
 
 warnings.filterwarnings("ignore", category=RuntimeWarning)
+
+def internet_on():
+    try:
+        request.urlopen('https://github.com/hacase/calctip', timeout=1)
+        return True
+    except request.URLError as err: 
+        return False
+
+def PandR(l, text):
+    print(text)
+    l.append(text)    
     
 def sorterkey(line):
     year = line[7:11]
@@ -30,6 +42,7 @@ def ticker(tick, temp):
 def statistic():
     path = './json/'
 
+    text_README = list()
     flag = True
     files = []
     i = 0
@@ -37,7 +50,6 @@ def statistic():
         for f in filenames:
             if not any(s in f for s in ['LOG', 'checkpoint', 'DS']):
                 files.append(os.path.join(dirpath, f))
-                d = os.path.join(dirpath, f)
                 flag = False
 
     files = sorted(files, key=sorterkey)
@@ -88,97 +100,95 @@ def statistic():
     bar = list(filter(lambda item: item != 'None', bar))
     card = list(filter(lambda item: item != 'None', card))
 
-    print(f'total: {np.mean(total):7.3f} +/- {np.std(total):6.3f}')
-    print(f'ratio: {np.mean(ratio):7.3f} +/- {np.std(ratio):6.3f}')
-    print(f'bar:   {np.mean(bar):7.3f} +/- {np.std(bar):6.3f}')
-    print(f'card:  {np.mean(card):7.3f} +/- {np.std(card):6.3f}')
+    PandR(text_README, f'total: {np.mean(total):7.3f} +/- {np.std(total):6.3f}')
+    PandR(text_README, f'ratio: {np.mean(ratio):7.3f} +/- {np.std(ratio):6.3f}')
+    PandR(text_README, f'bar:   {np.mean(bar):7.3f} +/- {np.std(bar):6.3f}')
+    PandR(text_README, f'card:  {np.mean(card):7.3f} +/- {np.std(card):6.3f}')
 
-    print('')
-    print('')
+    PandR(text_README, '')
+    PandR(text_README, '')
 
-    print('top three: total')
+    PandR(text_README, 'top three: total')
     line = ' '*6 + 'total' + ' '*6 + 'ratio' + ' '*8 + 'timestamp'
-    print(line)
+    PandR(text_README, line)
     line = '-'*3 + '+' + '-'*9 + '+' + '-'*10 + '+' + '-'*18
-    print(line)
+    PandR(text_README, line)
 
     top = sorted(zip(total, ratio, date, time, holiday), reverse=True)[:3]
     for i in range(len(top)):
         wkday = dt.strptime(top[i][2], '%d.%m.%Y').strftime('%a')
-        print(f'{i+1}":  {float(top[i][0]):6.2f}€   {float(top[i][1]):5.3f}€/h   {top[i][2]:10} {wkday} {top[i][3]}')
-        print(f'{" "*5}holiday -> {top[i][4].capitalize()}')
+        PandR(text_README, f'{i+1}":  {float(top[i][0]):6.2f}€   {float(top[i][1]):5.3f}€/h   {top[i][2]:10} {wkday} {top[i][3]}')
+        PandR(text_README, f'{" "*5}holiday -> {top[i][4].capitalize()}')
 
-    print('')
-    print('')
+    PandR(text_README, '')
+    PandR(text_README, '')
 
-    print('top three: ratio')
+    PandR(text_README, 'top three: ratio')
     line = ' '*6 + 'ratio' + ' '*6 + 'total' + ' '*8 + 'timestamp'
-    print(line)
+    PandR(text_README, line)
     line = '-'*3 + '+' + '-'*9 + '+' + '-'*10 + '+' + '-'*18
-    print(line)
+    PandR(text_README, line)
 
     top = sorted(zip(ratio, total, date, time, holiday), reverse=True)[:3]
     for i in range(len(top)):
         wkday = dt.strptime(top[i][2], '%d.%m.%Y').strftime('%a')
-        print(f'{i+1}": {float(top[i][0]):5.2f}€/h   {float(top[i][1]):6.3f}€   {top[i][2]:10} {wkday} {top[i][3]}')
-        print(f'{" "*5}holiday -> {top[i][4].capitalize()}')
+        PandR(text_README, f'{i+1}": {float(top[i][0]):5.2f}€/h   {float(top[i][1]):6.3f}€   {top[i][2]:10} {wkday} {top[i][3]}')
+        PandR(text_README, f'{" "*5}holiday -> {top[i][4].capitalize()}')
 
 
-    print('')
-    print('')
+    PandR(text_README, '')
+    PandR(text_README, '')
 
     total = np.array(total)
     ratio = np.array(ratio)
 
-    print('AM')
+    PandR(text_README, 'AM')
     AM = [i == 'AM' for i in time]
-    print(f'total: {np.mean(total[AM]):7.3f} +/- {np.std(total[AM]):6.3f}')
-    print(f'ratio: {np.mean(ratio[AM]):7.3f} +/- {np.std(ratio[AM]):6.3f}')
+    PandR(text_README, f'total: {np.mean(total[AM]):7.3f} +/- {np.std(total[AM]):6.3f}')
+    PandR(text_README, f'ratio: {np.mean(ratio[AM]):7.3f} +/- {np.std(ratio[AM]):6.3f}')
 
-    print('')
+    PandR(text_README, '')
 
-    print('PM')
+    PandR(text_README, 'PM')
     PM = [i == 'PM' for i in time]
-    print(f'total: {np.mean(total[PM]):7.3f} +/- {np.std(total[PM]):6.3f}')
-    print(f'ratio: {np.mean(ratio[PM]):7.3f} +/- {np.std(ratio[PM]):6.3f}')
+    PandR(text_README, f'total: {np.mean(total[PM]):7.3f} +/- {np.std(total[PM]):6.3f}')
+    PandR(text_README, f'ratio: {np.mean(ratio[PM]):7.3f} +/- {np.std(ratio[PM]):6.3f}')
 
-    print('')
-    print('')
+    PandR(text_README, '')
+    PandR(text_README, '')
 
-    print('holidays with weekends (Fri - Sun)')   
+    PandR(text_README, 'holidays with weekends (Fri - Sun)')   
     mask = [i != 'False' for i in holiday]
     for i in range(len(weekday)):
         if 3 < weekday[i] < 7:
             mask[i] = True
 
-    print(f'total: {np.mean(total[mask]):7.3f} +/- {np.std(total[mask]):6.3f}')
-    print(f'ratio: {np.mean(ratio[mask]):7.3f} +/- {np.std(ratio[mask]):6.3f}')
+    PandR(text_README, f'total: {np.mean(total[mask]):7.3f} +/- {np.std(total[mask]):6.3f}')
+    PandR(text_README, f'ratio: {np.mean(ratio[mask]):7.3f} +/- {np.std(ratio[mask]):6.3f}')
 
-    print('')
+    PandR(text_README, '')
 
-    print('normal days')
+    PandR(text_README, 'normal days')
     mask = [not i for i in mask]
-    print(f'total: {np.mean(total[mask]):7.3f} +/- {np.std(total[mask]):6.3f}')
-    print(f'ratio: {np.mean(ratio[mask]):7.3f} +/- {np.std(ratio[mask]):6.3f}')
+    PandR(text_README, f'total: {np.mean(total[mask]):7.3f} +/- {np.std(total[mask]):6.3f}')
+    PandR(text_README, f'ratio: {np.mean(ratio[mask]):7.3f} +/- {np.std(ratio[mask]):6.3f}')
 
-    print('')
-    print('')
+    PandR(text_README, '')
+    PandR(text_README, '')
 
     for i in range(0, 7):
-        print(calendar.day_name[i])
+        PandR(text_README, calendar.day_name[i])
 
         mask = [n == i for n in weekday]
-        print(f'total: {np.mean(total[mask]):7.3f} +/- {np.std(total[mask]):6.3f}')
-        print(f'ratio: {np.mean(ratio[mask]):7.3f} +/- {np.std(ratio[mask]):6.3f}')
+        PandR(text_README, f'total: {np.mean(total[mask]):7.3f} +/- {np.std(total[mask]):6.3f}')
+        PandR(text_README, f'ratio: {np.mean(ratio[mask]):7.3f} +/- {np.std(ratio[mask]):6.3f}')
 
-        print('')
+        PandR(text_README, '')
 
-    print('')
+    PandR(text_README, '')
 
-    print('frequency')
-    print('total:', len(weekday),
-          ', AM:', (np.array(time) == 'AM').sum(),
-          ', PM:', (np.array(time) == 'PM').sum())
+    PandR(text_README, 'frequency')
+    PandR(text_README, 'total: '+str(len(weekday))+', AM: '+str((np.array(time) == 'AM').sum())+', PM: '+str((np.array(time) == 'PM').sum()))
 
     def chunker(part, full):
         chunks, remain = divmod(int(part * 8 / full * 100), 8)
@@ -195,10 +205,10 @@ def statistic():
         s += f'{(np.array(weekday) == i).sum():3}, '
         s += f'{(np.array(weekday) == i).sum() / len(weekday)*100:3.1f}%'
 
-        print(s)
+        PandR(text_README, s)
 
-    print('')
-    print('')
+    PandR(text_README, '')
+    PandR(text_README, '')
 
 
     render = abort(input('render plot? '))        
@@ -332,3 +342,14 @@ def statistic():
 
 
     print('render plots done.')
+    
+    
+    text_README.append('##Plot')
+    text_README.append('![Image](harvest.png)')
+    
+    with open('./README.md', 'w') as f:
+        f.writelines(text_README)
+
+        
+    if internet_on():
+        subprocess.call(['sh', './update_tip.sh'])

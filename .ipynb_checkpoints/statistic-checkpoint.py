@@ -7,6 +7,7 @@ import calendar
 import warnings
 from calctip import abort
 import subprocess
+import json
 
 warnings.filterwarnings("ignore", category=RuntimeWarning)
 
@@ -65,41 +66,38 @@ def statistic():
     holiday = []
 
     for file in files:
-        data = np.genfromtxt(file, dtype='str', delimiter='\n')
-        s_date, s_time = data[0].split(', ', 1)
-        date.append(s_date)
+        try:
+            f = open(file)
+            jData = json.loads(f.read())
+        except IndexError:
+            print(file)
 
+        s_date, s_time = jData['timestamp'].split('-', 1)
+        date.append(s_date)
         weekday.append(dt.strptime(s_date, "%d.%m.%Y").weekday())
 
-        if int(s_time[-5:-3]) > 17:
+        if int(s_time[:2]) > 17:
             time.append('PM')
         else:
             time.append('AM')
 
-        for line in data[1:]:
-            if 'ratio' in line:
-                ratio.append(float(line[12:-3]))
+        ratio.append(float(jData["ratio"]))
 
-            elif 'sum' in line:
-                total.append(float(line[6:]))
+        total.append(float(jData["sum"]))
 
-            elif 'bar' in line:
-                try:
-                    bar.append(float(line[6:]))
-                except ValueError:
-                    bar.append(line[6:])
+        try:
+            bar.append(float(jData["bar"]))
+        except ValueError:
+            bar.append(jData["ratio"])
 
-            elif 'card' in line:
-                try:
-                    card.append(float(line[7:]))
-                except ValueError:
-                    card.append(line[7:])
+        try:
+            card.append(float(jData["card"]))
+        except ValueError:
+            card.append(jData["ratio"])
 
-            elif 'holiday' in line:
-                try:
-                    holiday.append(float(line[10:]))
-                except ValueError:
-                    holiday.append(line[10:])
+        holiday.append(jData["holiday"])
+        
+        f.close()
 
     bar = list(filter(lambda item: item != 'None', bar))
     card = list(filter(lambda item: item != 'None', card))
@@ -123,10 +121,10 @@ def statistic():
         wkday = dt.strptime(top[i][2], '%d.%m.%Y').strftime('%a')
         print(f'{i+1}":  {float(top[i][0]):6.2f}€   {float(top[i][1]):5.3f}€/h   {top[i][2]:10} {wkday} {top[i][3]}')
         print(f'{" "*5}holiday -> {top[i][4].capitalize()}')
-        
+
     print('')
     print('')
-    
+
     print('top three: ratio')
     line = ' '*6 + 'ratio' + ' '*6 + 'total' + ' '*8 + 'timestamp'
     print(line)
@@ -138,7 +136,7 @@ def statistic():
         wkday = dt.strptime(top[i][2], '%d.%m.%Y').strftime('%a')
         print(f'{i+1}": {float(top[i][0]):5.2f}€/h   {float(top[i][1]):6.3f}€   {top[i][2]:10} {wkday} {top[i][3]}')
         print(f'{" "*5}holiday -> {top[i][4].capitalize()}')
-        
+
 
     print('')
     print('')
@@ -188,9 +186,9 @@ def statistic():
         print(f'ratio: {np.mean(ratio[mask]):7.3f} +/- {np.std(ratio[mask]):6.3f}')
 
         print('')
-        
+
     print('')
-    
+
     print('frequency')
     print('total:', len(weekday),
           ', AM:', (np.array(time) == 'AM').sum(),
@@ -212,15 +210,15 @@ def statistic():
         s += f'{(np.array(weekday) == i).sum() / len(weekday)*100:3.1f}%'
 
         print(s)
-        
+
     print('')
     print('')
 
-    
+
     render = abort(input('render plot? '))        
-    
+
     import matplotlib.pyplot as plt
-    
+
     Ptime = [[] for _ in range(4)]
     Ptotal = [[] for _ in range(7)]
     Pbar = [[] for _ in range(7)]
@@ -342,9 +340,9 @@ def statistic():
     if render == 'android':
         plt.savefig('harvest.png')
         subprocess.call('termux-open harvest.png', shell=True)
-        
+
     else:
         plt.show()
-    
-    
+
+
     print('render plots done.')

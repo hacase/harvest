@@ -20,15 +20,11 @@ tx.datereasteregg()
     
 i = 1
 
-today = dt.today().strftime("%d.%m.%Y") + ', ' + dt.today().strftime("%A") + ', time: ' + dt.now().strftime("%H:%M")
-print(today)
+print(dt.today().strftime("%d.%m.%Y, %A, time: %H:%M"))
 
 value = ct.abort(input('{}{} = '.format(i, ". Hour")))
 
-if value == 'normal':
-    ct.normal()
-    
-elif value == 'report':
+if value == 'report':
     import report
     report.report()
     

@@ -1,8 +1,3 @@
- #!/usr/bin/env python
-# Wrtten by Taro Watanabe, would be nice if you take the code
-# with the eastereggs secret, addings are allowed ^^
-# all texts and eastereggs stored in texts.py
-
 import numpy as np
 import sys
 import time
@@ -35,16 +30,16 @@ def opening():
     slow_type(string)
 
 def abort(var):
-    var = str(var).lower()
+    lower_var = str(var).lower()
     
     labort = ['exit', 'stop', 'stopp', 'abbruch', 'abbrechen']
     lhelp = ['help', 'hilfe']
     
-    if var in labort:
+    if lower_var in labort:
         print('exited session.')
         sys.exit()
         
-    elif var in lhelp:
+    elif lower_var in lhelp:
         tx.helpman()
         sys.exit()
         
@@ -65,7 +60,7 @@ def git_update():
     else:
         text = """
         git add .\n
-        git commit -- quiet -m 'delayed update tip data'\n
+        git commit --quiet -m 'delayed update tip data'\n
         git push --quiet\n"""
 
         with open('./delayed_update_tip.sh', 'w+') as f:
@@ -129,9 +124,6 @@ def fcalctip(hour, tipsum):
     return roundtip, tipsum, real, realtip, ratio
     
 def tmode(value, date):
-    if '+' not in value:
-        value = abort(value)
-    
     hour = []
     i = 2
     count = 1
@@ -148,30 +140,31 @@ def tmode(value, date):
         hour.append(float(str(value)))
     
     for i in range(1, 100):
-        while True:
-            try:
-                value = input('{}{}{}{} = '.format(i + count, '.', ' ' * (2 - len(str(i))), "Hour")).replace(',', '.')
-                if '+' not in value:
-                    value = abort(value)
+        try:
+            value = input('{}{}{}{} = '.format(i + count, '.', ' ' * (2 - len(str(i))), "Hour")).replace(',', '.')
+            
+            if '+' not in value:
+                value = abort(value)
 
-                if '+' in value:
-                    bar, card = value.replace(' ', '').split('+', 1)
-                    hour.append(eval(value))
-
-                elif ' ' in value:
-                    thour, times = value.split(' ', 1)
-                    count += int(times) - 1
-                    for j in range(int(times)):
-                        hour.append(float(str(thour)))
-
-                else:
-                    hour.append(float(str(value)))
-
-            except (ValueError, NameError) as error:
-                print('input error')
-                continue
-            else:
+            if '+' in value:
+                bar, card = value.replace(' ', '').split('+', 1)
+                hour.append(eval(value))
+                tipsum = float(bar + card)
                 break
+
+            elif ' ' in value:
+                thour, times = value.split(' ', 1)
+                count += int(times) - 1
+                for j in range(int(times)):
+                    hour.append(float(str(thour)))
+
+            else:
+                hour.append(float(str(value)))
+
+        except (ValueError, NameError) as error:
+            print('input error')
+            continue
+            
 
         if hour[-1] > 11:
             tipsum = float(hour.pop())
@@ -180,40 +173,50 @@ def tmode(value, date):
     roundtip, tipsum, real, realtip, ratio = fcalctip(hour, tipsum)
     
     
-    text = list()
-    
-    today = date.strftime("%d.%m.%Y") + ', ' + date.strftime("%A") + ', time: ' + date.strftime("%H:%M")
-    text.append(today + '\n')
+    today = date.strftime("%d.%m.%Y, %A, time: %H:%M")
+    text = '{"timestamp": "' + date.strftime("%d.%m.%Y-%H:%M, ")
             
+        
     print('-' *  32)
-    text.append('-' *  32 + '\n')
+    
+    t_hour = '"hour": ['
+    t_tip = '"tip": ['
+    t_exact = '"tip_exact": ['
 
     for i in range(len(hour)):
         t = f'{i+1}"{" " * (4 - len(str(i+1)))}{hour[i]:4.2f}h  -> {roundtip[i]:5.1f}€  ;  {realtip[i]:6.3f}'
         print(t)
-        text.append(t + '\n')
+        
+        t_hour += f'{hour[i]:4.2f}, '
+        t_tip += f'{roundtip[i]:5.1f}, '
+        t_exact += f'{realtip[i]:6.3f}, '
+        
+    t_hour = t_hour[:-2] + '], '
+    t_tip = t_tip[:-2] + '], '
+    t_exact = t_exact[:-2] + '], '
+    
+    text += t_hour + t_tip + t_exact
 
     print('-' *  32)
-    text.append('-' *  32 + '\n')
 
+    
     t = f'total hours = {sum(hour):} h'
     print(t)
-    text.append(t + '\n')
-    
     
     t = f'tip ratio = {ratio:.4} €/h'
     print(t)
-    text.append(t + '\n')
-    text.append('sum = ' + '{0:.2f}'.format(tipsum) + '\n')
-    text.append('bar = ' + str(bar) + '\n')
-    text.append('card = ' + str(card) + '\n')
+    text += '"ratio": ' + f'{ratio:.4}, '
+    text += '"sum": ' + '{0:.2f}'.format(tipsum) + ', '
+    text += '"bar": ' + str(bar) + ', '
+    text += '"card": ' + str(card) + ', '
     
     if internet_on():
-        t = 'holiday = ' + ff.check(date, name=1) + '\n'
+        holidayname = ff.check(date, name=1)
+        t = 'holiday = ' + holidayname + '\n'
     else:
         t = 'holiday = ' + 'offline' + '\n'
     print(t)
-    text.append(t)
+    text += '"holiday": ' + '"' + holidayname + '"}'
     
     git_delayed()
     
@@ -227,87 +230,3 @@ def tmode(value, date):
     
     print('')
     git_update()
-            
-            
-def normal():
-    i = 1
-    value = abort(input('{}{} = '.format(i, ".  Name")))
-    
-    while True:
-        if value == '0':
-            print('Gib mindestens einen Namen ein!\nBei Eingabe von 0 wird die Nameneingabe abgebrochen!')
-            value = abort(input('{}{} = '.format(i, ".  Name")))
-
-        elif tx.easteregg(value) != False:
-            value = abort(input('{}{} = '.format(i, ".  Name")))
-
-        else:
-            break
-
-    name.append(value)
-    
-    while '0' not in name:    
-        while True:
-            try:
-                value = abort(input('{} = '.format("   Hour")))
-
-                if tx.easteregg(value) != False:
-                    continue
-
-                hour.append(float(value.replace(',', '.')))
-
-            except ValueError:
-                print('Gib nur eine Zahl ein für die Stunden!')
-                continue
-
-            else:
-                break
-
-        i += 1
-        value = abort(input('{}{}{}{} = '.format(i, '.', ' ' * (2 - len(str(i))), "Name")))
-
-        while tx.easteregg(value) != False:
-            value = abort(input('{}{}{}{} = '.format(i, '.', ' ' * (2 - len(str(i))), "Name")))
-
-        name.append(value)
-
-    name = name[:-1]
-
-    while True:
-        try:
-            tipsum = abort(input("total tip = "))
-
-            if tx.easteregg(tipsum) != False:
-                continue
-
-            tipsum = float(tipsum.replace(',', '.'))
-
-        except ValueError:
-            print('Gib nur eine Zahl ein für das gesamte Trinkgeld!')
-            continue
-
-        else:
-            break
-
-    ratio = tipsum / sum(hour)
-
-    realtip = np.array([ratio * i for i in hour])                   
-    real = np.array([ratio * i for i in hour])
-
-    roundtip = np.around(realtip, decimals=1)
-
-    roundtip, tipsum, real = adjust_tip(roundtip, tipsum, real)
-
-    realtip = [int(i * 1000) / 1000. for i in realtip]        
-
-    maxstr = len(max(name, key=len))
-
-    print('-' * (maxstr + 29))
-
-    for i in range(len(name)):
-        print('{num:{width}}'.format(num = name[i], width = maxstr), f' {hour[i]:4.2f}h', f' -> {roundtip[i]:5.1f}€', f' ;  {realtip[i]:6.3f}')
-
-    print('-' * (maxstr + 29))
-
-    print(f'total hours = {sum(hour):} h')   
-    print(f'tip ratio = {ratio:.4} €/h')

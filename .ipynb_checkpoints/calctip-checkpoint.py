@@ -200,7 +200,7 @@ def tmode(value, date):
     print('-' *  32)
 
     
-    t = f'total hours = {sum(hour):} h'
+    t = 'total hours =' + '{0:.2f}'.format(sum(hour)) + 'h'
     print(t)
     
     t = f'tip ratio = {ratio:.4} €/h'

@@ -21,7 +21,7 @@ def internet_on():
 
 def PandR(l, text):
     print(text)
-    l.append(text)    
+    l.append(text + '\n')    
     
 def sorterkey(line):
     year = line[7:11]

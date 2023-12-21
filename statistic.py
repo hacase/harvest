@@ -10,26 +10,12 @@ import subprocess
 import json
 
 warnings.filterwarnings("ignore", category=RuntimeWarning)
-
-def print_hit(files, i):
-    if i > 1:
-        number = input('-> select wich file: ')
-        hit = files[int(number) - 1]
-        print('open file', hit, '\n')
-
-    else:
-        hit = files[0]
-        print('open file', hit, '\n')
-
-    data = np.genfromtxt(hit, dtype='str', delimiter='\n')
-    for t in data:
-        print(t)
     
 def sorterkey(line):
-    year = line[6:10]
-    month = line[11:13]
-    day = line[14:16]
-    time = line[21:26].replace('-', '')
+    year = line[7:11]
+    month = line[12:14]
+    day = line[15:17]
+    time = line[22:27].replace('-', '')
     
     return (int(year), int(month), int(day), int(time))
 
@@ -42,17 +28,16 @@ def ticker(tick, temp):
     return major, minor
 
 def statistic():
-    path = './txt/'
+    path = './json/'
 
     flag = True
     files = []
     i = 0
     for dirpath, dirnames, filenames in os.walk(path):
         for f in filenames:
-            if 'ipynb_checkpoints' not in dirpath:
-                if 'LOG' not in f:
-                    files.append(os.path.join(dirpath, f))
-                    flag = False
+            if not any(s in f for s in ['LOG', 'checkpoint', 'DS']):
+                files.append(os.path.join(dirpath, f))
+                flag = False
 
     files = sorted(files, key=sorterkey)
 

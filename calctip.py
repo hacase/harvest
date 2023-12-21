@@ -207,10 +207,10 @@ def tmode(value, date):
     
     t = f'tip ratio = {ratio:.4} €/h'
     print(t)
-    text += '"ratio": "' + f'{ratio:.4}, "'
-    text += '"sum": "' + '{0:.2f}'.format(tipsum) + ', "'
-    text += '"bar": "' + str(bar) + ', "'
-    text += '"card": "' + str(card) + ', "'
+    text += '"ratio": "' + f'{ratio:.4}", '
+    text += '"sum": "' + '{0:.2f}'.format(tipsum) + '", '
+    text += '"bar": "' + str(bar) + '", '
+    text += '"card": "' + str(card) + '", '
     
     if internet_on():
         holidayname = ff.check(date, name=1)

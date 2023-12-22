@@ -8,6 +8,7 @@ import sys
 import os
 from datetime import datetime as dt
 from retry import retry
+import json
 
 def abort(var, newdata=None, path=None):
     var = str(var).lower()
@@ -22,7 +23,7 @@ def abort(var, newdata=None, path=None):
     elif var in ldone:
         print('done repairing.\n\n')
         
-        newpath = path[:-4] + '-LOG.txt'
+        newpath = path[:-5] + '-LOG.txt'
         os.rename(path, newpath)
         
         text = list()
@@ -72,33 +73,15 @@ def abort(var, newdata=None, path=None):
     else:
         return var
     
-def rewrite_table(newdata, hour, tipsum, bar, card, holiday):
+def rewrite_table(jData, tipsum, bar, card):
     roundtip, tipsum, real, realtip, ratio = fcalctip(hour, float(tipsum))
             
-    for i in range(len(hour)):
-        t = f'{i+1}"{" " * (4 - len(str(i+1)))}{hour[i]:4.2f}h  -> {roundtip[i]:5.1f}€  ;  {realtip[i]:6.3f}'
-
-        newdata[2+i] = np.char.replace(newdata[2+i], newdata[2+i], t)
-        
-    newdata[-7] = np.char.replace(newdata[-7], newdata[-7], '-' *  32)
-    
-    t = f'total hours = {sum(hour):} h'
-    newdata[-6] = np.char.replace(newdata[-6], newdata[-6], t)
-    
-    t = f'tip ratio = {ratio:.4} €/h'
-    newdata[-5] = np.char.replace(newdata[-5], newdata[-5], t)
-    
-    t = 'sum = ' + str(tipsum)
-    newdata[-4] = np.char.replace(newdata[-4], newdata[-4], t)
-    
-    t = 'bar = ' + str(bar)
-    newdata[-3] = np.char.replace(newdata[-3], newdata[-3], t)
-    
-    t = 'card = ' + str(card)
-    newdata[-2] = np.char.replace(newdata[-2], newdata[-2], t)
-                       
-    t = 'holiday = ' + holiday
-    newdata[-1] = np.char.replace(newdata[-1], newdata[-1], t)
+    jData['bar'] = str(bar)
+    jData['card'] = str(card)
+    jData['tip'] = roundtip
+    jData['sum'] = '{0:.2f}'.format(tipsum)
+    jData['tip_exact'] = realtip
+    jData['ratio'] = f'{ratio:.4}'
 
 
 @retry((ValueError), delay=0)
@@ -106,15 +89,18 @@ def repair():
     hit = report.report(repair=True)
     print('')
     
-    newdata = np.genfromtxt(hit, dtype='str', delimiter='\n')
+    f = open(hit)
+    jData = json.loads(f.read())
     
-    tipsum = newdata[-4][6:]
-    bar = newdata[-3][6:]
-    card = newdata[-2][7:]
-    holiday = newdata[-1][10:]
+    tipsum = float(jData['sum'])
+    bar = jData['bar']
+    card = jData['card']
+    holiday = jData['holiday']
     
     
-    print(newdata[0])
+    date, time = jData['timestamp'].split('-')
+    day = dt.strptime(date, "%d.%m.%Y").strftime("%A")
+    print(date+',', day+',', 'time:', time)
     date = abort(input('change date: '))
     
     if date.count('.') == 2:
@@ -130,11 +116,10 @@ def repair():
             print('\ninvalid date\n')
             raise ValueError
         
-        oldtime = newdata[0][-5:]
-        newdata = np.char.replace(newdata, newdata[0], date.strftime("%d.%m.%Y, %A, time: ") + oldtime)
+        jData['timestamp'] = date.strftime("%d.%m.%Y-") + time
         
         print('holiday =', ff.check(date, name=1))
-        newdata[-1] = 'holiday = ' + ff.check(date, name=1)
+        jData['holiday'] = ff.check(date, name=1)
         
         print(' --> changed data')
         
@@ -142,16 +127,16 @@ def repair():
     print('')        
         
         
-    time = abort(input('change time: '), newdata=newdata, path=hit)
+    newtime = abort(input('change time: '), newdata=jData, path=hit)
     
-    if time.count(':') == 1:
+    if newtime.count(':') == 1:
         try:
-            time = dt.strptime(time, "%H:%M")
+            newtime = dt.strptime(newtime, "%H:%M")
         except ValueError:
             print('\ninvalid time\n')
             raise ValueError
         
-        newdata = np.char.replace(newdata, newdata[0][-5:], time.strftime("%H:%M"))
+        newdata = np.char.replace(jData['timestamp'], time, newtime.strftime("%H:%M"))
                            
         print(' --> changed data')
         
@@ -159,10 +144,10 @@ def repair():
     print('')
     
     
-    print(newdata[-4])
-    print(newdata[-3], ';', newdata[-2])
+    print(f'sum = {float(jData["bar"])+float(jData["card"]):.2f} €')
+    print(f'bar = {jData["bar"]} €', f'card = {jData["card"]} €')
     
-    value = abort(input('change tip: '), newdata=newdata, path=hit).replace(',', '.')
+    value = abort(input('change tip: '), newdata=jData, path=hit).replace(',', '.')
     
     if value:
         try:
@@ -177,12 +162,10 @@ def repair():
             else:
                 tipsum = float(value)
                 
-            hour = []
-            for i in newdata[2:-7]:
-                hour.append(float(i[5:9]))
+            hour = jData['hour']
                 
-            rewrite_table(newdata, hour, tipsum, bar, card, holiday)
-                
+            jData = rewrite_table(jData, tipsum, bar, card)
+                            
             print(' --> changed data')
         
         except ValueError:
@@ -193,16 +176,10 @@ def repair():
     print('')
     
             
-    abort(input('change hour? '), newdata=newdata, path=hit)
+    abort(input('change hour? '), newdata=jData, path=hit)
         
-    hour = []
-    for i in newdata[2:-7]:
-        hour.append(float(i[5:9]))
-        
-    i = 0
-    for member in range(len(newdata[2:-7])):
-        i += 1
-        print(newdata[2:-7][member])
+    for i in range(len(jData['hour'])):
+        print(f'{i+1:2}.: {jData['hour'][i]:2.2}h')
         value = abort(input('change hour: '))
 
         if value != '':
@@ -212,7 +189,7 @@ def repair():
                 print('\ninvalid hour\n')
                 raise ValueError
 
-            hour[member] = value
+            jData['hour'][i] = value
 
     for member in range(i, 100):
         print(f'{i+1}"{" " * (4 - len(str(i+1)))}* empty *')
@@ -232,13 +209,10 @@ def repair():
                 print('\ninvalid hour\n')
                 raise ValueError
 
-            hour.append(value)
-            
-    added = i - len(newdata[2:-7]) - 1
-    newdata = np.insert(newdata, -8, [''] * added)
-        
+            jData['hour'].append(value)
+                   
     
-    rewrite_table(newdata, hour, tipsum, bar, card, holiday)
+    jData = rewrite_table(jData, tipsum, bar, card)
 
     print(' --> changed data\n')
-    abort('done', newdata=newdata, path=hit)
+    abort('done', newdata=jData, path=hit)

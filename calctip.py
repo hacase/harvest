@@ -132,8 +132,8 @@ def tmode(value, date):
     hour = []
     i = 2
     count = 1
-    bar = None
-    card = None
+    bar = 'false'
+    card = 'false'
     
     if ' ' in value:
         thour, times = value.split(' ', 1)

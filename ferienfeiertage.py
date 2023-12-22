@@ -70,7 +70,6 @@ def rewrite():
 
                 f = open(file_path)
                 jData = json.loads(f.read())
-                print(jData['holiday'])
 
                 if jData['holiday'] == 'offline':
                     flag = True

@@ -55,13 +55,21 @@ def internet_on():
 
 def git_update(message):
     if internet_on():
+        text = "git pull --quiet\necho sending data\ngit add .\ngit commit --quiet -m "
+        text += message + "\ngit push --quiet\necho sent data"
+        
+        with open('./update_tip.sh', 'w+') as f:
+            f.writelines(text)
         subprocess.call(['sh', './update_tip.sh'])
         
     else:
-        text = "git add .\ngit commit --quiet -m" + message + "\ngit push --quiet\n"
+        text = """
+        git add .\n
+        git commit --quiet -m 'delayed update tip data'\n
+        git push --quiet\n"""
 
         with open('./delayed_update_tip.sh', 'w+') as f:
-                f.writelines(text)
+            f.writelines(text)
                 
         print('no internet connection detected\ndata stored on device')
         

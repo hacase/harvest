@@ -53,15 +53,12 @@ def internet_on():
     except request.URLError as err: 
         return False
 
-def git_update():
+def git_update(message):
     if internet_on():
         subprocess.call(['sh', './update_tip.sh'])
         
     else:
-        text = """
-        git add .\n
-        git commit --quiet -m 'delayed update tip data'\n
-        git push --quiet\n"""
+        text = "git add .\ngit commit --quiet -m" + message + "\ngit push --quiet\n"
 
         with open('./delayed_update_tip.sh', 'w+') as f:
                 f.writelines(text)
@@ -213,7 +210,7 @@ def tmode(value, date):
     if internet_on():
         holidayname = ff.check(date, name=1)
     else:
-        holidayname = False
+        holidayname = 'offline'
     t = 'holiday = ' + holidayname + '\n'
     print(t)
     text += '"holiday": ' + '"' + holidayname + '"}'
@@ -229,4 +226,11 @@ def tmode(value, date):
         f.writelines(text)
     
     print('')
-    git_update()
+    git_update("'update data'")
+    
+    print('checking offline holidays')
+    if ff.rewrite():
+        print('rewriting done.')
+    else:
+        print('nothing to rewrite')
+    

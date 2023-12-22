@@ -5,7 +5,7 @@ import os
 from datetime import datetime as dt
 import calendar
 import warnings
-from calctip import abort
+from calctip import abort, git_update
 import subprocess
 import json
 from urllib import request
@@ -118,7 +118,7 @@ def statistic():
     line = ' '*6 + 'total' + ' '*6 + 'ratio' + ' '*8 + 'timestamp'
     PandR(text_README, line)
     line = '-'*3 + '+' + '-'*9 + '+' + '-'*10 + '+' + '-'*18
-    PandR(text_README, line)
+    print(line)
 
     top = sorted(zip(total, ratio, date, time, holiday), reverse=True)[:3]
     for i in range(len(top)):
@@ -134,7 +134,7 @@ def statistic():
     line = ' '*6 + 'ratio' + ' '*6 + 'total' + ' '*8 + 'timestamp'
     PandR(text_README, line)
     line = '-'*3 + '+' + '-'*9 + '+' + '-'*10 + '+' + '-'*18
-    PandR(text_README, line)
+    print(line)
 
     top = sorted(zip(ratio, total, date, time, holiday), reverse=True)[:3]
     for i in range(len(top)):
@@ -199,7 +199,7 @@ def statistic():
     PandR(text_README, '')
 
     print('frequency')
-    text_README.append('### frequency  \n')
+    text_README.append('### Frequency  \n')
     PandR(text_README, 'total: '+str(len(weekday))+', AM: '+str((np.array(time) == 'AM').sum())+', PM: '+str((np.array(time) == 'PM').sum()))
 
     def chunker(part, full):
@@ -362,5 +362,4 @@ def statistic():
         f.writelines(text_README)
 
         
-    if internet_on():
-        subprocess.call(['sh', './update_tip.sh'])
+    git_update("'update plot'")

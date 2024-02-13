@@ -128,6 +128,52 @@ def fcalctip(hour, tipsum):
     realtip = [int(i * 1000) / 1000. for i in realtip]
     
     return roundtip, tipsum, real, realtip, ratio
+
+def print_table(hour, roundtip, realtip, ratio, tipsum, bar, card, date, text=None):        
+        
+    print('-' *  32)
+    
+    t_hour = '"hour": ['
+    t_tip = '"tip": ['
+    t_exact = '"tip_exact": ['
+
+    for i in range(len(hour)):
+        t = f'{i+1}"{" " * (4 - len(str(i+1)))}{hour[i]:4.2f}h  -> {roundtip[i]:5.1f}€  ;  {realtip[i]:6.3f}'
+        print(t)
+        
+        t_hour += f'{hour[i]:.2f}, '
+        t_tip += f'{roundtip[i]:.1f}, '
+        t_exact += f'{realtip[i]:.3f}, '
+        
+    t_hour = t_hour[:-2] + '], '
+    t_tip = t_tip[:-2] + '], '
+    t_exact = t_exact[:-2] + '], '
+    
+    text += t_hour + t_tip + t_exact
+
+    print('-' *  32)
+
+    
+    t = 'total hours =' + '{0:.2f}'.format(sum(hour)) + 'h'
+    print(t)
+    
+    t = f'tip ratio = {ratio:.4} €/h'
+    print(t)
+    text += '"ratio": ' + f'{ratio:.4}, '
+    text += '"sum": ' + '{0:.2f}'.format(tipsum) + ', '
+    text += '"bar": ' + str(bar) + ', '
+    text += '"card": ' + str(card) + ', '
+    
+    if is_connected():
+        holidayname = ff.check(date, name=1)
+    else:
+        holidayname = 'offline'
+    t = 'holiday : ' + holidayname + '\n'
+    print(t)
+    text += '"holiday": ' + '"' + holidayname + '"}'
+    
+    if text:
+        return text
     
 def tmode(value, date):
     hour = []
@@ -181,48 +227,8 @@ def tmode(value, date):
     
     today = date.strftime("%d.%m.%Y, %A, time: %H:%M")
     text = '{"timestamp": "' + date.strftime('%d.%m.%Y-%H:%M", ')
-            
-        
-    print('-' *  32)
     
-    t_hour = '"hour": ['
-    t_tip = '"tip": ['
-    t_exact = '"tip_exact": ['
-
-    for i in range(len(hour)):
-        t = f'{i+1}"{" " * (4 - len(str(i+1)))}{hour[i]:4.2f}h  -> {roundtip[i]:5.1f}€  ;  {realtip[i]:6.3f}'
-        print(t)
-        
-        t_hour += f'{hour[i]:.2f}, '
-        t_tip += f'{roundtip[i]:.1f}, '
-        t_exact += f'{realtip[i]:.3f}, '
-        
-    t_hour = t_hour[:-2] + '], '
-    t_tip = t_tip[:-2] + '], '
-    t_exact = t_exact[:-2] + '], '
-    
-    text += t_hour + t_tip + t_exact
-
-    print('-' *  32)
-
-    
-    t = 'total hours =' + '{0:.2f}'.format(sum(hour)) + 'h'
-    print(t)
-    
-    t = f'tip ratio = {ratio:.4} €/h'
-    print(t)
-    text += '"ratio": ' + f'{ratio:.4}, '
-    text += '"sum": ' + '{0:.2f}'.format(tipsum) + ', '
-    text += '"bar": ' + str(bar) + ', '
-    text += '"card": ' + str(card) + ', '
-    
-    if is_connected():
-        holidayname = ff.check(date, name=1)
-    else:
-        holidayname = 'offline'
-    t = 'holiday : ' + holidayname + '\n'
-    print(t)
-    text += '"holiday": ' + '"' + holidayname + '"}'
+    text = print_table(hour, roundtip, realtip, ratio, tipsum, bar, card, date, text)
     
     git_delayed()
     

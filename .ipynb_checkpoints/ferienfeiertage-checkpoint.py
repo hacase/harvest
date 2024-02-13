@@ -14,6 +14,9 @@ configuration = ft.Configuration(
 )
 
 def check(date, name=None):
+    flag = "false"
+    returnname = "false"
+        
     try:
         year = int(date.strftime('%Y'))
 
@@ -37,18 +40,15 @@ def check(date, name=None):
                 print("Exception when calling DefaultApi->get_feiertage: %s\n" % e)
 
 
-        flag = False
-        returnname = 'False'
-
         for i in ferien:
             if i[1].replace(tzinfo=None) <= date <= i[2].replace(tzinfo=None):
                 returnname, _ = i[0].split(' ', 1)
-                flag = True
+                flag = "true"
 
         for i in feiertage:
             if date.strftime('%d%m%Y') == i[1].strftime('%d%m%Y'):
                 returnname = i[0]
-                flag = True
+                flag = "true"
                 
     except:
         returnname = 'offline'

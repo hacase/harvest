@@ -74,7 +74,7 @@ def abort(var, newdata=None, path=None):
         return var
     
 def rewrite_table(jData, tipsum, bar, card):
-    roundtip, tipsum, real, realtip, ratio = fcalctip(hour, float(tipsum))
+    roundtip, tipsum, real, realtip, ratio = fcalctip(jData['hour'], float(tipsum))
             
     jData['bar'] = str(bar)
     jData['card'] = str(card)
@@ -179,7 +179,7 @@ def repair():
     abort(input('change hour? '), newdata=jData, path=hit)
         
     for i in range(len(jData['hour'])):
-        print(f'{i+1:2}.: {jData['hour'][i]:2.2}h')
+        print(f'{i+1:2}.: {jData["hour"][i]:2.2}h')
         value = abort(input('change hour: '))
 
         if value != '':

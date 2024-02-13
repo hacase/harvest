@@ -139,7 +139,7 @@ def tmode(value, date):
         thour, times = value.split(' ', 1)
         count += int(times) - 1
         for j in range(int(times)):
-            hour.append(float(str(thour)))
+            hour.append(float(str(thour).replace(',', '.')))
 
     else:
         hour.append(float(str(value)))
@@ -219,7 +219,7 @@ def tmode(value, date):
         holidayname = ff.check(date, name=1)
     else:
         holidayname = 'offline'
-    t = 'holiday = ' + holidayname + '\n'
+    t = 'holiday : ' + holidayname + '\n'
     print(t)
     text += '"holiday": ' + '"' + holidayname + '"}'
     

@@ -55,7 +55,7 @@ def is_connected():
     return False
 
 def git_update(message):
-    if internet_on():
+    if is_connected():
         text = "git pull --quiet\necho sending data\ngit add .\ngit commit --quiet -m "
         text += message + "\ngit push --quiet\necho sent data"
         

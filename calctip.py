@@ -6,7 +6,7 @@ from datetime import datetime as dt
 import texts as tx
 import ferienfeiertage as ff
 import subprocess
-from urllib import request
+import socket
 
 def opening():
     string = """     H opefully
@@ -46,12 +46,13 @@ def abort(var):
     else:
         return var
 
-def internet_on():
+def is_connected():
     try:
-        request.urlopen('https://github.com/hacase/calctip', timeout=1)
+        socket.create_connection(("1.1.1.1", 53))
         return True
-    except request.URLError as err: 
-        return False
+    except OSError:
+        pass
+    return False
 
 def git_update(message):
     if internet_on():
@@ -74,7 +75,7 @@ def git_update(message):
         print('no internet connection detected\ndata stored on device')
         
 def git_delayed():
-    if not internet_on():
+    if not is_connected():
         print('\nno internet connection\nunsaved data may be still on device\n')
         return 0
     
@@ -215,7 +216,7 @@ def tmode(value, date):
     text += '"bar": ' + str(bar) + ', '
     text += '"card": ' + str(card) + ', '
     
-    if internet_on():
+    if is_connected():
         holidayname = ff.check(date, name=1)
     else:
         holidayname = 'offline'

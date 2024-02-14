@@ -120,8 +120,8 @@ def statistic():
     text_README.append('### Top three: total  \n')
     line = ' '*6 + 'total' + ' '*6 + 'ratio' + ' '*8 + 'timestamp'
     print(line)
-    text_README.append('&nbsp;|total|ratio|timestamp')
-    text_README.append('---|---|---|---')
+    text_README.append('&nbsp;|total|ratio|timestamp\n')
+    text_README.append('---|---|---|---\n')
     line = '-'*3 + '+' + '-'*9 + '+' + '-'*10 + '+' + '-'*18
     print(line)
 
@@ -129,9 +129,9 @@ def statistic():
     for i in range(len(top)):
         wkday = dt.strptime(top[i][2], '%d.%m.%Y').strftime('%a')
         print(f'{i+1}":  {float(top[i][0]):6.2f}€   {float(top[i][1]):5.3f}€/h   {top[i][2]:10} {wkday} {top[i][3]}')
-        text_README.append(f'{i+1}":|{float(top[i][0]):6.2f}€|{float(top[i][1]):5.3f}€/h|{top[i][2]:10} {wkday} {top[i][3]}')
+        text_README.append(f'{i+1}":|{float(top[i][0]):6.2f}€|{float(top[i][1]):5.3f}€/h|{top[i][2]:10} {wkday} {top[i][3]}\n')
         print(f'{" "*5}holiday -> {top[i][4].capitalize()}')
-        text_README.append(f'&nbsp;|&nbsp;|&nbsp;|holiday -> {top[i][4].capitalize()}')
+        text_README.append(f'&nbsp;|&nbsp;|&nbsp;|holiday -> {top[i][4].capitalize()}\n')
 
     text_README = PandR(text_README, '')
     text_README = PandR(text_README, '')

@@ -124,6 +124,7 @@ def abort(var, newdata=None, path=None):
         dirname = date.strftime("./json/%Y/%m/")
         newpath = dirname + '/' + timestamp +'.json'
 
+        print(jnewdata)
         os.makedirs(os.path.dirname(dirname), exist_ok=True)
         with open(newpath, 'w+') as f:
             json.dump(jnewdata, f)
@@ -140,9 +141,9 @@ def rewrite_table(jData, tipsum, bar, card):
             
     jData['bar'] = str(bar)
     jData['card'] = str(card)
-    jData['tip'] = roundtip
+    jData['tip'] = str(roundtip)
     jData['sum'] = '{0:.2f}'.format(tipsum)
-    jData['tip_exact'] = realtip
+    jData['tip_exact'] = str(realtip)
     jData['ratio'] = f'{ratio:.4}'
     
     return jData

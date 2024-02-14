@@ -128,7 +128,7 @@ def print_hit(files, i, repair=None):
         hit = files[0]
         print('open file', hit, '\n')
 
-    if 'LOG' in hit:
+    if any(s in hit for s in ['LOG', 'edited']):
         data = np.genfromtxt(hit, dtype='str', delimiter='\n')
         for t in data:
             print(t)

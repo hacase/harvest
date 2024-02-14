@@ -39,7 +39,7 @@ def print_jsontable(jData, text=None):
     text.append(t)
     text.append('\n')
 
-    t = f'sum = {jData["sum"]:.2f} €'
+    t = f'sum = {float(jData["sum"]):.2f} €'
     text.append(t)
     text.append('\n')
 
@@ -92,8 +92,6 @@ def abort(var, newdata=None, path=None):
         os.makedirs(os.path.dirname(dirname), exist_ok=True)
         with open(newpath, 'w+') as f:
             f.writelines(text)
-            
-        os.remove(path)
         
         text = list()
         
@@ -125,12 +123,14 @@ def abort(var, newdata=None, path=None):
         timestamp = date.strftime("%d-%a-%H-%M")
         dirname = date.strftime("./json/%Y/%m/")
         newpath = dirname + '/' + timestamp +'.json'
+        print(json.dumps(jnewdata))
+        print(type(jnewdata))
 
         os.makedirs(os.path.dirname(dirname), exist_ok=True)
         with open(newpath, 'w+') as f:
             f.writelines(json.dumps(jnewdata))
         
-        
+        os.remove(path)
         print('done repairing.\n\n')
         sys.exit()
         
@@ -150,7 +150,7 @@ def rewrite_table(jData, tipsum, bar, card):
     return jData
 
 
-@retry((ValueError), delay=0)
+#@retry((ValueError), delay=0)
 def repair():
     hit = report.report(repair=True)
     print('')
@@ -210,7 +210,7 @@ def repair():
     print('')
     
     
-    print(f'sum = {float(jData["bar"])+float(jData["card"]):.2f} €')
+    print(f'sum = {float(jData["sum"]):.2f} €')
     print(f'bar = {jData["bar"]} €', f'card = {jData["card"]} €')
     
     value = abort(input('change tip: '), newdata=jData, path=hit).replace(',', '.')

@@ -248,4 +248,9 @@ def tmode(value, date):
         print('rewriting done.')
     else:
         print('nothing to rewrite')
+        
+        
+    if input('show statistics? [Y/]: ') == 'Y':
+        import statistic
+        statistic.statistic()
     

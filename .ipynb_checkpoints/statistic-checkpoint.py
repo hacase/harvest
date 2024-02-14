@@ -51,7 +51,7 @@ def statistic():
     i = 0
     for dirpath, dirnames, filenames in os.walk(path):
         for f in filenames:
-            if not any(s in f for s in ['LOG', 'checkpoint', 'DS']):
+            if not any(s in f for s in ['LOG', 'checkpoint', 'DS', 'edited']):
                 files.append(os.path.join(dirpath, f))
                 flag = False
 

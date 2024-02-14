@@ -65,7 +65,7 @@ def rewrite():
     root_dir = './json/'
     for root, dirs, files in os.walk(root_dir, onerror=None):
         for filename in files:
-            if not any(s in filename for s in ['LOG', 'checkpoint', 'DS']):
+            if not any(s in filename for s in ['LOG', 'checkpoint', 'DS', 'edited']):
                 file_path = os.path.join(root, filename)
 
                 f = open(file_path)

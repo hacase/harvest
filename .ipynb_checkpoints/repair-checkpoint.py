@@ -10,6 +10,54 @@ from datetime import datetime as dt
 from retry import retry
 import json
 
+def print_jsontable(jData, text=None):
+    date, time = jData['timestamp'].split('-')
+    day = dt.strptime(date, "%d.%m.%Y").strftime("%A")
+    text.append(date+', '+day+', time: '+time)
+    text.append('\n')
+
+    text.append('-' *  32)
+    text.append('\n')
+
+    hour = jData['hour']
+    roundtip = jData['tip']
+    realtip = jData['tip_exact']
+
+    for i in range(len(hour)):
+        t = f'{i+1}"{" " * (4 - len(str(i+1)))}{hour[i]:4.2f}h  -> {roundtip[i]:5.1f}€  ;  {realtip[i]:6.3f}'
+        text.append(t)
+        text.append('\n')
+
+    text.append('-' *  32)
+    text.append('\n')
+
+    t = 'total hours =' + '{0:.2f}'.format(sum(hour)) + 'h'
+    text.append(t)
+    text.append('\n')
+
+    t = f'tip ratio = {jData["ratio"]} €/h'
+    text.append(t)
+    text.append('\n')
+
+    t = f'sum = {jData["sum"]:.2f} €'
+    text.append(t)
+    text.append('\n')
+
+    t = f'bar = {jData["bar"]} €'
+    text.append(t)
+    text.append('\n')
+
+    t = f'card = {jData["card"]} €'
+    text.append(t)
+    text.append('\n')
+
+    t = 'holiday = ' + jData['holiday'] + '\n'
+    text.append(t)
+    text.append('\n')
+    
+    if text:
+        return text
+
 def abort(var, newdata=None, path=None):
     var = str(var).lower()
     
@@ -20,54 +68,70 @@ def abort(var, newdata=None, path=None):
         print('exited session.')
         sys.exit()
         
-    elif var in ldone:
-        print('done repairing.\n\n')
+    elif var in ldone:                
+        f = open(path)
+        jData = json.loads(f.read())
         
-        newpath = path[:-5] + '-LOG.txt'
-        os.rename(path, newpath)
+        jnewdata = newdata
+        
+        text = list()
+        text.append('-< edit ')
+        text.append(dt.today().strftime("%d.%m.%Y, %A, time: %H:%M"))
+        text.append(' to ')
+        newdate = dt.strptime(jnewdata['timestamp'], '%d.%m.%Y-%H:%M')
+        text.append(newdate.strftime("%d.%m.%Y, %A, time: %H:%M"))
+        text.append(' >-')
+        text.append('\n')
+        text = print_jsontable(jData, text = text) 
+        
+        date = dt.strptime(jData['timestamp'], '%d.%m.%Y-%H:%M')
+        timestamp = date.strftime("%d-%a-%H-%M")
+        dirname = date.strftime("./json/%Y/%m/")
+        newpath = dirname + '/' + timestamp +'-edited.txt'
+        
+        os.makedirs(os.path.dirname(dirname), exist_ok=True)
+        with open(newpath, 'w+') as f:
+            f.writelines(text)
+            
+        os.remove(path)
         
         text = list()
         
+        text = print_jsontable(jData, text = text) 
         text.append('\n')
         text.append('\n')
         text.append('-< edit ')
-        text.append(dt.today().strftime("%d.%m.%Y") + ', ' + dt.today().strftime("%A") + ', time: ' + dt.now().strftime("%H:%M"))
+        text.append(dt.today().strftime("%d.%m.%Y, %A, time: %H:%M"))
         text.append(' >-')
         text.append('\n')
         text.append('\n')
         text.append('\n')
+        text.append('\n')
         
-        for line in newdata:
-            text.append(line + '\n')
+        text = print_jsontable(jnewdata, text = text)
         
-        with open(newpath, "a") as f:
-            f.writelines(text)
-            
-        data = np.genfromtxt(newpath, dtype='str', delimiter='\n')
-        
-        for line in data:
-            if '-< edit' in line:
-                print('\n\n' + line + '\n\n')
-                
-            else:
-                print(line)
-            
-        date = dt.strptime(newdata[0], "%d.%m.%Y, %A, time: %H:%M")
-        
-        timestamp = date.strftime("%d") + '-' + date.strftime("%a") + '-' + date.strftime("%H-%M")
-        dirname = './txt/'+ date.strftime("%Y") + '/' + date.strftime("%m") + '/'
-        path = dirname + '/' + timestamp +'.txt'
+        date = dt.strptime(jnewdata['timestamp'], '%d.%m.%Y-%H:%M')
+        timestamp = date.strftime("%d-%a-%H-%M")
+        dirname = date.strftime("./json/%Y/%m/")
+        path = dirname + '/' + timestamp +'-LOG.txt'
         
         os.makedirs(os.path.dirname(dirname), exist_ok=True)
-        
-        text = list()
-        
-        for line in newdata:
-            text.append(line + '\n')
-            
         with open(path, 'w+') as f:
             f.writelines(text)
         
+        text = list()
+        
+        date = dt.strptime(jnewdata['timestamp'], '%d.%m.%Y-%H:%M')
+        timestamp = date.strftime("%d-%a-%H-%M")
+        dirname = date.strftime("./json/%Y/%m/")
+        newpath = dirname + '/' + timestamp +'.json'
+
+        os.makedirs(os.path.dirname(dirname), exist_ok=True)
+        with open(newpath, 'w+') as f:
+            f.writelines(json.dumps(jnewdata))
+        
+        
+        print('done repairing.\n\n')
         sys.exit()
         
     else:
@@ -82,6 +146,8 @@ def rewrite_table(jData, tipsum, bar, card):
     jData['sum'] = '{0:.2f}'.format(tipsum)
     jData['tip_exact'] = realtip
     jData['ratio'] = f'{ratio:.4}'
+    
+    return jData
 
 
 @retry((ValueError), delay=0)
@@ -126,7 +192,7 @@ def repair():
         
     print('')        
         
-        
+    print('time:', time)
     newtime = abort(input('change time: '), newdata=jData, path=hit)
     
     if newtime.count(':') == 1:
@@ -136,7 +202,7 @@ def repair():
             print('\ninvalid time\n')
             raise ValueError
         
-        newdata = np.char.replace(jData['timestamp'], time, newtime.strftime("%H:%M"))
+        jData['timestamp'] = jData['timestamp'].replace(time, newtime.strftime("%H:%M"))
                            
         print(' --> changed data')
         
@@ -177,6 +243,7 @@ def repair():
     
             
     abort(input('change hour? '), newdata=jData, path=hit)
+    print(jData['hour'])
         
     for i in range(len(jData['hour'])):
         print(f'{i+1:2}.: {jData["hour"][i]:2.2}h')

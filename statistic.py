@@ -115,18 +115,23 @@ def statistic():
     text_README = PandR(text_README, '')
     text_README = PandR(text_README, '')
 
+
     print('top three: total')
     text_README.append('### Top three: total  \n')
     line = ' '*6 + 'total' + ' '*6 + 'ratio' + ' '*8 + 'timestamp'
-    text_README = PandR(text_README, line)
+    print(line)
+    text_README.append('&nbsp;|total|ratio|timestamp')
+    text_README.append('---|---|---|---')
     line = '-'*3 + '+' + '-'*9 + '+' + '-'*10 + '+' + '-'*18
     print(line)
 
     top = sorted(zip(total, ratio, date, time, holiday), reverse=True)[:3]
     for i in range(len(top)):
         wkday = dt.strptime(top[i][2], '%d.%m.%Y').strftime('%a')
-        text_README = PandR(text_README, f'{i+1}":  {float(top[i][0]):6.2f}€   {float(top[i][1]):5.3f}€/h   {top[i][2]:10} {wkday} {top[i][3]}')
-        text_README = PandR(text_README, f'{" "*5}holiday -> {top[i][4].capitalize()}')
+        print(f'{i+1}":  {float(top[i][0]):6.2f}€   {float(top[i][1]):5.3f}€/h   {top[i][2]:10} {wkday} {top[i][3]}')
+        text_README.append(f'{i+1}":|{float(top[i][0]):6.2f}€|{float(top[i][1]):5.3f}€/h|{top[i][2]:10} {wkday} {top[i][3]}')
+        print(f'{" "*5}holiday -> {top[i][4].capitalize()}')
+        text_README.append(f'&nbsp;|&nbsp;|&nbsp;|holiday -> {top[i][4].capitalize()}')
 
     text_README = PandR(text_README, '')
     text_README = PandR(text_README, '')

@@ -8,14 +8,7 @@ card:   56.080 +/- 26.863
   
   
 ### Top three: total  
-      total      ratio        timestamp  
-1":  184.50€   6.099€/h   13.08.2023 Sun AM  
-     holiday -> False  
-2":  178.60€   7.216€/h   22.10.2023 Sun PM  
-     holiday -> False  
-3":  171.88€   6.807€/h   14.10.2023 Sat PM  
-     holiday -> Herbstferien  
-  
+&nbsp;|total|ratio|timestamp---|---|---|---1":|184.50€|6.099€/h|13.08.2023 Sun AM&nbsp;|&nbsp;|&nbsp;|holiday -> False2":|178.60€|7.216€/h|22.10.2023 Sun PM&nbsp;|&nbsp;|&nbsp;|holiday -> False3":|171.88€|6.807€/h|14.10.2023 Sat PM&nbsp;|&nbsp;|&nbsp;|holiday -> Herbstferien  
   
 ### Top three: ratio  
       ratio      total        timestamp  

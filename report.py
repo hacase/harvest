@@ -26,7 +26,7 @@ def listdays(month, year, repair=None):
     i = 0
     for dirpath, dirnames, filenames in os.walk(path):
         for f in filenames:
-            if 'checkpoint' not in f:
+            if not any(s in f for s in ['checkpoint', 'DS']):
                 files.append(os.path.join(dirpath, f))
                 flag = False
     
@@ -54,7 +54,7 @@ def listfiles(day, month, year, repair=None):
     i = 0
     for dirpath, dirnames, filenames in os.walk(path):
         for f in [f for f in filenames if day in f[:2]]:
-            if 'ipynb_checkpoints' not in dirpath:
+            if not any(s in f for s in ['checkpoint', 'DS']):
                 files.append(os.path.join(dirpath, f))
                 flag = False
                 
@@ -120,7 +120,7 @@ def report(repair=None):
         
 def print_hit(files, i, repair=None):
     if i > 1:
-        number = input('-> select wich file: ')
+        number = abort(input('-> select wich file: '))
         hit = files[int(number) - 1]
         print('open file', hit, '\n')
 

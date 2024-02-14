@@ -10,22 +10,22 @@ card:   56.080 +/- 26.863
 ### Top three: total  
 &nbsp;|total|ratio|timestamp
 ---|---|---|---
-1":|184.50€|6.099€/h|13.08.2023 Sun AM
+1"|184.50€|6.099€/h|13.08.2023 Sun AM
 &nbsp;|&nbsp;|&nbsp;|holiday -> False
-2":|178.60€|7.216€/h|22.10.2023 Sun PM
+2"|178.60€|7.216€/h|22.10.2023 Sun PM
 &nbsp;|&nbsp;|&nbsp;|holiday -> False
-3":|171.88€|6.807€/h|14.10.2023 Sat PM
+3"|171.88€|6.807€/h|14.10.2023 Sat PM
 &nbsp;|&nbsp;|&nbsp;|holiday -> Herbstferien
   
   
 ### Top three: ratio  
 &nbsp;|ratio|total|timestamp
 ---|---|---|---
-1":| 8.27€/h|140.530€|25.09.2023 Mon AM
+1"| 8.27€/h|140.530€|25.09.2023 Mon AM
 &nbsp;|&nbsp;|&nbsp;|holiday -> False
-2":| 7.55€/h|166.090€|19.11.2023 Sun PM
+2"| 7.55€/h|166.090€|19.11.2023 Sun PM
 &nbsp;|&nbsp;|&nbsp;|holiday -> False
-3":| 7.40€/h|140.580€|14.01.2024 Sun PM
+3"| 7.40€/h|140.580€|14.01.2024 Sun PM
 &nbsp;|&nbsp;|&nbsp;|holiday -> False
   
   

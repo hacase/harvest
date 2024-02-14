@@ -24,7 +24,7 @@ def print_jsontable(jData, text=None):
     realtip = jData['tip_exact']
 
     for i in range(len(hour)):
-        t = f'{i+1}"{" " * (4 - len(str(i+1)))}{hour[i]:4.2f}h  -> {roundtip[i]:5.1f}€  ;  {realtip[i]:6.3f}'
+        t = f'{i+1}"{" " * (4 - len(str(i+1)))}{float(hour[i]):4.2f}h  -> {float(roundtip[i]):5.1f}€  ;  {realtip[i]:6.3f}'
         text.append(t)
         text.append('\n')
 
@@ -93,6 +93,8 @@ def abort(var, newdata=None, path=None):
         with open(newpath, 'w+') as f:
             f.writelines(text)
         
+        os.remove(path)
+        
         text = list()
         
         text = print_jsontable(jData, text = text) 
@@ -124,12 +126,10 @@ def abort(var, newdata=None, path=None):
         dirname = date.strftime("./json/%Y/%m/")
         newpath = dirname + '/' + timestamp +'.json'
 
-        print(jnewdata)
         os.makedirs(os.path.dirname(dirname), exist_ok=True)
         with open(newpath, 'w+') as f:
             json.dump(jnewdata, f)
         
-        os.remove(path)
         print('done repairing.\n\n')
         sys.exit()
         
@@ -139,12 +139,19 @@ def abort(var, newdata=None, path=None):
 def rewrite_table(jData, tipsum, bar, card):
     roundtip, tipsum, real, realtip, ratio = fcalctip(jData['hour'], float(tipsum))
             
-    jData['bar'] = str(bar)
-    jData['card'] = str(card)
-    jData['tip'] = str(roundtip)
-    jData['sum'] = '{0:.2f}'.format(tipsum)
-    jData['tip_exact'] = str(realtip)
-    jData['ratio'] = f'{ratio:.4}'
+    jData['bar'] = float(bar)
+    jData['card'] = float(card)
+    jData['sum'] = float('{0:.2f}'.format(tipsum))
+    jData['ratio'] = float(f'{ratio:.4}')
+    
+    t_tip = []
+    t_exact = []
+    for i in range(len(jData['hour'])):
+        t_tip.append(float(f'{roundtip[i]:.1f}'))
+        t_exact.append(float(f'{realtip[i]:.3f}'))
+    
+    jData['tip'] = t_tip
+    jData['tip_exact'] = t_exact
     
     return jData
 

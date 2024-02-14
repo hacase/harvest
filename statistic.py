@@ -46,7 +46,7 @@ def statistic():
 
     text_README = list()
     text_README.append('# Statistic  \n')
-    text_README.append('Holiday: Holiday in Germany and Friday till Sunday  \n')
+    text_README.append('Holiday: Holiday in Germany NRW and Friday till Sunday  \n')
     
     flag = True
     files = []
@@ -149,7 +149,7 @@ def statistic():
     for i in range(len(top)):
         wkday = dt.strptime(top[i][2], '%d.%m.%Y').strftime('%a')
         print(f'{i+1}": {float(top[i][0]):5.2f}€/h   {float(top[i][1]):6.3f}€   {top[i][2]:10} {wkday} {top[i][3]}')
-        text_README.append(f'{i+1}":|{float(top[i][0]):5.2f}€/h|{float(top[i][1]):6.3f}€|{top[i][2]:10} {wkday} {top[i][3]}')
+        text_README.append(f'{i+1}":|{float(top[i][0]):5.2f}€/h|{float(top[i][1]):6.3f}€|{top[i][2]:10} {wkday} {top[i][3]}\n')
         print(f'{" "*5}holiday -> {top[i][4].capitalize()}')
         text_README.append(f'&nbsp;|&nbsp;|&nbsp;|holiday -> {top[i][4].capitalize()}\n')
 

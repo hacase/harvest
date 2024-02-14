@@ -123,12 +123,10 @@ def abort(var, newdata=None, path=None):
         timestamp = date.strftime("%d-%a-%H-%M")
         dirname = date.strftime("./json/%Y/%m/")
         newpath = dirname + '/' + timestamp +'.json'
-        print(json.dumps(jnewdata))
-        print(type(jnewdata))
 
         os.makedirs(os.path.dirname(dirname), exist_ok=True)
         with open(newpath, 'w+') as f:
-            f.writelines(json.dumps(jnewdata))
+            json.dump(jnewdata, f)
         
         os.remove(path)
         print('done repairing.\n\n')

@@ -250,7 +250,7 @@ def tmode(value, date):
         print('nothing to rewrite')
         
         
-    if input('show statistics? [Y/]: ') == 'Y':
+    if input('show statistics? [/n]: ') == 'n':
         import statistic
         statistic.statistic()
     

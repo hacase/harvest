@@ -5,6 +5,12 @@ from calctip import tmode, abort
 
 
 while True:
+    dummy = input('dummy? ')
+    if dummy:
+        dummy = True
+    else:
+        dummy = False
+        
     date = input('date: ')
     if date[-1] == '.':
         date = date[:-1]
@@ -44,4 +50,4 @@ while True:
 i = 1
 value = abort(input('{}{} = '.format(i, ". Hour")))
 
-tmode(value, timestamp)
+tmode(value, timestamp, dummy)

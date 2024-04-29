@@ -34,6 +34,7 @@ def routine():
         
     elif value == 'submit':
         import submit
+        submit.submit()
 
     elif 'dummy' in value:
         value_clean = value.replace('dummy ', '')

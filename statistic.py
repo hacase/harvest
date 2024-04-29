@@ -45,7 +45,7 @@ def statistic():
     path = './json/'
 
     text_README = list()
-    text_README.append(dt.today().strftime("%d.%m.%Y, %A, time: %H:%M") + '\n')
+    text_README.append('last update: ' + dt.today().strftime("%d.%m.%Y, %A, time: %H:%M") + '\n')
     text_README.append('# Statistic  \n')
     text_README.append('Holiday: Holiday in Germany NRW and Friday till Sunday  \n')
     

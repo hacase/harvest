@@ -1,4 +1,4 @@
-29.04.2024, Monday, time: 21:46
+last update: 29.04.2024, Monday, time: 22:06
 # Statistic  
 Holiday: Holiday in Germany NRW and Friday till Sunday  
 ## Overview  
@@ -22,11 +22,11 @@ card:   57.640 +/- 27.028
 ### Top three: ratio  
 &nbsp;|ratio|total|timestamp
 ---|---|---|---
-1":| 8.27€/h|140.530€|25.09.2023 Mon AM
+1":|8.266€/h|140.53€|25.09.2023 Mon AM
 &nbsp;|&nbsp;|&nbsp;|holiday -> False
-2":| 7.94€/h|142.930€|22.03.2024 Fri AM
+2":|7.941€/h|142.93€|22.03.2024 Fri AM
 &nbsp;|&nbsp;|&nbsp;|holiday -> False
-3":| 7.55€/h|166.090€|19.11.2023 Sun PM
+3":|7.550€/h|166.09€|19.11.2023 Sun PM
 &nbsp;|&nbsp;|&nbsp;|holiday -> False
   
   

@@ -53,7 +53,7 @@ def statistic():
     i = 0
     for dirpath, dirnames, filenames in os.walk(path):
         for f in filenames:
-            if not any(s in f for s in ['LOG', 'checkpoint', 'DS', 'edited']):
+            if not any(s in f for s in ['LOG', 'checkpoint', 'DS', 'edited', 'DUMMY']):
                 files.append(os.path.join(dirpath, f))
                 flag = False
 
@@ -129,7 +129,7 @@ def statistic():
     for i in range(len(top)):
         wkday = dt.strptime(top[i][2], '%d.%m.%Y').strftime('%a')
         print(f'{i+1}":  {float(top[i][0]):6.2f}€   {float(top[i][1]):5.3f}€/h   {top[i][2]:10} {wkday} {top[i][3]}')
-        text_README.append(f'{i+1}"|{float(top[i][0]):6.2f}€|{float(top[i][1]):5.3f}€/h|{top[i][2]:10} {wkday} {top[i][3]}\n')
+        text_README.append(f'{i+1}":|{float(top[i][0]):6.2f}€|{float(top[i][1]):5.3f}€/h|{top[i][2]:10} {wkday} {top[i][3]}\n')
         print(f'{" "*5}holiday -> {top[i][4].capitalize()}')
         text_README.append(f'&nbsp;|&nbsp;|&nbsp;|holiday -> {top[i][4].capitalize()}\n')
 
@@ -149,7 +149,7 @@ def statistic():
     for i in range(len(top)):
         wkday = dt.strptime(top[i][2], '%d.%m.%Y').strftime('%a')
         print(f'{i+1}": {float(top[i][0]):5.2f}€/h   {float(top[i][1]):6.3f}€   {top[i][2]:10} {wkday} {top[i][3]}')
-        text_README.append(f'{i+1}"|{float(top[i][0]):5.2f}€/h|{float(top[i][1]):6.3f}€|{top[i][2]:10} {wkday} {top[i][3]}\n')
+        text_README.append(f'{i+1}":|{float(top[i][0]):5.2f}€/h|{float(top[i][1]):6.3f}€|{top[i][2]:10} {wkday} {top[i][3]}\n')
         print(f'{" "*5}holiday -> {top[i][4].capitalize()}')
         text_README.append(f'&nbsp;|&nbsp;|&nbsp;|holiday -> {top[i][4].capitalize()}\n')
 

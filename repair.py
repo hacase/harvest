@@ -87,6 +87,10 @@ def abort(var, newdata=None, path=None):
         date = dt.strptime(jData['timestamp'], '%d.%m.%Y-%H:%M')
         timestamp = date.strftime("%d-%a-%H-%M")
         dirname = date.strftime("./json/%Y/%m/")
+
+        if 'dummy' in path.lower():
+            timestamp += '-DUMMY'
+            
         newpath = dirname + '/' + timestamp +'-edited.txt'
         
         os.makedirs(os.path.dirname(dirname), exist_ok=True)
@@ -113,6 +117,10 @@ def abort(var, newdata=None, path=None):
         date = dt.strptime(jnewdata['timestamp'], '%d.%m.%Y-%H:%M')
         timestamp = date.strftime("%d-%a-%H-%M")
         dirname = date.strftime("./json/%Y/%m/")
+
+        if 'dummy' in path.lower():
+            timestamp += '-DUMMY'
+            
         path = dirname + '/' + timestamp +'-LOG.txt'
         
         os.makedirs(os.path.dirname(dirname), exist_ok=True)
@@ -124,6 +132,10 @@ def abort(var, newdata=None, path=None):
         date = dt.strptime(jnewdata['timestamp'], '%d.%m.%Y-%H:%M')
         timestamp = date.strftime("%d-%a-%H-%M")
         dirname = date.strftime("./json/%Y/%m/")
+
+        if 'dummy' in path.lower():
+            timestamp += '-DUMMY'
+            
         newpath = dirname + '/' + timestamp +'.json'
 
         os.makedirs(os.path.dirname(dirname), exist_ok=True)

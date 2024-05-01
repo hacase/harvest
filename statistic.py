@@ -56,6 +56,7 @@ def statistic():
         for f in filenames:
             if not any(s in f for s in ['LOG', 'checkpoint', 'DS', 'edited', 'DUMMY']):
                 files.append(os.path.join(dirpath, f))
+                
                 flag = False
 
     files = sorted(files, key=sorterkey)
@@ -73,6 +74,8 @@ def statistic():
         try:
             f = open(file)
             jData = json.loads(f.read())
+            if float(jData['sum']) > 300:
+                print(f)
         except IndexError:
             print(file)
 
@@ -149,8 +152,8 @@ def statistic():
     top = sorted(zip(ratio, total, date, time, holiday), reverse=True)[:3]
     for i in range(len(top)):
         wkday = dt.strptime(top[i][2], '%d.%m.%Y').strftime('%a')
-        print(f'{i+1}": {float(top[i][0]):5.2f}€/h   {float(top[i][1]):6.3f}€   {top[i][2]:10} {wkday} {top[i][3]}')
-        text_README.append(f'{i+1}":|{float(top[i][0]):5.2f}€/h|{float(top[i][1]):6.3f}€|{top[i][2]:10} {wkday} {top[i][3]}\n')
+        print(f'{i+1}": {float(top[i][0]):5.3f}€/h   {float(top[i][1]):6.2f}€   {top[i][2]:10} {wkday} {top[i][3]}')
+        text_README.append(f'{i+1}":|{float(top[i][0]):5.3f}€/h|{float(top[i][1]):6.2f}€|{top[i][2]:10} {wkday} {top[i][3]}\n')
         print(f'{" "*5}holiday -> {top[i][4].capitalize()}')
         text_README.append(f'&nbsp;|&nbsp;|&nbsp;|holiday -> {top[i][4].capitalize()}\n')
 
@@ -291,7 +294,7 @@ def statistic():
     c = ['tab:blue', 'tab:orange', 'tab:green', 'tab:red', 'tab:purple', 'tab:brown', 'tab:pink']
 
 
-    fig, axs = plt.subplots(2, 2)
+    fig, axs = plt.subplots(2, 2, figsize=(8,10))
 
     axs[0, 0].set_title('time, total')
     axs[0, 0].boxplot(Ptime)
@@ -306,6 +309,7 @@ def statistic():
     axs[0, 0].set_yticks(minor, minor = True)
     for i in range(4):
         axs[0, 0].plot(np.ones(len(Ptime[i])) *i +1, Ptime[i], ms=4, marker='o', mew=0.5, ls="none", color=c[i])
+    axs[0, 0].violinplot(Ptime, positions=range(1, 5), showextrema=False)
 
 
     axs[1, 0].set_title('time, ratio')
@@ -321,6 +325,7 @@ def statistic():
     axs[1, 0].set_yticks(minor, minor = True)
     for i in range(4):
         axs[1, 0].plot(np.ones(len(Rtime[i])) *i +1, Rtime[i], ms=4, marker='o', mew=0.5, ls="none", color=c[i])
+    axs[1, 0].violinplot(Rtime, positions=range(1, 5), showextrema=False)
 
 
     axs[0, 1].set_title('weekday, total')
@@ -338,6 +343,7 @@ def statistic():
     #axs[0, 1].set_xticklabels(['', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], rotation=45)
     for i in range(7):
         axs[0, 1].plot(np.ones(len(Ptotal[i])) *i +1, Ptotal[i], ms=4, marker='o', mew=0.5, ls="none", color=c[i])
+    axs[0, 1].violinplot(Ptotal, positions=range(1, 8), showextrema=False)
 
 
     axs[1, 1].set_title('weekday, ratio')
@@ -353,11 +359,13 @@ def statistic():
     axs[1, 1].set_yticks(minor, minor = True)
     for i in range(7):
         axs[1, 1].plot(np.ones(len(Rtotal[i])) *i +1, Rtotal[i], ms=4, marker='o', mew=0.5, ls="none", color=c[i])
+    axs[1, 1].violinplot(Rtotal, positions=range(1, 8), showextrema=False)
 
 
     fig.tight_layout()
+    plt.savefig('harvest.png', dpi=300)
+    
     if render == 'android':
-        plt.savefig('harvest.png')
         subprocess.call('termux-open harvest.png', shell=True)
 
     else:

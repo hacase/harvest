@@ -1,4 +1,4 @@
-last update: 29.04.2024, Monday, time: 22:28
+last update: 01.05.2024, Wednesday, time: 21:33
 # Statistic  
 Holiday: Holiday in Germany NRW and Friday till Sunday  
 ## Overview  

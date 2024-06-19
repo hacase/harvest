@@ -38,9 +38,9 @@ def routine():
         import submit
         submit.submit()
 
-    elif 'dummy' in value:
-        value_clean = value.replace('dummy ', '')
-        tmode(value_clean, dt.today(), dummy=True)
+    elif 'half' in value:
+        value_clean = value.replace('half ', '')
+        tmode(value_clean, dt.today(), half_day=True)
         
     else:
         tmode(value, dt.today())

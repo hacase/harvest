@@ -238,8 +238,7 @@ def statistic():
 
     text_README = PandR(text_README, '')
     text_README = PandR(text_README, '')
-
-    render = abort(input('render plot? '))        
+        
 
     import matplotlib.pyplot as plt
 
@@ -367,21 +366,26 @@ def statistic():
     fig.tight_layout()
     plt.savefig('harvest.png', dpi=300)
     
-    if render == 'android':
-        subprocess.call('termux-open harvest.png', shell=True)
-
-    else:
-        plt.show()
-
-
-    print('render plots done.')
-    
     
     text_README.append('## Plot  \n')
     text_README.append('![Image](harvest.png)')
     
     with open('./README.md', 'w') as f:
         f.writelines(text_README)
+        
+
+    show_plot = abort(input('show plot? [y] '))
+    
+    if show_plot == 'android':
+        subprocess.call('termux-open harvest.png', shell=True)
+
+    elif show_plot == False:
+        pass
+    else:
+        plt.show()
+
+
+    print('presenting plots done.')
 
         
     git_update("'update plot'")

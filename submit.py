@@ -20,7 +20,7 @@ def abort(var):
 
 def submit():
     while True:
-        half_day = input('half day? [y]')
+        half_day = input('half day? [y] ')
         if half_day:
             half_day = True
         else:
@@ -52,7 +52,10 @@ def submit():
     
     while True:
         time = abort(input('time: '))
-        time = re.sub(r'[^\d]+','',time)
+        if time:
+            time = re.sub(r'[^\d]+','',time)
+        else:
+            time = '1900'
         
         try:
             time = time[:-2] +':'+ time[-2:]

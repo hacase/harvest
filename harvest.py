@@ -8,9 +8,11 @@ import sys
 import time
 import os
 from datetime import datetime as dt
-import calctip as ct
-import texts as tx
 from urllib import request
+
+from harvest_func import abort, tmode, opening
+import texts as tx
+
 
 
 def routine():
@@ -18,7 +20,7 @@ def routine():
     
     print(dt.today().strftime("%d.%m.%Y, %A, time: %H:%M"))
     
-    value = ct.abort(input('{}{} = '.format(i, ". Hour")))
+    value = abort(input('{}{} = '.format(i, ". Hour")))
     
     if value == 'report':
         import report
@@ -38,13 +40,13 @@ def routine():
 
     elif 'dummy' in value:
         value_clean = value.replace('dummy ', '')
-        ct.tmode(value_clean, dt.today(), dummy=True)
+        tmode(value_clean, dt.today(), dummy=True)
         
     else:
-        ct.tmode(value, dt.today())
+        tmode(value, dt.today())
 
 
-ct.opening()
+opening()
 
 tx.datereasteregg()
 

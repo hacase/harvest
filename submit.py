@@ -1,34 +1,25 @@
 import numpy
 import re
 from datetime import datetime as dt
-from calctip import tmode, abort
 import sys
 
+from harvest_func import abort, tmode
 
-def abort(var):
-    var = str(var).lower()
-    
-    labort = ['exit', 'stop']
-    
-    if var in labort:
-        print('exited session.')
-        sys.exit()
-        
-    else:
-        return var
 
 
 def submit():
     while True:
-        half_day = input('half day? [y] ')
+        half_day = input('half day? [/y]: ')
         if half_day:
             half_day = True
         else:
             half_day = False
-            
-        date = abort(input('date: '))
-        if date[-1] == '.':
-            date = date[:-1]
+
+        date = False
+        while date == False:
+            date = abort(input('date: '))
+            if date[-1] == '.':
+                date = date[:-1]
         
         try:
             if date.find('.') == -1:

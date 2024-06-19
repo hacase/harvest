@@ -3,10 +3,14 @@ import time
 import os
 import numpy as np
 import json
-import calctip as cp
 from datetime import datetime as dt
 from deutschland import feiertage as ft
 from deutschland.feiertage.api import default_api
+
+import harvest_func as ct
+
+
+
 # Defining the host is optional and defaults to https://feiertage-api.de/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ft.Configuration(
@@ -78,6 +82,6 @@ def rewrite():
                     with open(file_path, 'w') as ff:
                         json.dump(jData, ff)
 
-    cp.git_update("'rewrite offline holidays'")
+    ct.git_update("'rewrite offline holidays'")
     
     return flag

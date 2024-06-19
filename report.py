@@ -6,18 +6,10 @@ from datetime import datetime as dt
 import sys
 import json
 
-def abort(var):
-    var = str(var).lower()
-    
-    labort = ['exit', 'stop']
-    
-    if var in labort:
-        print('exited session.')
-        sys.exit()
-        
-    else:
-        return var
-    
+from harvest_func import abort
+
+
+
 def listdays(month, year, repair=None):
     path = './json/'+ year + '/' + month + '/'
 
@@ -46,6 +38,7 @@ def listdays(month, year, repair=None):
     if repair:
         return hit
 
+
 def listfiles(day, month, year, repair=None):
     path = './json/'+ year + '/' + month + '/'
 
@@ -73,13 +66,14 @@ def listfiles(day, month, year, repair=None):
         
     if repair:
         return hit
-    
+
+
 def sorterkey(line):
     day = line[15:17]
     time = line[22:27].replace('-', '')
     
     return (int(day), int(time))
-    
+
 
 def report(repair=None):
     date = abort(input('month or date: '))
@@ -117,7 +111,8 @@ def report(repair=None):
         hit = listdays(month, year, repair)
         if repair:
             return hit
-        
+
+
 def print_hit(files, i, repair=None):
     if i > 1:
         number = abort(input('-> select wich file: '))

@@ -5,11 +5,14 @@ import os
 from datetime import datetime as dt
 import calendar
 import warnings
-from calctip import abort, git_update
 import subprocess
 import json
 from urllib import request
 import socket
+
+from harvest_func import abort, git_update
+
+
 
 warnings.filterwarnings("ignore", category=RuntimeWarning)
 
@@ -374,7 +377,7 @@ def statistic():
         f.writelines(text_README)
         
 
-    show_plot = abort(input('show plot? [y] '))
+    show_plot = abort(input('show plot? [/y]: '))
     
     if show_plot == 'android':
         subprocess.call('termux-open harvest.png', shell=True)

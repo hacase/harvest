@@ -29,6 +29,7 @@ def opening():
     print('')
     slow_type(string)
 
+
 def abort(var):
     lower_var = str(var).lower()
     
@@ -45,6 +46,7 @@ def abort(var):
         
     else:
         return var
+
 
 def is_connected():
     try:
@@ -73,7 +75,8 @@ def git_update(message):
             f.writelines(text)
                 
         print('no internet connection detected\ndata stored on device')
-        
+
+
 def git_delayed():
     if not is_connected():
         print('\nno internet connection\nunsaved data may be still on device\n')
@@ -94,8 +97,8 @@ def git_delayed():
             print('no offline holidays.')
         
         print('\n')
-        
-        
+
+
 def adjust_tip(roundtip, tipsum, real):
     if np.around(sum(roundtip), decimals=3) > tipsum:
         print("tip adjusted correctly")
@@ -114,7 +117,8 @@ def adjust_tip(roundtip, tipsum, real):
             check += 1
             
     return roundtip, tipsum, real
-        
+
+
 def fcalctip(hour, tipsum):
     ratio = tipsum / sum(hour)
 
@@ -128,6 +132,7 @@ def fcalctip(hour, tipsum):
     realtip = [int(i * 1000) / 1000. for i in realtip]
     
     return roundtip, tipsum, real, realtip, ratio
+
 
 def print_table(hour, roundtip, realtip, ratio, tipsum, bar, card, date, text=None):        
         
@@ -174,8 +179,9 @@ def print_table(hour, roundtip, realtip, ratio, tipsum, bar, card, date, text=No
     
     if text:
         return text
-    
-def tmode(value, date, half_day=False):
+
+
+def tmode(value, date, dummy=False):
     hour = []
     i = 2
     count = 1
@@ -235,8 +241,8 @@ def tmode(value, date, half_day=False):
     timestamp = date.strftime("%d-%a-%H-%M")
     dirname = date.strftime("./json/%Y/%m/")
 
-    if not half_day:
-        timestamp += '-WHOLE'
+    if dummy:
+        timestamp += '-DUMMY'
         
     path = dirname + '/' + timestamp +'.json'
 

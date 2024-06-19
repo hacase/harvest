@@ -1,14 +1,15 @@
  #!/usr/bin/env python
     
 import numpy as np
-import report
-import ferienfeiertage as ff
-from calctip import fcalctip
 import sys
 import os
 from datetime import datetime as dt
 from retry import retry
 import json
+
+import report
+import ferienfeiertage as ff
+from harvest_func import fcalctip
 
 def print_jsontable(jData, text=None):
     date, time = jData['timestamp'].split('-')

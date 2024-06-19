@@ -88,8 +88,8 @@ def abort(var, newdata=None, path=None):
         timestamp = date.strftime("%d-%a-%H-%M")
         dirname = date.strftime("./json/%Y/%m/")
 
-        if 'dummy' in path.lower():
-            timestamp += '-DUMMY'
+        if 'whole' in path.lower():
+            timestamp += '-WHOLE'
             
         newpath = dirname + '/' + timestamp +'-edited.txt'
         
@@ -118,8 +118,8 @@ def abort(var, newdata=None, path=None):
         timestamp = date.strftime("%d-%a-%H-%M")
         dirname = date.strftime("./json/%Y/%m/")
 
-        if 'dummy' in path.lower():
-            timestamp += '-DUMMY'
+        if 'whole' in path.lower():
+            timestamp += '-WHOLE'
             
         path = dirname + '/' + timestamp +'-LOG.txt'
         
@@ -133,8 +133,8 @@ def abort(var, newdata=None, path=None):
         timestamp = date.strftime("%d-%a-%H-%M")
         dirname = date.strftime("./json/%Y/%m/")
 
-        if 'dummy' in path.lower():
-            timestamp += '-DUMMY'
+        if 'whole' in path.lower():
+            timestamp += '-WHOLE'
             
         newpath = dirname + '/' + timestamp +'.json'
 

@@ -2,6 +2,7 @@ import numpy
 import re
 from datetime import datetime as dt
 from calctip import tmode, abort
+import sys
 
 
 def abort(var):
@@ -19,11 +20,11 @@ def abort(var):
 
 def submit():
     while True:
-        dummy = input('dummy? ')
-        if dummy:
-            dummy = True
+        half_day = input('half day? [y]')
+        if half_day:
+            half_day = True
         else:
-            dummy = False
+            half_day = False
             
         date = abort(input('date: '))
         if date[-1] == '.':
@@ -64,4 +65,4 @@ def submit():
     i = 1
     value = abort(input('{}{} = '.format(i, ". Hour")))
     
-    tmode(value, timestamp, dummy)
+    tmode(value, timestamp, half_day)

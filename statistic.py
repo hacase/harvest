@@ -13,6 +13,8 @@ import socket
 
 warnings.filterwarnings("ignore", category=RuntimeWarning)
 
+l_ignore = ['LOG', 'checkpoint', 'DS', 'edited', 'WHOLE']
+
 def is_connected():
     try:
         socket.create_connection(("1.1.1.1", 53))
@@ -54,7 +56,7 @@ def statistic():
     i = 0
     for dirpath, dirnames, filenames in os.walk(path):
         for f in filenames:
-            if not any(s in f for s in ['LOG', 'checkpoint', 'DS', 'edited', 'DUMMY']):
+            if not any(s in f for s in l_ignore):
                 files.append(os.path.join(dirpath, f))
                 
                 flag = False

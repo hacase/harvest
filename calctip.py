@@ -175,7 +175,7 @@ def print_table(hour, roundtip, realtip, ratio, tipsum, bar, card, date, text=No
     if text:
         return text
     
-def tmode(value, date, dummy=False):
+def tmode(value, date, half_day=False):
     hour = []
     i = 2
     count = 1
@@ -235,8 +235,8 @@ def tmode(value, date, dummy=False):
     timestamp = date.strftime("%d-%a-%H-%M")
     dirname = date.strftime("./json/%Y/%m/")
 
-    if dummy:
-        timestamp += '-DUMMY'
+    if not half_day:
+        timestamp += '-WHOLE'
         
     path = dirname + '/' + timestamp +'.json'
 

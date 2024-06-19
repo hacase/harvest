@@ -379,9 +379,7 @@ def statistic():
     if show_plot == 'android':
         subprocess.call('termux-open harvest.png', shell=True)
 
-    elif show_plot == False:
-        pass
-    else:
+    elif show_plot:
         plt.show()
 
 

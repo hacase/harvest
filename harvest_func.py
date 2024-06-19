@@ -143,7 +143,7 @@ def print_table(hour, roundtip, realtip, ratio, tipsum, bar, card, date, text=No
     t_exact = '"tip_exact": ['
 
     for i in range(len(hour)):
-        t = f'{i+1}"{" " * (5 - len(str(i+1)))}{hour[i]:5.2f}h  -> {roundtip[i]:5.1f}€  ;  {realtip[i]:6.3f}'
+        t = f'{i+1}"{" " * (3 - len(str(i+1)))}{hour[i]:5.2f}h  -> {roundtip[i]:5.1f}€  ;  {realtip[i]:6.3f}'
         print(t)
         
         t_hour += f'{hour[i]:.2f}, '

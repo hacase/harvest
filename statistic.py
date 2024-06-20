@@ -577,7 +577,7 @@ def statistic():
     
     
     fig.tight_layout()
-    plt.savefig('harvest.png', dpi=400)
+    plt.savefig('harvest.png', dpi=300)
     
     
     text_README.append('## Plot  \n')

@@ -10,13 +10,13 @@ import json
 from urllib import request
 import socket
 
-from harvest_func import abort, git_update
+from harvest_func import abort, git_update, fcalctip
 
 
 
 warnings.filterwarnings("ignore", category=RuntimeWarning)
 
-l_ignore = ['LOG', 'checkpoint', 'DS', 'edited']
+l_ignore = ['LOG', 'checkpoint', 'DS', 'edited', 'TextIOWrapper']
 
 
 def is_connected():
@@ -55,6 +55,7 @@ def calculate_statistic(files):
         "date": [],
         "weekday": [],
         "time": [],
+        "hour": [],
         "ratio": [],
         "total": [],
         "bar": [],
@@ -65,8 +66,6 @@ def calculate_statistic(files):
         try:
             f = open(file)
             jData = json.loads(f.read())
-            if float(jData['sum']) > 300:
-                print(f)
         except IndexError:
             print(file)
 
@@ -79,6 +78,8 @@ def calculate_statistic(files):
         else:
             d_return["time"].append('AM')
 
+        d_return["hour"].append(jData["hour"])
+        
         d_return["ratio"].append(float(jData["ratio"]))
 
         d_return["total"].append(float(jData["sum"]))

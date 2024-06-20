@@ -260,7 +260,7 @@ def tmode(value, date, half_day=False):
         print('nothing to rewrite')
         
         
-    if input('show statistics? [/n]: ') != 'n':
+    if abort(input('show statistics? [/n]: ')) != 'n':
         import statistic
         statistic.statistic()
     

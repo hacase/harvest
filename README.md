@@ -1,4 +1,4 @@
-last update: 20.06.2024, Thursday, time: 05:40
+last update: 21.06.2024, Friday, time: 22:04
 # Statistic  
 Special: Holiday in Germany NRW and Friday till Sunday  
 Currency is in euro, ratio is €/h  

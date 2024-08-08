@@ -111,7 +111,7 @@ def statistic():
     text_README.append('last update: ' + dt.today().strftime("%d.%m.%Y, %A, time: %H:%M") + '\n')
     text_README.append('# Statistic  \n')
     text_README.append('Special: Holiday in Germany NRW and Friday till Sunday  \n')
-    text_README.append('Currency is in euro, ratio is €/h  \n')
+    text_README.append('Currency is in euro, ratio is in €/h  \n')
     
     flag = True
     files_whole = []

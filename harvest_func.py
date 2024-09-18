@@ -104,13 +104,13 @@ def is_connected():
     return False
     
 
-def git_update(message):
-    loader = Loader('updating data', 'update data done.').start()
+def git_update(message='data'):
+    loader = Loader('updating '+message, 'update '+message+' done.').start()
 
     try:
         if is_connected():
-            text = '\ngit add .\ngit commit --quiet -m'
-            text += message + "\ngit push --quiet"
+            text = '\ngit add .\ngit commit --quiet -m '
+            text += f'"update {message}"' + "\ngit push --quiet"
             
             with open('./update_tip.sh', 'w+') as f:
                 f.writelines(text)
@@ -119,7 +119,7 @@ def git_update(message):
         else:
             text = """
             git add .\n
-            git commit --quiet -m 'delayed update tip data'\n
+            git commit --quiet -m 'update delayed tip data'\n
             git push --quiet\n"""
     
             with open('./delayed_update_tip.sh', 'w+') as f:
@@ -308,12 +308,8 @@ def normal_mode(value, date, half_day=False):
         f.writelines(text)
     
     print('')
-    git_update("'update data'")
+    git_update()
 
-    loader = Loader('update ferienfeiertage', 'update ferienfeiertage done.').start()
     if ff.rewrite():
-        subprocess.call('git add .', shell=True)
-        subprocess.call('git commit --quiet -m "rewrite holidays"', shell=True)
-        subprocess.call('git push --quiet', shell=True)
-    loader.stop()
+        git_update('ferienfeiertage')
     

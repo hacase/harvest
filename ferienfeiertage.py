@@ -81,7 +81,5 @@ def rewrite():
 
                     with open(file_path, 'w') as ff:
                         json.dump(jData, ff)
-
-    ct.git_update("'rewrite offline holidays'")
     
     return flag

@@ -7,6 +7,9 @@ import texts as tx
 import ferienfeiertage as ff
 import subprocess
 import socket
+from itertools import cycle
+from shutil import get_terminal_size
+from threading import Thread
 
 
 def opening():

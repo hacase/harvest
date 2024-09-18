@@ -10,10 +10,16 @@ import os
 from datetime import datetime as dt
 from urllib import request
 
-from harvest_func import abort, tmode, opening
+from harvest_func import abort, normal_mode, opening
 import texts as tx
 
 
+def is_not_float(var):
+    try:
+        float(var)
+        return False
+    except:
+        return True
 
 def routine():
     i = 1
@@ -45,11 +51,11 @@ def routine():
     elif 'dummy' in value:
         dummy_mode()
 
-    elif isinstance(value, str):
+    elif is_not_float(value):
         print('wrong input')
         
     else:
-        normal_mode(value, dt.today)
+        normal_mode(value, dt.today())
 
 
 opening()

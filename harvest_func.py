@@ -141,7 +141,7 @@ def git_delayed():
 
     try:
         if os.path.isfile('./delayed_update_tip.sh'):
-            loader = Loader('updating delayed data', 'done.').start()
+            loader = Loader('updating delayed data', 'update delayed data done.').start()
             
             subprocess.call(['sh', './delayed_update_tip.sh'])
             subprocess.call('rm ./delayed_update_tip.sh', shell=True)
@@ -310,7 +310,7 @@ def normal_mode(value, date, half_day=False):
     print('')
     git_update("'update data'")
 
-    loader = Loader('updating ferienfeiertage ', 'done.').start()
+    loader = Loader('update ferienfeiertage', 'update ferienfeiertage done.').start()
     if ff.rewrite():
         subprocess.call('git add .', shell=True)
         subprocess.call('git commit --quiet -m "rewrite holidays"', shell=True)

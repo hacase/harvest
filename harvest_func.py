@@ -17,12 +17,13 @@ STAFF = [
     'maike',
     'grogu',
     'sina',
+    'taro',
     'grace',
     'anna bendel',
     'charlotte',
     'isabelle',
     'jessica',
-    'anna s.',
+    'anna',
     'juliana',
     'lea',
     'lino',
@@ -39,7 +40,10 @@ STAFF = [
     'santiago',
     'therese',
     'utz',
-    'veronica'
+    'yunus',
+    'veronica',
+    'karolina',
+    'imer'
 ]
 
 

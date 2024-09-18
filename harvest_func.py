@@ -12,6 +12,37 @@ from shutil import get_terminal_size
 from threading import Thread
 
 
+STAFF = [
+    'diego',
+    'maike',
+    'grogu',
+    'sina',
+    'grace',
+    'anna bendel',
+    'charlotte',
+    'isabelle',
+    'jessica',
+    'anna s.',
+    'juliana',
+    'lea',
+    'lino',
+    'maja',
+    'margaretha',
+    'marilin',
+    'matthias',
+    'micaela',
+    'mona',
+    'anisa',
+    'rieka',
+    'sabina',
+    'sandra',
+    'santiago',
+    'therese',
+    'utz',
+    'veronica'
+]
+
+
 def opening():
     string = """     H opefully
      A ll

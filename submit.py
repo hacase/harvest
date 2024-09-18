@@ -3,7 +3,7 @@ import re
 from datetime import datetime as dt
 import sys
 
-from harvest_func import abort, tmode
+from harvest_func import abort, normal_mode
 
 
 
@@ -59,4 +59,4 @@ def submit():
     i = 1
     value = abort(input('{}{} = '.format(i, ". Hour")))
     
-    tmode(value, timestamp, half_day)
+    normal_mode(value, timestamp, half_day)

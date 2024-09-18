@@ -41,9 +41,15 @@ def routine():
     elif 'half' in value:
         value_clean = value.replace('half ', '')
         tmode(value_clean, dt.today(), half_day=True)
+
+    elif 'dummy' in value:
+        dummy_mode()
+
+    elif isinstance(value, str):
+        print('wrong input')
         
     else:
-        tmode(value, dt.today())
+        normal_mode(value, dt.today)
 
 
 opening()

@@ -8,6 +8,7 @@ import ferienfeiertage as ff
 import subprocess
 import socket
 
+
 def opening():
     string = """     H opefully
      A ll
@@ -48,6 +49,49 @@ def abort(var):
         return var
 
 
+class Loader:
+    def __init__(self, desc="Loading...", end="Done!", timeout=0.1):
+        """
+        A loader-like context manager
+
+        Args:
+            desc (str, optional): The loader's description. Defaults to "Loading...".
+            end (str, optional): Final print. Defaults to "Done!".
+            timeout (float, optional): Sleep time between prints. Defaults to 0.1.
+        """
+        self.desc = desc
+        self.end = end
+        self.timeout = timeout
+
+        self._thread = Thread(target=self._animate, daemon=True)
+        self.steps = ["⢿", "⣻", "⣽", "⣾", "⣷", "⣯", "⣟", "⡿"]
+        self.done = False
+
+    def start(self):
+        self._thread.start()
+        return self
+
+    def _animate(self):
+        for c in cycle(self.steps):
+            if self.done:
+                break
+            print(f"\r{self.desc} {c}", flush=True, end="")
+            time.sleep(self.timeout)
+
+    def __enter__(self):
+        self.start()
+
+    def stop(self):
+        self.done = True
+        cols = get_terminal_size((80, 20)).columns
+        print("\r" + " " * cols, end="", flush=True)
+        print(f"\r{self.end}", flush=True)
+
+    def __exit__(self, exc_type, exc_value, tb):
+        # handle exceptions with those variables ^
+        self.stop()
+
+
 def is_connected():
     try:
         socket.create_connection(("1.1.1.1", 53))
@@ -55,11 +99,14 @@ def is_connected():
     except OSError:
         pass
     return False
+    
 
 def git_update(message):
+    loader = Loader('updating ', 'done.').start()
+    
     if is_connected():
-        text = "git pull --quiet\necho sending data\ngit add .\ngit commit --quiet -m "
-        text += message + "\ngit push --quiet\necho sent data"
+        text = "git pull --quiet\ngit add .\ngit commit --quiet -m "
+        text += message + "\ngit push --quiet"
         
         with open('./update_tip.sh', 'w+') as f:
             f.writelines(text)
@@ -76,6 +123,8 @@ def git_update(message):
                 
         print('no internet connection detected\ndata stored on device')
 
+    loader.stop()
+
 
 def git_delayed():
     if not is_connected():
@@ -83,25 +132,19 @@ def git_delayed():
         return 0
     
     if os.path.isfile('./delayed_update_tip.sh'):
-        print('\nsending stored data')
+        loader = Loader.('updating delayed data ', 'done.').start()
+        
         subprocess.call(['sh', './delayed_update_tip.sh'])
         subprocess.call('rm ./delayed_update_tip.sh', shell=True)
-        print('\nupdate completed.')
-        
-        if ff.rewrite():
-            subprocess.call('git add .', shell=True)
-            subprocess.call('git commit --quiet -m "rewrite holidays"', shell=True)
-            subprocess.call('git push --quiet', shell=True)
-            print('done rewriting offline holidays.')
-        else:
-            print('no offline holidays.')
+
+        loader.stop()
         
         print('\n')
 
 
 def adjust_tip(roundtip, tipsum, real):
     if np.around(sum(roundtip), decimals=3) > tipsum:
-        print("tip adjusted correctly")
+        print("tip adjusted correctly.")
 
         check = 5
 
@@ -165,6 +208,7 @@ def print_table(hour, roundtip, realtip, ratio, tipsum, bar, card, date, text=No
     t = f'tip ratio = {ratio:.4} €/h'
     print(t)
     text += '"ratio": ' + f'{ratio:.4}, '
+    t = f'tip sum = {tipsum:.2f}'
     text += '"sum": ' + '{0:.2f}'.format(tipsum) + ', '
     text += '"bar": ' + str(bar) + ', '
     text += '"card": ' + str(card) + ', '
@@ -181,7 +225,7 @@ def print_table(hour, roundtip, realtip, ratio, tipsum, bar, card, date, text=No
         return text
 
 
-def tmode(value, date, half_day=False):
+def normal_mode(value, date, half_day=False):
     hour = []
     i = 2
     count = 1
@@ -252,15 +296,11 @@ def tmode(value, date, half_day=False):
     
     print('')
     git_update("'update data'")
-    
-    print('checking offline holidays')
+
+    loader = Loader.('updating ferienfeiertage ', 'done.').start()
     if ff.rewrite():
-        print('rewriting done.')
-    else:
-        print('nothing to rewrite')
-        
-        
-    if abort(input('show statistics? [/n]: ')) != 'n':
-        import statistic
-        statistic.statistic()
+        subprocess.call('git add .', shell=True)
+        subprocess.call('git commit --quiet -m "rewrite holidays"', shell=True)
+        subprocess.call('git push --quiet', shell=True)
+    loader.stop()
     

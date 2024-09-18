@@ -9,6 +9,7 @@ import time
 import os
 from datetime import datetime as dt
 from urllib import request
+import subprocess
 
 from harvest_func import abort, normal_mode, opening
 import texts as tx
@@ -57,6 +58,9 @@ def routine():
     else:
         normal_mode(value, dt.today())
 
+
+
+subprocess.call(['sh', 'git pull --quiet'])
 
 opening()
 

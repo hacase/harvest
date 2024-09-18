@@ -105,45 +105,55 @@ def is_connected():
     
 
 def git_update(message):
-    loader = Loader('updating ', 'done.').start()
+    loader = Loader('updating data', 'update data done.').start()
+
+    try:
+        if is_connected():
+            text = '\ngit add .\ngit commit --quiet -m'
+            text += message + "\ngit push --quiet"
+            
+            with open('./update_tip.sh', 'w+') as f:
+                f.writelines(text)
+            subprocess.call(['sh', './update_tip.sh'])
+            
+        else:
+            text = """
+            git add .\n
+            git commit --quiet -m 'delayed update tip data'\n
+            git push --quiet\n"""
     
-    if is_connected():
-        text = "git pull --quiet\ngit add .\ngit commit --quiet -m "
-        text += message + "\ngit push --quiet"
+            with open('./delayed_update_tip.sh', 'w+') as f:
+                f.writelines(text)
+                    
+            print('no internet connection detected\ndata stored on device')
+    
+        loader.stop()
         
-        with open('./update_tip.sh', 'w+') as f:
-            f.writelines(text)
-        subprocess.call(['sh', './update_tip.sh'])
+    except Exception as e:
+        print("\r" , end="", flush=True)
+        print(e)
         
-    else:
-        text = """
-        git add .\n
-        git commit --quiet -m 'delayed update tip data'\n
-        git push --quiet\n"""
-
-        with open('./delayed_update_tip.sh', 'w+') as f:
-            f.writelines(text)
-                
-        print('no internet connection detected\ndata stored on device')
-
-    loader.stop()
-
 
 def git_delayed():
     if not is_connected():
         print('\nno internet connection\nunsaved data may be still on device\n')
         return 0
+
+    try:
+        if os.path.isfile('./delayed_update_tip.sh'):
+            loader = Loader('updating delayed data', 'done.').start()
+            
+            subprocess.call(['sh', './delayed_update_tip.sh'])
+            subprocess.call('rm ./delayed_update_tip.sh', shell=True)
     
-    if os.path.isfile('./delayed_update_tip.sh'):
-        loader = Loader('updating delayed data ', 'done.').start()
+            loader.stop()
+            
+            print('\n')
+            
+    except Exception as e:
+        print("\r" , end="", flush=True)
+        print(e)
         
-        subprocess.call(['sh', './delayed_update_tip.sh'])
-        subprocess.call('rm ./delayed_update_tip.sh', shell=True)
-
-        loader.stop()
-        
-        print('\n')
-
 
 def adjust_tip(roundtip, tipsum, real):
     if np.around(sum(roundtip), decimals=3) > tipsum:

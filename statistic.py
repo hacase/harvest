@@ -10,21 +10,13 @@ import json
 from urllib import request
 import socket
 
-from harvest_func import abort, git_update, fcalctip
+from harvest_func import abort, git_update, fcalctip, is_connected
 
 
 
 warnings.filterwarnings("ignore", category=RuntimeWarning)
 
 l_ignore = ['LOG', 'checkpoint', 'DS', 'edited', 'TextIOWrapper']
-
-
-def is_connected():
-    try:
-        socket.create_connection(("1.1.1.1", 53))
-        return True
-    except OSError:
-        pass
 
 
 def PandR(l, text):
@@ -110,8 +102,8 @@ def statistic():
     text_README = list()
     text_README.append('last update: ' + dt.today().strftime("%d.%m.%Y, %A, time: %H:%M") + '\n')
     text_README.append('# Statistic  \n')
-    text_README.append('Special: Holiday in Germany NRW and Friday till Sunday  \n')
-    text_README.append('Currency is in euro, ratio is in €/h  \n')
+    text_README.append('Special: Holiday in Germany NRW and Friday until Sunday  \n')
+    text_README.append('Currency is in Euro, ratio is in €/h  \n')
     
     flag = True
     files_whole = []

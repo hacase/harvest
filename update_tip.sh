@@ -1,4 +1,4 @@
 
 git add .
-git commit --quiet -m "update ferienfeiertage"
+git commit --quiet -m "update 'update plot'"
 git push --quiet

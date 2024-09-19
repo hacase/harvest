@@ -9,6 +9,7 @@ import subprocess
 import json
 from urllib import request
 import socket
+import matplotlib.pyplot as plt
 
 from harvest_func import abort, git_update, fcalctip, is_connected
 
@@ -361,8 +362,6 @@ def statistic():
     text_README = PandR(text_README, '')
     text_README = PandR(text_README, '')
         
-
-    import matplotlib.pyplot as plt
     
     Ptime = [[] for _ in range(4)]
     Ptotal = [[] for _ in range(7)]

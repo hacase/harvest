@@ -38,7 +38,7 @@ def check(date, name=None):
 
             try:
                 # Get Feiertage
-                api_response = api_instance.get_feiertage(jahr, nur_land=nur_land, nur_daten=nur_daten)
+                api_response = api_instance.get_feiertage(jahr=jahr, nur_land=nur_land, nur_daten=nur_daten)
                 feiertage = list(api_response.items())
             except ft.ApiException as e:
                 print("Exception when calling DefaultApi->get_feiertage: %s\n" % e)
@@ -63,7 +63,6 @@ def check(date, name=None):
         return flag
 
 def rewrite():
-    offline = []
     flag = False
 
     root_dir = './json/'
@@ -75,9 +74,9 @@ def rewrite():
                 f = open(file_path)
                 jData = json.loads(f.read())
 
-                if jData['holiday'] == 'offline':
+                if jData['holiday'] in ['offline', 'true']:
                     flag = True
-                    jData['holiday'] = check(dt.strptime(jData['timestamp'], '%d.%m.%Y-%H:%M'))
+                    jData['holiday'] = check(dt.strptime(jData['timestamp'], '%d.%m.%Y-%H:%M'), name=True)
 
                     with open(file_path, 'w') as ff:
                         json.dump(jData, ff)

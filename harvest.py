@@ -47,7 +47,7 @@ def routine():
 
     elif 'half' in value:
         value_clean = value.replace('half ', '')
-        tmode(value_clean, dt.today(), half_day=True)
+        normal_mode(value_clean, dt.today(), half_day=True)
 
     elif 'dummy' in value:
         dummy_mode()

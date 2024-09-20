@@ -279,6 +279,9 @@ def normal_mode(value, date, half_day=False):
     count = 1
     bar = 'false'
     card = 'false'
+
+    if value[0] == ' ':
+        value = value[1:]
     
     if ' ' in value:
         thour, times = value.split(' ', 1)
@@ -335,6 +338,8 @@ def normal_mode(value, date, half_day=False):
 
     if not half_day:
         timestamp += '-WHOLE'
+    else:
+        timestamp += '-HALF'
         
     path = dirname + '/' + timestamp +'.json'
 

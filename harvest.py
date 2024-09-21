@@ -52,18 +52,21 @@ def routine():
     elif 'dummy' in value:
         dummy_mode()
 
-    elif is_not_float(value):
+    elif abort(is_not_float(value)):
         print('wrong input')
-        
-    else:
-        normal_mode(value, dt.today())
 
+    elif value == 'exit':
         import statistic
         statistic.statistic()
 
         import ferienfeiertage as ff
         if ff.rewrite():
             git_update('ferienfeiertage')
+
+        sys.exit()
+        
+    else:
+        normal_mode(value, dt.today())
 
 
 

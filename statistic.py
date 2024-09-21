@@ -183,7 +183,7 @@ def statistic():
     
     text.append(txtmd('# Overview'))
     
-    text.append(txtmd('|| whole | half |'))
+    text.append(txtmd('|| Whole | Half |'))
     text.append(txtmd('|---|---|---|'))
     
     for theme in ['total', 'ratio', 'bar', 'card']:
@@ -197,7 +197,7 @@ def statistic():
         else:
             keyword += ' ' + LTX_EURO
             
-        row = '|' + keyword + '|'
+        row = '|' + keyword.capitalize() + '|'
         for d in d_all:
             if theme in ['card', 'bar']:
                 d_temp = list(filter(lambda item: item != 'None', d[theme]))
@@ -213,7 +213,7 @@ def statistic():
             else:
                 keyword = theme
             
-            row = '|' + keyword +' '+ r'$/ \\% $|'
+            row = '|' + keyword.capitalize() +' '+ r'$/ \\% $|'
             for d in d_all:
                 x1 = np.mean(d[theme])
                 x1_err = np.std(d[theme])
@@ -286,8 +286,8 @@ def statistic():
     
     text.append(txtmd('# Total / Ratio'))
     
-    table_title = ['||total '+LTX_EURO+'|ratio '+LTX_RATIO+'|timestamp|holiday|',
-                  '||ratio '+LTX_RATIO+'|total '+LTX_EURO+'|timestamp|holiday|']
+    table_title = ['||Total '+LTX_EURO+'|Ratio '+LTX_RATIO+'|timestamp|holiday|',
+                  '||Ratio '+LTX_RATIO+'|Total '+LTX_EURO+'|timestamp|holiday|']
     
     for i_dict, d in enumerate(d_all):
         text.append(txtmd('## ' +L_DICT[i_dict].capitalize()+ ' day'))
@@ -357,12 +357,12 @@ def statistic():
     
         
     text.append(txtmd('# Weekday'))
-    text.append(txtmd('|||whole|half|'))
+    text.append(txtmd('|||Whole|Half|'))
     text.append(txtmd('|---|---|---|---|'))
     for i in range(7):
         row = f'|{calendar.day_name[i]}|'
         for i_key, key in enumerate(L_TORA):
-            row += f'{key} {L_LTX[i_key]}|'
+            row += f'{key.capitalize()} {L_LTX[i_key]}|'
             for i_dict, d in enumerate(d_all):
                 mask = [n == i for n in d['weekday']]
                 
@@ -449,11 +449,11 @@ def statistic():
                 axs[i_key].plot(np.ones(len(plt_special[i])) *i +1, plt_special[i], ms=4, marker='o', mew=0.5, ls="none", color=COLOR[i])
             axs[i_key].violinplot(plt_special, positions=range(1, 7), showextrema=False, showmeans=True)
     
-        text.append(txtmd('||total '+LTX_EURO+'|ratio '+LTX_RATIO+'|count|'))
+        text.append(txtmd('||Total '+LTX_EURO+'|Ratio '+LTX_RATIO+'|count|'))
         text.append(txtmd('|---|---|---|---|'))
         
         for i in range(len(plt_special)):
-            row = '|' + axs_descr[i] + '|'
+            row = '|' + axs_descr[i].capitalize() + '|'
             for j in range(2):
                 row += f'{np.mean(plt_set[j][i]):6.2f}'
                 row += f' $\\pm$'

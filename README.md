@@ -1,11 +1,11 @@
-last update: 21.09.2024, Saturday, time: 11:37  
+last update: 21.09.2024, Saturday, time: 11:58  
 # Overview  
 || whole | half |  
 |---|---|---|  
-|total $/ \textup{€}$|184.092 $\pm$ 52.838|109.118 $\pm$ 31.413|  
-|ratio $/ \frac{\textup{€}}{\textup{h}}$| 4.429 $\pm$  0.790| 5.136 $\pm$  1.119|  
-|cash $/ \textup{€}$|63.183 $\pm$ 37.845|44.469 $\pm$ 20.527|  
-|card $/ \textup{€}$|87.963 $\pm$ 54.440|57.202 $\pm$ 27.775|  
+|total $/ \textup{€}$|184.570 $\pm$ 52.605|109.118 $\pm$ 31.413|  
+|ratio $/ \frac{\textup{€}}{\textup{h}}$| 4.416 $\pm$  0.774| 5.136 $\pm$  1.119|  
+|cash $/ \textup{€}$|63.542 $\pm$ 37.651|44.469 $\pm$ 20.527|  
+|card $/ \textup{€}$|88.463 $\pm$ 54.188|57.202 $\pm$ 27.775|  
 # Frequency  
     
 ![Image](./png/frequency.png)  
@@ -20,9 +20,9 @@ last update: 21.09.2024, Saturday, time: 11:37
   
 ||ratio $/ \frac{\textup{€}}{\textup{h}}$|total $/ \textup{€}$|timestamp|holiday|  
 |---|---|---|---|---|  
-|1"|  6.67|100.00|21.09.2024 Sat AM|False|  
-|2"|  6.52|334.35|22.10.2023 Sun PM|False|  
-|3"|  6.52|334.35|22.10.2023 Sun False|False|  
+|1"|  6.52|334.35|22.10.2023 Sun PM|False|  
+|2"|  6.52|334.35|22.10.2023 Sun False|False|  
+|3"|  6.47|301.01|28.04.2024 Sun False|False|  
   
   
     
@@ -57,8 +57,8 @@ last update: 21.09.2024, Saturday, time: 11:37
 ||ratio $/ \frac{\textup{€}}{\textup{h}}$|  4.14 $\pm$  0.68|  4.76 $\pm$  0.98|  
 |Friday|total $/ \textup{€}$|192.67 $\pm$ 34.05|104.48 $\pm$ 25.23|  
 ||ratio $/ \frac{\textup{€}}{\textup{h}}$|  4.38 $\pm$  0.74|  4.96 $\pm$  1.14|  
-|Saturday|total $/ \textup{€}$|218.51 $\pm$ 45.82|116.06 $\pm$ 31.65|  
-||ratio $/ \frac{\textup{€}}{\textup{h}}$|  4.64 $\pm$  0.74|  4.94 $\pm$  1.08|  
+|Saturday|total $/ \textup{€}$|222.00 $\pm$ 41.67|116.06 $\pm$ 31.65|  
+||ratio $/ \frac{\textup{€}}{\textup{h}}$|  4.58 $\pm$  0.66|  4.94 $\pm$  1.08|  
 |Sunday|total $/ \textup{€}$|253.40 $\pm$ 46.26|138.03 $\pm$ 28.18|  
 ||ratio $/ \frac{\textup{€}}{\textup{h}}$|  5.17 $\pm$  0.66|  5.49 $\pm$  1.09|  
 # Make me feel Special  
@@ -66,12 +66,12 @@ Special: Holidays and Weekends
 ## Whole day  
 ||total $/ \textup{€}$|ratio $/ \frac{\textup{€}}{\textup{h}}$|count|  
 |---|---|---|---|  
-|All|190.30 $\pm$ 55.09|  4.53 $\pm$  0.81|211  
+|All|190.73 $\pm$ 54.87|  4.52 $\pm$  0.80|210  
 |Normal|164.48 $\pm$ 38.69|  4.32 $\pm$  0.77|136  
-|Weekend|237.12 $\pm$ 49.23|  4.92 $\pm$  0.74|75  
+|Weekend|238.97 $\pm$ 46.90|  4.90 $\pm$  0.72|74  
 |Holiday|182.64 $\pm$ 54.61|  4.45 $\pm$  0.83|61  
-|Special|209.93 $\pm$ 59.79|  4.69 $\pm$  0.83|117  
-|Special\&Friday|207.61 $\pm$ 56.50|  4.65 $\pm$  0.82|139  
+|Special|210.87 $\pm$ 59.16|  4.67 $\pm$  0.81|116  
+|Special\&Friday|208.39 $\pm$ 55.95|  4.64 $\pm$  0.80|138  
     
 ![Image](./png/special_whole.png)  
 ## Half day  

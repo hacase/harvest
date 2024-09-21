@@ -206,24 +206,24 @@ def statistic():
     
             row += f'{np.mean(d_temp):6.3f} $\\pm$ {np.std(d_temp):6.3f}|'
 
-    if theme in ['bar', 'card']:
-        text.append(txtmd(row))
-        if theme == 'bar':
-            keyword = 'cash'
-        else:
-            keyword = theme
-        
-        row = '|' + keyword + r' $ / \%$|'
-        for d in d_all:
-            x1 = np.mean(d[theme])
-            x1_err = np.std(d[theme])
-            x2 = np.mean(d['total'])
-            x2_err = np.std(d['total'])
+        if theme in ['bar', 'card']:
+            text.append(txtmd(row))
+            if theme == 'bar':
+                keyword = 'cash'
+            else:
+                keyword = theme
             
-            pct = x1 / x2 * 100
-            pct_err = x1_err / x2 - x2_err * x1 / x2**2
-            row += f'{pct:6.3f} $\\pm$ {pct_err * 100:6.3f}|'
-    
+            row = '|' + keyword + r' $ / \%$|'
+            for d in d_all:
+                x1 = np.mean(d[theme])
+                x1_err = np.std(d[theme])
+                x2 = np.mean(d['total'])
+                x2_err = np.std(d['total'])
+                
+                pct = x1 / x2 * 100
+                pct_err = x1_err / x2 - x2_err * x1 / x2**2
+                row += f'{pct:6.3f} $\\pm$ {pct_err * 100:6.3f}|'
+        
         text.append(txtmd(row))
     
     

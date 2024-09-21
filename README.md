@@ -1,4 +1,4 @@
-last update: 21.09.2024, Saturday, time: 21:09  
+last update: 21.09.2024, Saturday, time: 21:12  
 # Overview  
 || whole | half |  
 |---|---|---|  
@@ -8,6 +8,9 @@ last update: 21.09.2024, Saturday, time: 21:09
 |cash $ / \% $|34.490 $\pm$ 10.491|40.753 $\pm$  7.079|  
 |card $/ \textup{€}$|88.790 $\pm$ 53.824|57.202 $\pm$ 27.775|  
 |card $ / \% $|48.147 $\pm$ 15.537|52.422 $\pm$ 10.363|  
+ $\pi$  
+ $\% $  
+ $\\pi$  
 # Frequency  
     
 ![Image](./png/frequency.png)  

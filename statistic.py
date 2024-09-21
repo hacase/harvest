@@ -227,6 +227,9 @@ def statistic():
         text.append(txtmd(row))
     
     
+    text.append(txtmd(' $\\pi$'))
+    text.append(txtmd(' $\\% $'))
+    text.append(txtmd(r' $\\pi$'))
     text.append(txtmd('# Frequency'))
     
     weekday = np.zeros(7)

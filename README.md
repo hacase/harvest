@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-last update: 21.09.2024, Saturday, time: 21:40  
-=======
-last update: 21.09.2024, Saturday, time: 21:32  
->>>>>>> refs/remotes/origin/main
+last update: 21.09.2024, Saturday, time: 21:41  
 # Overview  
 || Whole | Half |  
 |---|---|---|  

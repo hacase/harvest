@@ -157,7 +157,7 @@ def statistic():
     text = list()
 
     date_now = dt.today().strftime("%d.%m.%Y, %A, time: %H:%M")
-    text.append(txtmd('last update: ', date_now))
+    text.append(txtmd('last update: ' + date_now))
     
     flag = True
     files_whole = []

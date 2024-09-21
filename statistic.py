@@ -220,7 +220,7 @@ def statistic():
     
     fig, ax = plt.subplots(figsize=(5, 5))
     wedges, texts, autotexts = ax.pie(weekday,
-                                      labels=AX_WEEKDAY[1:],
+                                      labels=list(calendar.day_name),
                                       autopct='',
                                       colors=COLOR,
                                       startangle=90,

@@ -348,8 +348,5 @@ def normal_mode(value, date, half_day=False):
         f.writelines(text)
     
     print('')
-    git_update()
 
-    if ff.rewrite():
-        git_update('ferienfeiertage')
     

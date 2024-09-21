@@ -9,7 +9,7 @@ from urllib import request
 import socket
 import matplotlib.pyplot as plt
 
-from harvest_func import abort, git_update, fcalctip, is_connected
+from harvest_func import Loader, abort, git_update
 
 
 warnings.filterwarnings("ignore", category=RuntimeWarning)
@@ -152,6 +152,8 @@ def txtmd(string):
 
 
 def statistic():
+    loader = Loader('updating statistic', 'update statistic done.').start()
+    
     text = list()
     
     flag = True
@@ -554,6 +556,6 @@ def statistic():
     with open('./README.md', 'w') as f:
         f.writelines(text)
 
-    print('update statistic done.')
+    loader.stop()
 
     git_update()

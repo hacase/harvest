@@ -58,6 +58,13 @@ def routine():
     else:
         normal_mode(value, dt.today())
 
+        import statistic
+        statistic.statistic()
+
+        import ferienfeiertage as ff
+        if ff.rewrite():
+            git_update('ferienfeiertage')
+
 
 
 subprocess.call(['sh', 'git pull --quiet'])

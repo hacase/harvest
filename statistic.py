@@ -234,7 +234,6 @@ def statistic():
 
         if theme in ['bar', 'card']:
             text.append(txtmd(row))
-            d_clear = list(filter(lambda item: item not in ['None', 'False'], d[theme]))
             if theme == 'bar':
                 keyword = 'cash'
             else:
@@ -242,6 +241,7 @@ def statistic():
             
             row = '|' + keyword.capitalize() +' '+ r'$/ \\% $|'
             for d in d_all:
+                d_clear = list(filter(lambda item: item not in ['None', 'False'], d[theme]))
                 x1 = np.mean(d_clear)
                 x1_err = np.std(d_clear)
                 x2 = np.mean(d['total'])

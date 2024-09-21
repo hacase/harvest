@@ -1,13 +1,13 @@
-last update: 21.09.2024, Saturday, time: 21:41  
+last update: 21.09.2024, Saturday, time: 21:57  
 # Overview  
 || Whole | Half |  
 |---|---|---|  
-|Total $/ \textup{€}$|184.414 $\pm$ 52.279|109.118 $\pm$ 31.413|  
-|Ratio $/ \frac{\textup{€}}{\textup{h}}$| 4.407 $\pm$  0.771| 5.136 $\pm$  1.119|  
-|Cash $/ \textup{€}$|63.605 $\pm$ 37.379|44.469 $\pm$ 20.527|  
-|Cash $/ \\% $|34.490 $\pm$ 10.491|40.753 $\pm$  7.079|  
-|Card $/ \textup{€}$|88.790 $\pm$ 53.824|57.202 $\pm$ 27.775|  
-|Card $/ \\% $|48.147 $\pm$ 15.537|52.422 $\pm$ 10.363|  
+|Total $/ \textup{€}$|190.512 $\pm$ 54.595|109.109 $\pm$ 31.259|  
+|Ratio $/ \frac{\textup{€}}{\textup{h}}$| 4.514 $\pm$  0.800| 5.133 $\pm$  1.113|  
+|Cash $/ \textup{€}$|53.452 $\pm$ 41.435|43.969 $\pm$ 20.942|  
+|Cash $/ \\% $|23.080 $\pm$  4.379|40.299 $\pm$  7.649|  
+|Card $/ \textup{€}$|74.617 $\pm$ 59.094|56.559 $\pm$ 28.269|  
+|Card $/ \\% $|29.688 $\pm$  6.331|51.837 $\pm$ 11.058|  
 # Frequency  
     
 ![Image](./png/frequency.png)  

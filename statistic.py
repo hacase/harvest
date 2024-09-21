@@ -180,6 +180,32 @@ def statistic():
     d_whole = calculate_statistic(files_whole)
     d_half = calculate_statistic(files_half)
     d_all = [d_whole, d_half]
+
+    part_whole, part_ampm = pseudo(d_whole, d_half)
+    
+    for d in part_whole:
+        d_whole['total'].append(d[0])
+        d_whole['ratio'].append(d[1])
+        d_whole['date'].append(d[2])
+        d_whole['weekday'].append(d[2].weekday())
+        d_whole['holiday'].append(d[3])
+        d_whole['time'].append(False)
+        d_whole['hour'].append(False)
+        d_whole['bar'].append(False)
+        d_whole['card'].append(False)
+    
+    for i_part, part in enumerate(part_ampm):
+        ampm = ['AM', 'PM'][i_part]
+        for p in part:
+            d_half['total'].append(p[0])
+            d_half['ratio'].append(p[1])
+            d_half['date'].append(p[2])
+            d_half['weekday'].append(p[2].weekday())
+            d_half['holiday'].append(p[3])
+            d_half['time'].append(ampm)
+            d_half['hour'].append(False)
+            d_half['bar'].append(False)
+            d_half['card'].append(False)
     
     text.append(txtmd('# Overview'))
     
@@ -200,14 +226,15 @@ def statistic():
         row = '|' + keyword.capitalize() + '|'
         for d in d_all:
             if theme in ['card', 'bar']:
-                d_temp = list(filter(lambda item: item != 'None', d[theme]))
+                d_clear = list(filter(lambda item: item not in ['None', 'False'], d[theme]))
             else:
-                d_temp = d[theme]
+                d_clear = d[theme]
     
-            row += f'{round(np.mean(d_temp), 3):6.3f} $\\pm$ {round(np.std(d_temp), 3):6.3f}|'
+            row += f'{round(np.mean(d_clear), 3):6.3f} $\\pm$ {round(np.std(d_clear), 3):6.3f}|'
 
         if theme in ['bar', 'card']:
             text.append(txtmd(row))
+            d_clear = list(filter(lambda item: item not in ['None', 'False'], d[theme]))
             if theme == 'bar':
                 keyword = 'cash'
             else:
@@ -215,8 +242,8 @@ def statistic():
             
             row = '|' + keyword.capitalize() +' '+ r'$/ \\% $|'
             for d in d_all:
-                x1 = np.mean(d[theme])
-                x1_err = np.std(d[theme])
+                x1 = np.mean(d_clear)
+                x1_err = np.std(d_clear)
                 x2 = np.mean(d['total'])
                 x2_err = np.std(d['total'])
                 
@@ -255,33 +282,6 @@ def statistic():
     plt.savefig(png_name, dpi=300)
     text.append(txtmd('  '))
     text.append(txtmd('![Image](' + png_name + ')'))
-    
-    
-    part_whole, part_ampm = pseudo(d_whole, d_half)
-    
-    for d in part_whole:
-        d_whole['total'].append(d[0])
-        d_whole['ratio'].append(d[1])
-        d_whole['date'].append(d[2])
-        d_whole['weekday'].append(d[2].weekday())
-        d_whole['holiday'].append(d[3])
-        d_whole['time'].append(False)
-        d_whole['hour'].append(False)
-        d_whole['bar'].append(False)
-        d_whole['card'].append(False)
-    
-    for i_part, part in enumerate(part_ampm):
-        ampm = ['AM', 'PM'][i_part]
-        for p in part:
-            d_half['total'].append(p[0])
-            d_half['ratio'].append(p[1])
-            d_half['date'].append(p[2])
-            d_half['weekday'].append(p[2].weekday())
-            d_half['holiday'].append(p[3])
-            d_half['time'].append(ampm)
-            d_half['hour'].append(False)
-            d_half['bar'].append(False)
-            d_half['card'].append(False)
     
     
     text.append(txtmd('# Total / Ratio'))

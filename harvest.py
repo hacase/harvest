@@ -70,7 +70,7 @@ def routine():
 
 
 
-subprocess.call(['sh', 'git pull --quiet'])
+subprocess.call('git pull --quiet', shell=True)
 
 opening()
 

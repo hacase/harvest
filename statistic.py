@@ -205,6 +205,24 @@ def statistic():
                 d_temp = d[theme]
     
             row += f'{np.mean(d_temp):6.3f} $\\pm$ {np.std(d_temp):6.3f}|'
+
+    if theme in ['bar', 'card']:
+        text.append(txtmd(row))
+        if theme == 'bar':
+            keyword = 'cash'
+        else:
+            keyword = theme
+        
+        row = '|' + keyword + r' $ / \%$|'
+        for d in d_all:
+            x1 = np.mean(d[theme])
+            x1_err = np.std(d[theme])
+            x2 = np.mean(d['total'])
+            x2_err = np.std(d['total'])
+            
+            pct = x1 / x2 * 100
+            pct_err = x1_err / x2 - x2_err * x1 / x2**2
+            row += f'{pct:6.3f} $\\pm$ {pct_err * 100:6.3f}|'
     
         text.append(txtmd(row))
     
@@ -281,13 +299,16 @@ def statistic():
                 top = sorted(zip(d["total"], d["ratio"], d["date"], d["time"], d["weekday"], d["holiday"]), reverse=True)[:3]
             else:
                 top = sorted(zip(d["ratio"], d["total"], d["date"], d["time"], d["weekday"], d["holiday"]), reverse=True)[:3]
-                
+
             for j in range(3):    
                 row = f'|{j+1}"|'
                 row += f'{top[j][0]:6.2f}|'
                 row += f'{top[j][1]:6.2f}|'
-                row += f'{top[j][2].strftime("%d.%m.%Y"):10} {AX_WEEKDAY[top[j][4]+1][:3]} '
-                row += f'{top[j][3]}|'
+                row += f'{top[j][2].strftime("%d.%m.%Y"):10} {AX_WEEKDAY[top[j][4]+1][:3]}'
+                if i_dict == 0:
+                    row += f'|'
+                else:
+                    row += f' {top[j][3]}'
                 row += f'{top[j][5].capitalize()}|'
         
                 text.append(txtmd(row))

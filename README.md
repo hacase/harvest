@@ -1,11 +1,9 @@
-last update: 21.09.2024, Saturday, time: 19:49  
+last update: 21.09.2024, Saturday, time: 21:02  
 # Overview  
 || whole | half |  
 |---|---|---|  
-|total $/ \textup{€}$|184.414 $\pm$ 52.279|109.118 $\pm$ 31.413|  
-|ratio $/ \frac{\textup{€}}{\textup{h}}$| 4.407 $\pm$  0.771| 5.136 $\pm$  1.119|  
-|cash $/ \textup{€}$|63.605 $\pm$ 37.379|44.469 $\pm$ 20.527|  
 |card $/ \textup{€}$|88.790 $\pm$ 53.824|57.202 $\pm$ 27.775|  
+|card $ / \%$|48.147 $\pm$ 15.537|52.422 $\pm$ 10.363|  
 # Frequency  
     
 ![Image](./png/frequency.png)  
@@ -13,16 +11,16 @@ last update: 21.09.2024, Saturday, time: 19:49
 ## Whole day  
 ||total $/ \textup{€}$|ratio $/ \frac{\textup{€}}{\textup{h}}$|timestamp|holiday|  
 |---|---|---|---|---|  
-|1"|334.35|  6.52|22.10.2023 Sun PM|False|  
-|2"|334.35|  6.52|22.10.2023 Sun False|False|  
-|3"|322.02|  6.05|13.08.2023 Sun False|False|  
+|1"|334.35|  6.52|22.10.2023 Sun|False|  
+|2"|334.35|  6.52|22.10.2023 Sun|False|  
+|3"|322.02|  6.05|13.08.2023 Sun|False|  
   
   
 ||ratio $/ \frac{\textup{€}}{\textup{h}}$|total $/ \textup{€}$|timestamp|holiday|  
 |---|---|---|---|---|  
-|1"|  6.52|334.35|22.10.2023 Sun PM|False|  
-|2"|  6.52|334.35|22.10.2023 Sun False|False|  
-|3"|  6.47|301.01|28.04.2024 Sun False|False|  
+|1"|  6.52|334.35|22.10.2023 Sun|False|  
+|2"|  6.52|334.35|22.10.2023 Sun|False|  
+|3"|  6.47|301.01|28.04.2024 Sun|False|  
   
   
     
@@ -30,16 +28,16 @@ last update: 21.09.2024, Saturday, time: 19:49
 ## Half day  
 ||total $/ \textup{€}$|ratio $/ \frac{\textup{€}}{\textup{h}}$|timestamp|holiday|  
 |---|---|---|---|---|  
-|1"|186.83|  6.13|03.03.2024 Sun AM|False|  
-|2"|184.50|  6.10|13.08.2023 Sun AM|False|  
-|3"|180.09|  7.50|28.04.2024 Sun AM|False|  
+|1"|186.83|  6.13|03.03.2024 Sun AMFalse|  
+|2"|184.50|  6.10|13.08.2023 Sun AMFalse|  
+|3"|180.09|  7.50|28.04.2024 Sun AMFalse|  
   
   
 ||ratio $/ \frac{\textup{€}}{\textup{h}}$|total $/ \textup{€}$|timestamp|holiday|  
 |---|---|---|---|---|  
-|1"|  8.27|140.53|25.09.2023 Mon AM|False|  
-|2"|  7.94|142.93|22.03.2024 Fri AM|False|  
-|3"|  7.55|166.09|19.11.2023 Sun PM|False|  
+|1"|  8.27|140.53|25.09.2023 Mon AMFalse|  
+|2"|  7.94|142.93|22.03.2024 Fri AMFalse|  
+|3"|  7.55|166.09|19.11.2023 Sun PMFalse|  
   
   
     

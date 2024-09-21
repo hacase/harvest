@@ -227,7 +227,7 @@ def statistic():
                                       textprops=dict(color="black"))
     
     for i, a in enumerate(autotexts):
-        a.set_text("{:.1f}a%\n{}".format(pct[i], int(weekday[i])))
+        a.set_text("{:.1f}\%\n{}".format(pct[i], int(weekday[i])))
     
     ax.set_title("Frequency")
     

@@ -204,7 +204,7 @@ def statistic():
             else:
                 d_temp = d[theme]
     
-            row += f'{np.mean(d_temp):6.3f} $\\pm$ {np.std(d_temp):6.3f}|'
+            row += f'{round(np.mean(d_temp), 3):6.3f} $\\pm$ {round(np.std(d_temp), 3):6.3f}|'
 
         if theme in ['bar', 'card']:
             text.append(txtmd(row))
@@ -222,7 +222,7 @@ def statistic():
                 
                 pct = x1 / x2 * 100
                 pct_err = x1_err / x2 - x2_err * x1 / x2**2
-                row += f'{pct:6.3f} $\\pm$ {pct_err * 100:6.3f}|'
+                row += f'{round(pct, 3):6.3f} $\\pm$ {round(pct_err * 100, 3):6.3f}|'
         
         text.append(txtmd(row))
 
@@ -245,7 +245,7 @@ def statistic():
                                       textprops=dict(color="black"))
     
     for i, a in enumerate(autotexts):
-        a.set_text("{:.1f}\%\n{}".format(pct[i], int(weekday[i])))
+        a.set_text("{:.1f}\%\n{}".format(round(pct[i], 1), int(weekday[i])))
     
     ax.set_title("Frequency")
     
@@ -302,8 +302,8 @@ def statistic():
 
             for j in range(3):    
                 row = f'|{j+1}"|'
-                row += f'{top[j][0]:6.2f}|'
-                row += f'{top[j][1]:6.2f}|'
+                row += f'{round(top[j][0], 2):6.2f}|'
+                row += f'{round(top[j][1], 2):6.2f}|'
                 row += f'{top[j][2].strftime("%d.%m.%Y"):10} {AX_WEEKDAY[top[j][4]+1][:3]}'
                 if i_dict == 0:
                     row += f'|'
@@ -366,9 +366,9 @@ def statistic():
             for i_dict, d in enumerate(d_all):
                 mask = [n == i for n in d['weekday']]
                 
-                row += f'{np.mean(np.array(d[key])[mask]):6.2f}'
+                row += f'{round(np.mean(np.array(d[key])[mask]), 2):6.2f}'
                 row += f' $\\pm$'
-                row += f'{np.std(np.array(d[key])[mask]):6.2f}|'
+                row += f'{round(np.std(np.array(d[key])[mask]), 2):6.2f}|'
         
             text.append(txtmd(row))
             row = '||'
@@ -455,9 +455,9 @@ def statistic():
         for i in range(len(plt_special)):
             row = '|' + axs_descr[i].capitalize() + '|'
             for j in range(2):
-                row += f'{np.mean(plt_set[j][i]):6.2f}'
+                row += f'{round(np.mean(plt_set[j][i]), 2):6.2f}'
                 row += f' $\\pm$'
-                row += f'{np.std(plt_set[j][i]):6.2f}|'
+                row += f'{round(np.std(plt_set[j][i]), 2):6.2f}|'
     
             row += f'{len(plt_special[i])}'
             text.append(txtmd(row))
@@ -561,9 +561,9 @@ def statistic():
         for i in range(len(plt_special)):
             row = '|' + axs_descr[i] + '|'
             for j in range(2):
-                row += f'{np.mean(plt_set[j][i]):6.2f}'
+                row += f'{round(np.mean(plt_set[j][i]), 2):6.2f}'
                 row += f' $\\pm$'
-                row += f'{np.std(plt_set[j][i]):6.2f}|'
+                row += f'{round(np.std(plt_set[j][i]), 2):6.2f}|'
     
             row += f'{len(plt_special[i])}'
             text.append(txtmd(row))

@@ -1,16 +1,13 @@
-last update: 21.09.2024, Saturday, time: 21:12  
+last update: 21.09.2024, Saturday, time: 21:14  
 # Overview  
 || whole | half |  
 |---|---|---|  
 |total $/ \textup{€}$|184.414 $\pm$ 52.279|109.118 $\pm$ 31.413|  
 |ratio $/ \frac{\textup{€}}{\textup{h}}$| 4.407 $\pm$  0.771| 5.136 $\pm$  1.119|  
 |cash $/ \textup{€}$|63.605 $\pm$ 37.379|44.469 $\pm$ 20.527|  
-|cash $ / \% $|34.490 $\pm$ 10.491|40.753 $\pm$  7.079|  
+|cash $ / % $|34.490 $\pm$ 10.491|40.753 $\pm$  7.079|  
 |card $/ \textup{€}$|88.790 $\pm$ 53.824|57.202 $\pm$ 27.775|  
-|card $ / \% $|48.147 $\pm$ 15.537|52.422 $\pm$ 10.363|  
- $\pi$  
- $\% $  
- $\\pi$  
+|card $ / % $|48.147 $\pm$ 15.537|52.422 $\pm$ 10.363|  
 # Frequency  
     
 ![Image](./png/frequency.png)  
@@ -35,16 +32,16 @@ last update: 21.09.2024, Saturday, time: 21:12
 ## Half day  
 ||total $/ \textup{€}$|ratio $/ \frac{\textup{€}}{\textup{h}}$|timestamp|holiday|  
 |---|---|---|---|---|  
-|1"|186.83|  6.13|03.03.2024 Sun AMFalse|  
-|2"|184.50|  6.10|13.08.2023 Sun AMFalse|  
-|3"|180.09|  7.50|28.04.2024 Sun AMFalse|  
+|1"|186.83|  6.13|03.03.2024 Sun AM|False|  
+|2"|184.50|  6.10|13.08.2023 Sun AM|False|  
+|3"|180.09|  7.50|28.04.2024 Sun AM|False|  
   
   
 ||ratio $/ \frac{\textup{€}}{\textup{h}}$|total $/ \textup{€}$|timestamp|holiday|  
 |---|---|---|---|---|  
-|1"|  8.27|140.53|25.09.2023 Mon AMFalse|  
-|2"|  7.94|142.93|22.03.2024 Fri AMFalse|  
-|3"|  7.55|166.09|19.11.2023 Sun PMFalse|  
+|1"|  8.27|140.53|25.09.2023 Mon AM|False|  
+|2"|  7.94|142.93|22.03.2024 Fri AM|False|  
+|3"|  7.55|166.09|19.11.2023 Sun PM|False|  
   
   
     

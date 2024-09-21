@@ -213,7 +213,7 @@ def statistic():
             else:
                 keyword = theme
             
-            row = '|' + keyword + ' $ / \\% $|'
+            row = '|' + keyword + ' $ / % $|'
             for d in d_all:
                 x1 = np.mean(d[theme])
                 x1_err = np.std(d[theme])
@@ -225,11 +225,8 @@ def statistic():
                 row += f'{pct:6.3f} $\\pm$ {pct_err * 100:6.3f}|'
         
         text.append(txtmd(row))
+
     
-    
-    text.append(txtmd(' $\\pi$'))
-    text.append(txtmd(' $\\% $'))
-    text.append(txtmd(r' $\\pi$'))
     text.append(txtmd('# Frequency'))
     
     weekday = np.zeros(7)
@@ -311,7 +308,7 @@ def statistic():
                 if i_dict == 0:
                     row += f'|'
                 else:
-                    row += f' {top[j][3]}'
+                    row += f' {top[j][3]}|'
                 row += f'{top[j][5].capitalize()}|'
         
                 text.append(txtmd(row))

@@ -155,6 +155,9 @@ def statistic():
     loader = Loader('updating statistic', 'update statistic done.').start()
     
     text = list()
+
+    date_now = dt.today().strftime("%d.%m.%Y, %A, time: %H:%M")
+    text.append(txtmd('last update: ', date_now))
     
     flag = True
     files_whole = []

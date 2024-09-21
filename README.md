@@ -1,4 +1,4 @@
-last update: 21.09.2024, Saturday, time: 21:28  
+last update: 21.09.2024, Saturday, time: 21:30  
 # Overview  
 || Whole | Half |  
 |---|---|---|  
@@ -13,14 +13,14 @@ last update: 21.09.2024, Saturday, time: 21:28
 ![Image](./png/frequency.png)  
 # Total / Ratio  
 ## Whole day  
-||Total $/ \textup{€}$|Ratio $/ \frac{\textup{€}}{\textup{h}}$|timestamp|holiday|  
+||Total $/ \textup{€}$|Ratio $/ \frac{\textup{€}}{\textup{h}}$|Timestamp|Holiday|  
 |---|---|---|---|---|  
 |1"|334.35|  6.52|22.10.2023 Sun|False|  
 |2"|334.35|  6.52|22.10.2023 Sun|False|  
 |3"|322.02|  6.05|13.08.2023 Sun|False|  
   
   
-||Ratio $/ \frac{\textup{€}}{\textup{h}}$|Total $/ \textup{€}$|timestamp|holiday|  
+||Ratio $/ \frac{\textup{€}}{\textup{h}}$|Total $/ \textup{€}$|Timestamp|Holiday|  
 |---|---|---|---|---|  
 |1"|  6.52|334.35|22.10.2023 Sun|False|  
 |2"|  6.52|334.35|22.10.2023 Sun|False|  
@@ -30,14 +30,14 @@ last update: 21.09.2024, Saturday, time: 21:28
     
 ![Image](./png/total_ratio_whole.png)  
 ## Half day  
-||Total $/ \textup{€}$|Ratio $/ \frac{\textup{€}}{\textup{h}}$|timestamp|holiday|  
+||Total $/ \textup{€}$|Ratio $/ \frac{\textup{€}}{\textup{h}}$|Timestamp|Holiday|  
 |---|---|---|---|---|  
 |1"|186.83|  6.13|03.03.2024 Sun AM|False|  
 |2"|184.50|  6.10|13.08.2023 Sun AM|False|  
 |3"|180.09|  7.50|28.04.2024 Sun AM|False|  
   
   
-||Ratio $/ \frac{\textup{€}}{\textup{h}}$|Total $/ \textup{€}$|timestamp|holiday|  
+||Ratio $/ \frac{\textup{€}}{\textup{h}}$|Total $/ \textup{€}$|Timestamp|Holiday|  
 |---|---|---|---|---|  
 |1"|  8.27|140.53|25.09.2023 Mon AM|False|  
 |2"|  7.94|142.93|22.03.2024 Fri AM|False|  
@@ -66,7 +66,7 @@ last update: 21.09.2024, Saturday, time: 21:28
 # Make me feel Special  
 Special: Holidays and Weekends  
 ## Whole day  
-||Total $/ \textup{€}$|Ratio $/ \frac{\textup{€}}{\textup{h}}$|count|  
+||Total $/ \textup{€}$|Ratio $/ \frac{\textup{€}}{\textup{h}}$|Count|  
 |---|---|---|---|  
 |All|190.51 $\pm$ 54.59|  4.51 $\pm$  0.80|213  
 |Normal|164.38 $\pm$ 38.42|  4.31 $\pm$  0.76|138  
@@ -77,7 +77,7 @@ Special: Holidays and Weekends
     
 ![Image](./png/special_whole.png)  
 ## Half day  
-||Total $/ \textup{€}$|Ratio $/ \frac{\textup{€}}{\textup{h}}$|count|  
+||Total $/ \textup{€}$|Ratio $/ \frac{\textup{€}}{\textup{h}}$|Count|  
 |---|---|---|---|  
 |All|109.11 $\pm$ 31.26|  5.13 $\pm$  1.11|178  
 |Normal| 95.70 $\pm$ 22.80|  5.05 $\pm$  1.10|105  
@@ -89,7 +89,7 @@ Special: Holidays and Weekends
 ![Image](./png/special_half.png)  
 # AM / PM  
 ## AM  
-||total $/ \textup{€}$|ratio $/ \frac{\textup{€}}{\textup{h}}$|count|  
+||Total $/ \textup{€}$|Ratio $/ \frac{\textup{€}}{\textup{h}}$|Count|  
 |---|---|---|---|  
 |All|111.15 $\pm$ 28.71|  5.22 $\pm$  1.00|112  
 |Normal| 99.73 $\pm$ 20.11|  5.34 $\pm$  1.01|69  
@@ -100,7 +100,7 @@ Special: Holidays and Weekends
     
 ![Image](./png/AM.png)  
 ## PM  
-||total $/ \textup{€}$|ratio $/ \frac{\textup{€}}{\textup{h}}$|count|  
+||Total $/ \textup{€}$|Ratio $/ \frac{\textup{€}}{\textup{h}}$|Count|  
 |---|---|---|---|  
 |All|105.64 $\pm$ 34.90|  4.98 $\pm$  1.27|66  
 |Normal| 87.97 $\pm$ 25.50|  4.50 $\pm$  1.06|36  

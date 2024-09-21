@@ -286,8 +286,8 @@ def statistic():
     
     text.append(txtmd('# Total / Ratio'))
     
-    table_title = ['||Total '+LTX_EURO+'|Ratio '+LTX_RATIO+'|timestamp|holiday|',
-                  '||Ratio '+LTX_RATIO+'|Total '+LTX_EURO+'|timestamp|holiday|']
+    table_title = ['||Total '+LTX_EURO+'|Ratio '+LTX_RATIO+'|Timestamp|Holiday|',
+                  '||Ratio '+LTX_RATIO+'|Total '+LTX_EURO+'|Timestamp|Holiday|']
     
     for i_dict, d in enumerate(d_all):
         text.append(txtmd('## ' +L_DICT[i_dict].capitalize()+ ' day'))
@@ -449,7 +449,7 @@ def statistic():
                 axs[i_key].plot(np.ones(len(plt_special[i])) *i +1, plt_special[i], ms=4, marker='o', mew=0.5, ls="none", color=COLOR[i])
             axs[i_key].violinplot(plt_special, positions=range(1, 7), showextrema=False, showmeans=True)
     
-        text.append(txtmd('||Total '+LTX_EURO+'|Ratio '+LTX_RATIO+'|count|'))
+        text.append(txtmd('||Total '+LTX_EURO+'|Ratio '+LTX_RATIO+'|Count|'))
         text.append(txtmd('|---|---|---|---|'))
         
         for i in range(len(plt_special)):
@@ -555,7 +555,7 @@ def statistic():
                 axs[i_key].plot(np.ones(len(plt_special[i])) *i +1, plt_special[i], ms=4, marker='o', mew=0.5, ls="none", color=COLOR[i])
             axs[i_key].violinplot(plt_special, positions=range(1, 7), showextrema=False, showmeans=True)
     
-        text.append(txtmd('||total '+LTX_EURO+'|ratio '+LTX_RATIO+'|count|'))
+        text.append(txtmd('||Total '+LTX_EURO+'|Ratio '+LTX_RATIO+'|Count|'))
         text.append(txtmd('|---|---|---|---|'))
         
         for i in range(len(plt_special)):

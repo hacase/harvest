@@ -217,10 +217,10 @@ def statistic():
             weekday[day] += 1
     
     pct = weekday / float(sum(weekday)) * 100
-    
+
     fig, ax = plt.subplots(figsize=(5, 5))
     wedges, texts, autotexts = ax.pie(weekday,
-                                      labels=AX_WEEKDAY[1:],
+                                      labels= list(calendar.day_name),
                                       autopct='',
                                       colors=COLOR,
                                       startangle=90,

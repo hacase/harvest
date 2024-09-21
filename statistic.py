@@ -213,7 +213,7 @@ def statistic():
             else:
                 keyword = theme
             
-            row = '|' + keyword + '$ / \\% $|'
+            row = '|' + keyword + r' $ / \\% $|'
             for d in d_all:
                 x1 = np.mean(d[theme])
                 x1_err = np.std(d[theme])

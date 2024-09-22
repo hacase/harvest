@@ -11,7 +11,7 @@ from datetime import datetime as dt
 from urllib import request
 import subprocess
 
-from harvest_func import abort, normal_mode, opening
+from harvest_func import abort, opening, normal_mode
 import texts as tx
 
 
@@ -47,13 +47,11 @@ def routine():
 
     elif 'half' in value:
         value_clean = value.replace('half ', '')
-        normal_mode(value_clean, dt.today(), half_day=True)
+        normal_mode(value_clean, dt.today(), half=True)
 
     elif 'dummy' in value:
-        dummy_mode()
-
-    elif abort(is_not_float(value)):
-        print('wrong input')
+        value_clean = value.replace('dummy ', '')
+        normal_mode(value_clean, dt.today(), dummy=True)
 
     elif value == 'exit':
         import statistic
@@ -64,6 +62,9 @@ def routine():
             git_update('ferienfeiertage')
 
         sys.exit()
+
+    elif abort(is_not_float(value)):
+        print('wrong input')
         
     else:
         normal_mode(value, dt.today())

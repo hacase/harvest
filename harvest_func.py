@@ -273,12 +273,14 @@ def print_table(hour, roundtip, realtip, ratio, tipsum, bar, card, date, text=No
         return text
 
 
-def normal_mode(value, date, half_day=False):
+def normal_mode(value, date, half=False, dummy=False):
     hour = []
-    i = 2
     count = 1
     bar = 'false'
     card = 'false'
+
+    while value == '':
+        value = input('1. Hour= ')
 
     if value[0] == ' ':
         value = value[1:]
@@ -330,22 +332,23 @@ def normal_mode(value, date, half_day=False):
     text = '{"timestamp": "' + date.strftime('%d.%m.%Y-%H:%M", ')
     
     text = print_table(hour, roundtip, realtip, ratio, tipsum, bar, card, date, text)
-    
-    git_delayed()
-    
-    timestamp = date.strftime("%d-%a-%H-%M")
-    dirname = date.strftime("./json/%Y/%m/")
 
-    if not half_day:
-        timestamp += '-WHOLE'
-    else:
-        timestamp += '-HALF'
+    if not dummy:
+        git_delayed()
         
-    path = dirname + '/' + timestamp +'.json'
-
-    os.makedirs(os.path.dirname(dirname), exist_ok=True)
-    with open(path, 'w+') as f:
-        f.writelines(text)
+        timestamp = date.strftime("%d-%a-%H-%M")
+        dirname = date.strftime("./json/%Y/%m/")
+    
+        if not half:
+            timestamp += '-WHOLE'
+        else:
+            timestamp += '-HALF'
+            
+        path = dirname + '/' + timestamp +'.json'
+    
+        os.makedirs(os.path.dirname(dirname), exist_ok=True)
+        with open(path, 'w+') as f:
+            f.writelines(text)
     
     print('')
 

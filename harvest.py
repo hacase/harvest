@@ -27,7 +27,7 @@ def routine():
     
     print(dt.today().strftime("%d.%m.%Y, %A, time: %H:%M"))
     
-    value = abort(input('{}{} = '.format(i, ". Hour")))
+    value = input('{}{} = '.format(i, ". Hour"))
     
     if value == 'report':
         import report
@@ -46,11 +46,11 @@ def routine():
         submit.submit()
 
     elif 'half' in value:
-        value_clean = value.replace('half ', '')
+        value_clean = value.replace('half', '')
         normal_mode(value_clean, dt.today(), half=True)
 
     elif 'dummy' in value:
-        value_clean = value.replace('dummy ', '')
+        value_clean = value.replace('dummy', '')
         normal_mode(value_clean, dt.today(), dummy=True)
 
     elif value == 'exit':

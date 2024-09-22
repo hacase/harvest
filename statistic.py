@@ -211,7 +211,7 @@ def statistic():
     
     text.append(txtmd('|| Whole | Half |'))
     text.append(txtmd('|---|---|---|'))
-    
+
     for theme in ['total', 'ratio', 'bar', 'card']:
         if theme == 'bar':
             keyword = 'cash'
@@ -241,15 +241,13 @@ def statistic():
             
             row = '|' + keyword.capitalize() +' '+ r'$/ \\% $|'
             for d in d_all:
-                d_clear = list(filter(lambda item: item not in ['None', 'False'], d[theme]))
-                x1 = np.mean(d_clear)
-                x1_err = np.std(d_clear)
-                x2 = np.mean(d['total'])
-                x2_err = np.std(d['total'])
+                mask = [item not in ['None', 'False', 'false', None, False] for item in d[theme]]
+                x1 = np.array(d[theme])[mask]
+                x2 = np.array(d['total'])[mask]
                 
-                pct = x1 / x2 * 100
-                pct_err = x1_err / x2 - x2_err * x1 / x2**2
-                row += f'{round(pct, 3):6.3f} $\\pm$ {round(pct_err * 100, 3):6.3f}|'
+                pct = np.mean(x1 / x2) * 100
+                pct_err = np.std(x1 / x2) * 100
+                row += f'{pct:6.3f} $\\pm$ {pct_err:6.3f}|'
         
         text.append(txtmd(row))
 

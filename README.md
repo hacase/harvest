@@ -1,4 +1,4 @@
-last update: 23.09.2024, Monday, time: 13:48  
+last update: 24.09.2024, Tuesday, time: 13:43  
 # Overview  
 || Whole | Half |  
 |---|---|---|  
@@ -73,7 +73,7 @@ Special: Holidays and Weekends
 |Weekend|238.68 $\pm$ 46.39|  4.89 $\pm$  0.72|76  
 |Holiday|182.27 $\pm$ 54.25|  4.44 $\pm$  0.83|62  
 |Special|210.73 $\pm$ 58.68|  4.66 $\pm$  0.81|119  
-|Special\&friday|208.32 $\pm$ 55.59|  4.63 $\pm$  0.80|141  
+|Special \& friday|208.32 $\pm$ 55.59|  4.63 $\pm$  0.80|141  
     
 ![Image](./png/special_whole.png)  
 ## Half day  
@@ -84,7 +84,7 @@ Special: Holidays and Weekends
 |Weekend|128.40 $\pm$ 31.68|  5.25 $\pm$  1.12|73  
 |Holiday|108.86 $\pm$ 28.20|  5.02 $\pm$  1.07|30  
 |Special|123.30 $\pm$ 32.24|  5.22 $\pm$  1.12|90  
-|Special\&friday|120.33 $\pm$ 31.16|  5.20 $\pm$  1.11|111  
+|Special \& friday|120.33 $\pm$ 31.16|  5.20 $\pm$  1.11|111  
     
 ![Image](./png/special_half.png)  
 # AM / PM  
@@ -96,7 +96,7 @@ Special: Holidays and Weekends
 |Weekend|129.49 $\pm$ 30.85|  5.03 $\pm$  0.96|43  
 |Holiday|112.39 $\pm$ 24.57|  5.14 $\pm$  0.96|18  
 |Special|125.97 $\pm$ 30.05|  5.13 $\pm$  0.95|53  
-|Special\&Friday|123.66 $\pm$ 28.32|  5.19 $\pm$  0.96|64  
+|Special \& Friday|123.66 $\pm$ 28.32|  5.19 $\pm$  0.96|64  
     
 ![Image](./png/AM.png)  
 ## PM  
@@ -107,6 +107,6 @@ Special: Holidays and Weekends
 |Weekend|126.84 $\pm$ 32.78|  5.56 $\pm$  1.25|30  
 |Holiday|103.55 $\pm$ 32.18|  4.84 $\pm$  1.18|12  
 |Special|119.48 $\pm$ 34.79|  5.36 $\pm$  1.31|37  
-|Special\&Friday|115.80 $\pm$ 34.15|  5.20 $\pm$  1.27|47  
+|Special \& Friday|115.80 $\pm$ 34.15|  5.20 $\pm$  1.27|47  
     
 ![Image](./png/PM.png)  

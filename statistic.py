@@ -393,7 +393,7 @@ def statistic():
                     'Weekend',
                     'Holiday',
                     'Special',
-                    'Special\&Friday']
+                    'Special \& Friday']
     
     
         for i_key, key in enumerate(L_TORA):
@@ -500,7 +500,7 @@ def statistic():
                     'Weekend',
                     'Holiday',
                     'Special',
-                    'Special\&Friday']
+                    'Special \& Friday']
     
     
         for i_key, key in enumerate(L_TORA):

@@ -1,13 +1,13 @@
-last update: 05.10.2024, Saturday, time: 18:44  
+last update: 06.10.2024, Sunday, time: 18:13  
 # Overview  
 || Whole | Half |  
 |---|---|---|  
-|Total $/ \textup{€}$|191.450 $\pm$ 54.688|109.011 $\pm$ 31.199|  
-|Ratio $/ \frac{\textup{€}}{\textup{h}}$| 4.517 $\pm$  0.793| 5.132 $\pm$  1.110|  
-|Cash $/ \textup{€}$|64.289 $\pm$ 35.365|43.881 $\pm$ 20.917|  
-|Cash $/ \\% $|41.426 $\pm$  8.444|44.103 $\pm$  9.766|  
-|Card $/ \textup{€}$|92.440 $\pm$ 52.322|56.598 $\pm$ 28.195|  
-|Card $/ \\% $|58.574 $\pm$  8.444|55.897 $\pm$  9.766|  
+|Total $/ \textup{€}$|192.044 $\pm$ 55.265|109.011 $\pm$ 31.199|  
+|Ratio $/ \frac{\textup{€}}{\textup{h}}$| 4.523 $\pm$  0.797| 5.132 $\pm$  1.110|  
+|Cash $/ \textup{€}$|64.594 $\pm$ 35.570|43.881 $\pm$ 20.917|  
+|Cash $/ \\% $|41.422 $\pm$  8.421|44.103 $\pm$  9.766|  
+|Card $/ \textup{€}$|92.888 $\pm$ 52.620|56.598 $\pm$ 28.195|  
+|Card $/ \\% $|58.578 $\pm$  8.421|55.897 $\pm$  9.766|  
 # Frequency  
     
 ![Image](./png/frequency.png)  
@@ -61,19 +61,19 @@ last update: 05.10.2024, Saturday, time: 18:44
 ||Ratio $/ \frac{\textup{€}}{\textup{h}}$|  4.36 $\pm$  0.72|  4.96 $\pm$  1.14|  
 |Saturday|Total $/ \textup{€}$|221.46 $\pm$ 42.57|116.06 $\pm$ 31.65|  
 ||Ratio $/ \frac{\textup{€}}{\textup{h}}$|  4.59 $\pm$  0.65|  4.94 $\pm$  1.08|  
-|Sunday|Total $/ \textup{€}$|253.18 $\pm$ 45.71|138.03 $\pm$ 28.18|  
-||Ratio $/ \frac{\textup{€}}{\textup{h}}$|  5.16 $\pm$  0.65|  5.49 $\pm$  1.09|  
+|Sunday|Total $/ \textup{€}$|254.81 $\pm$ 46.35|138.03 $\pm$ 28.18|  
+||Ratio $/ \frac{\textup{€}}{\textup{h}}$|  5.18 $\pm$  0.66|  5.49 $\pm$  1.09|  
 # Make me feel Special  
 Special: Holidays and Weekends  
 ## Whole day  
 ||Total $/ \textup{€}$|Ratio $/ \frac{\textup{€}}{\textup{h}}$|Count|  
 |---|---|---|---|  
-|All|191.45 $\pm$ 54.69|  4.52 $\pm$  0.79|218  
+|All|192.04 $\pm$ 55.26|  4.52 $\pm$  0.80|219  
 |Normal|165.44 $\pm$ 39.19|  4.31 $\pm$  0.76|140  
-|Weekend|238.14 $\pm$ 47.00|  4.89 $\pm$  0.71|78  
+|Weekend|239.19 $\pm$ 47.62|  4.90 $\pm$  0.72|79  
 |Holiday|183.40 $\pm$ 54.54|  4.43 $\pm$  0.82|63  
-|Special|211.19 $\pm$ 58.64|  4.66 $\pm$  0.80|122  
-|Special \& friday|208.86 $\pm$ 55.46|  4.63 $\pm$  0.79|145  
+|Special|212.09 $\pm$ 59.24|  4.67 $\pm$  0.80|123  
+|Special \& friday|209.64 $\pm$ 56.05|  4.63 $\pm$  0.80|146  
     
 ![Image](./png/special_whole.png)  
 ## Half day  

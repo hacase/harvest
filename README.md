@@ -1,13 +1,13 @@
-last update: 07.10.2024, Monday, time: 22:42  
+last update: 08.10.2024, Tuesday, time: 18:30  
 # Overview  
 || Whole | Half |  
 |---|---|---|  
-|Total $/ \textup{€}$|192.968 $\pm$ 55.311|109.354 $\pm$ 31.234|  
-|Ratio $/ \frac{\textup{€}}{\textup{h}}$| 4.519 $\pm$  0.791| 5.129 $\pm$  1.105|  
-|Cash $/ \textup{€}$|65.355 $\pm$ 35.193|43.607 $\pm$ 21.058|  
-|Cash $/ \\% $|41.404 $\pm$  8.314|43.982 $\pm$  9.854|  
-|Card $/ \textup{€}$|94.270 $\pm$ 52.844|56.617 $\pm$ 28.702|  
-|Card $/ \\% $|58.596 $\pm$  8.314|56.018 $\pm$  9.854|  
+|Total $/ \textup{€}$|192.834 $\pm$ 55.226|109.354 $\pm$ 31.234|  
+|Ratio $/ \frac{\textup{€}}{\textup{h}}$| 4.518 $\pm$  0.789| 5.129 $\pm$  1.105|  
+|Cash $/ \textup{€}$|65.455 $\pm$ 35.148|43.607 $\pm$ 21.058|  
+|Cash $/ \\% $|41.471 $\pm$  8.344|43.982 $\pm$  9.854|  
+|Card $/ \textup{€}$|94.182 $\pm$ 52.745|56.617 $\pm$ 28.702|  
+|Card $/ \\% $|58.529 $\pm$  8.344|56.018 $\pm$  9.854|  
 # Frequency  
     
 ![Image](./png/frequency.png)  
@@ -51,8 +51,8 @@ last update: 07.10.2024, Monday, time: 22:42
 |---|---|---|---|  
 |Monday|Total $/ \textup{€}$|158.59 $\pm$ 37.10|101.02 $\pm$ 23.93|  
 ||Ratio $/ \frac{\textup{€}}{\textup{h}}$|  4.15 $\pm$  0.75|  5.41 $\pm$  1.12|  
-|Tuesday|Total $/ \textup{€}$|157.32 $\pm$ 34.24| 87.62 $\pm$ 17.87|  
-||Ratio $/ \frac{\textup{€}}{\textup{h}}$|  4.34 $\pm$  0.80|  4.96 $\pm$  1.07|  
+|Tuesday|Total $/ \textup{€}$|157.47 $\pm$ 33.74| 87.62 $\pm$ 17.87|  
+||Ratio $/ \frac{\textup{€}}{\textup{h}}$|  4.33 $\pm$  0.78|  4.96 $\pm$  1.07|  
 |Wednesday|Total $/ \textup{€}$|165.92 $\pm$ 29.06| 93.17 $\pm$ 20.39|  
 ||Ratio $/ \frac{\textup{€}}{\textup{h}}$|  4.49 $\pm$  0.76|  5.10 $\pm$  1.05|  
 |Thursday|Total $/ \textup{€}$|153.83 $\pm$ 44.89| 88.34 $\pm$ 18.21|  
@@ -68,8 +68,8 @@ Special: Holidays and Weekends
 ## Whole day  
 ||Total $/ \textup{€}$|Ratio $/ \frac{\textup{€}}{\textup{h}}$|Count|  
 |---|---|---|---|  
-|All|192.97 $\pm$ 55.31|  4.52 $\pm$  0.79|227  
-|Normal|166.53 $\pm$ 39.17|  4.31 $\pm$  0.75|147  
+|All|192.83 $\pm$ 55.23|  4.52 $\pm$  0.79|228  
+|Normal|166.50 $\pm$ 39.04|  4.31 $\pm$  0.75|148  
 |Weekend|241.55 $\pm$ 47.08|  4.90 $\pm$  0.71|80  
 |Holiday|183.40 $\pm$ 54.54|  4.43 $\pm$  0.82|63  
 |Special|213.83 $\pm$ 59.62|  4.67 $\pm$  0.80|124  

@@ -1,4 +1,4 @@
-last update: 10.10.2024, Thursday, time: 18:59  
+last update: 10.10.2024, Thursday, time: 19:01  
 # Overview  
 || Whole | Half |  
 |---|---|---|  

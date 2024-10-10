@@ -11,7 +11,7 @@ from datetime import datetime as dt
 from urllib import request
 import subprocess
 
-from harvest_func import abort, opening, normal_mode
+from harvest_func import abort, opening, normal_mode, git_update
 import texts as tx
 
 

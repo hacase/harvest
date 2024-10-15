@@ -179,7 +179,6 @@ def statistic():
     
     d_whole = calculate_statistic(files_whole)
     d_half = calculate_statistic(files_half)
-    d_all = [d_whole, d_half]
 
     part_whole, part_ampm = pseudo(d_whole, d_half)
     
@@ -206,8 +205,10 @@ def statistic():
             d_half['hour'].append(False)
             d_half['bar'].append(False)
             d_half['card'].append(False)
+
+    d_all = [d_whole, d_half]
     
-    text.append(txtmd('# Overview'))
+    text.append(txtmd('# Panorama'))
     
     text.append(txtmd('|| Whole | Half |'))
     text.append(txtmd('|---|---|---|'))
@@ -252,7 +253,7 @@ def statistic():
         text.append(txtmd(row))
 
     
-    text.append(txtmd('# Frequency'))
+    text.append(txtmd('# Cake'))
     
     weekday = np.zeros(7)
     for i_dict, d in enumerate(d_all):
@@ -354,7 +355,7 @@ def statistic():
         text.append(txtmd('![Image](' + png_name + ')'))
     
         
-    text.append(txtmd('# Weekday'))
+    text.append(txtmd('# Seven Days A Week'))
     text.append(txtmd('|||Whole|Half|'))
     text.append(txtmd('|---|---|---|---|'))
     for i in range(7):
@@ -372,7 +373,7 @@ def statistic():
             row = '||'
     
     
-    text.append(txtmd('# Make me feel Special'))
+    text.append(txtmd('# Make Me Feel Special'))
     text.append(txtmd('Special: Holidays and Weekends'))
     for i_dict, d in enumerate(d_all):
         plt_set = []
@@ -451,7 +452,7 @@ def statistic():
         text.append(txtmd('|---|---|---|---|'))
         
         for i in range(len(plt_special)):
-            row = '|' + axs_descr[i].capitalize() + '|'
+            row = '|' + axs_descr[i] + '|'
             for j in range(2):
                 row += f'{round(np.mean(plt_set[j][i]), 2):6.2f}'
                 row += f' $\\pm$'

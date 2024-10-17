@@ -207,7 +207,10 @@ def statistic():
             d_half['card'].append(False)
 
     d_all = [d_whole, d_half]
-    
+
+
+
+
     text.append(txtmd('# Panorama'))
     
     text.append(txtmd('|| Whole | Half |'))
@@ -283,7 +286,7 @@ def statistic():
     text.append(txtmd('![Image](' + png_name + ')'))
     
     
-    text.append(txtmd('# Total / Ratio'))
+    text.append(txtmd('# No. 1'))
     
     table_title = ['||Total '+LTX_EURO+'|Ratio '+LTX_RATIO+'|Timestamp|Holiday|',
                   '||Ratio '+LTX_RATIO+'|Total '+LTX_EURO+'|Timestamp|Holiday|']
@@ -295,11 +298,11 @@ def statistic():
             text.append(txtmd('|---|---|---|---|---|'))
     
             if i_table == 0:
-                top = sorted(zip(d["total"], d["ratio"], d["date"], d["time"], d["weekday"], d["holiday"]), reverse=True)[:3]
+                top = sorted(zip(d["total"], d["ratio"], d["date"], d["time"], d["weekday"], d["holiday"]), reverse=True)[:5]
             else:
-                top = sorted(zip(d["ratio"], d["total"], d["date"], d["time"], d["weekday"], d["holiday"]), reverse=True)[:3]
+                top = sorted(zip(d["ratio"], d["total"], d["date"], d["time"], d["weekday"], d["holiday"]), reverse=True)[:5]
 
-            for j in range(3):    
+            for j in range(5):    
                 row = f'|{j+1}"|'
                 row += f'{round(top[j][0], 2):6.2f}|'
                 row += f'{round(top[j][1], 2):6.2f}|'
@@ -337,7 +340,7 @@ def statistic():
                     tick = 25
             else:
                 plt.ylabel(r'$\displaystyle\frac{\textup{€}}{\textup{h}}$')
-                tick = .5
+                tick = 1.
             major, minor = ticker(tick, [item for row in plt_weekday[i_ax] for item in row])
             plt.grid(axis = 'y', which = 'major', alpha = 0.7)
             plt.grid(axis = 'y', which = 'minor', alpha = 0.3)
@@ -390,7 +393,7 @@ def statistic():
         special_f = [[] for _ in range(2)]
     
         axs_descr = ['All',
-                    'Normal',
+                    'Weekday',
                     'Weekend',
                     'Holiday',
                     'Special',
@@ -438,7 +441,7 @@ def statistic():
                     tick = 25
             else:
                 plt.ylabel(r'$\displaystyle\frac{\textup{€}}{\textup{h}}$')
-                tick = .5
+                tick = 1.
             major, minor = ticker(tick, [item for row in plt_special for item in row])
             plt.grid(axis = 'y', which = 'major', alpha = 0.7)
             plt.grid(axis = 'y', which = 'minor', alpha = 0.3)
@@ -469,7 +472,7 @@ def statistic():
         text.append(txtmd('![Image](' + png_name + ')'))
     
     
-    text.append(txtmd('# AM / PM'))
+    text.append(txtmd('# 2PM'))
     
     d_am = {key: [] for key in d_half.keys()}
     d_pm = {key: [] for key in d_half.keys()}
@@ -497,7 +500,7 @@ def statistic():
         special_f = [[] for _ in range(2)]
     
         axs_descr = ['All',
-                    'Normal',
+                    'Weekday',
                     'Weekend',
                     'Holiday',
                     'Special',
@@ -544,7 +547,7 @@ def statistic():
                     tick = 25
             else:
                 plt.ylabel(r'$\displaystyle\frac{\textup{€}}{\textup{h}}$')
-                tick = .5
+                tick = 1.
             major, minor = ticker(tick, [item for row in plt_special for item in row])
             plt.grid(axis = 'y', which = 'major', alpha = 0.7)
             plt.grid(axis = 'y', which = 'minor', alpha = 0.3)
@@ -574,6 +577,81 @@ def statistic():
         plt.savefig(png_name, dpi=300)
         text.append(txtmd('  '))
         text.append(txtmd('![Image](' + png_name + ')'))
+
+
+
+    text.append(txtmd('# Month And The Weekend'))
+
+    text.append(txtmd(f'| Month || Total {LTX_EURO} | Ratio {LTX_RATIO} |'))
+    text.append(txtmd('|---|---|---|---|'))
+    
+    month_ratio = [[] for _ in range(12)]
+    month_total = [[] for _ in range(12)]
+    mask_weekday = [[] for _ in range(12)]
+    
+    for i_dict, d in enumerate(d_all):
+        for i_d_date, d_date in enumerate(d['date']):
+            month_ratio[d_date.month -1].append(d['ratio'][i_d_date])
+            month_total[d_date.month -1].append(d['total'][i_d_date])
+    
+            if d['weekday'][i_d_date] < 5:
+                mask_weekday[d_date.month -1].append(True)
+            else:
+                mask_weekday[d_date.month -1].append(False)
+    
+    for i in range(12):
+        mask = mask_weekday[i]
+        month_name = dt.strptime(str(i+1), "%m").strftime("%B")
+        row = f'{month_name} |'
+    
+        L_MONTHLY = ['All', 'Weekday', 'Weekend']
+        mask_all = [[True]*len(mask), mask, [not elem for elem in mask]]
+        for j in range(3):
+            row += L_MONTHLY[j] + '|'
+            row += f'{round(np.mean(np.array(month_total[i])[mask_all[j]]), 2):.2f}'
+            row += f' $\\pm$ {round(np.std(np.array(month_total[i])[mask_all[j]]), 2):.2f}|'
+        
+            row += f'{round(np.mean(np.array(month_ratio[i])[mask_all[j]]), 2):.2f}'
+            row += f' $\\pm$ {round(np.std(np.array(month_ratio[i])[mask_all[j]]), 2):.2f}'
+    
+            text.append(txtmd(row))
+            row = '||'
+    
+    month_tora = [month_total, month_ratio]
+    axs_descr = [''] + [dt.strptime(str(i+1), "%m").strftime("%b") for i in range(12)]
+    
+    fig, axis = plt.subplots(1, 2, figsize=(8, 5))
+    fig.suptitle('Month')
+    
+    for i_ax, ax in enumerate(axis):
+        ax.set_title(L_TORA[i_ax].capitalize())
+        ax.boxplot(month_tora[i_ax])
+        plt.sca(ax)
+        plt.xticks(range(13), axs_descr, rotation=45)
+        if i_ax == 0:
+            plt.ylabel(r'\textup{€}')
+            if i_dict == 0:
+                tick = 50
+            else:
+                tick = 25
+        else:
+            plt.ylabel(r'$\displaystyle\frac{\textup{€}}{\textup{h}}$')
+            tick = 1.
+        major, minor = ticker(tick, [item for row in month_tora[i_ax] for item in row])
+        plt.grid(axis = 'y', which = 'major', alpha = 0.7)
+        plt.grid(axis = 'y', which = 'minor', alpha = 0.3)
+        ax.set_yticks(major)
+        ax.set_yticks(minor, minor = True)
+        for i in range(12):
+            ax.plot(np.ones(len(month_tora[i_ax][i])) *i +1, month_tora[i_ax][i], ms=4, marker='o', mew=0.5, ls="none")
+        ax.violinplot(month_tora[i_ax], positions=range(1, 13), showextrema=False, showmeans=True)
+    
+    fig.tight_layout()
+    
+    png_name = './png/month.png'
+    plt.savefig(png_name, dpi=300)
+    text.append(txtmd('  '))
+    text.append(txtmd('![Image](' + png_name + ')'))
     
     
     with open('./README.md', 'w') as f:

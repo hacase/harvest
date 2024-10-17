@@ -1,13 +1,13 @@
-last update: 17.10.2024, Thursday, time: 18:24  
+last update: 17.10.2024, Thursday, time: 20:29  
 # Panorama  
 || Whole | Half |  
 |---|---|---|  
-|Total $/ \textup{€}$|193.207 $\pm$ 54.938|109.354 $\pm$ 31.234|  
-|Ratio $/ \frac{\textup{€}}{\textup{h}}$| 4.517 $\pm$  0.785| 5.129 $\pm$  1.105|  
-|Cash $/ \textup{€}$|66.022 $\pm$ 35.054|43.607 $\pm$ 21.058|  
-|Cash $/ \\% $|41.362 $\pm$  8.397|43.982 $\pm$  9.854|  
-|Card $/ \textup{€}$|95.248 $\pm$ 52.333|56.617 $\pm$ 28.702|  
-|Card $/ \\% $|58.638 $\pm$  8.397|56.018 $\pm$  9.854|  
+|Total $/ \textup{€}$|193.608 $\pm$ 54.673|109.544 $\pm$ 30.927|  
+|Ratio $/ \frac{\textup{€}}{\textup{h}}$| 4.518 $\pm$  0.783| 5.102 $\pm$  1.108|  
+|Cash $/ \textup{€}$|66.345 $\pm$ 34.959|42.721 $\pm$ 21.473|  
+|Cash $/ \\% $|41.450 $\pm$  8.288|43.644 $\pm$ 10.075|  
+|Card $/ \textup{€}$|95.460 $\pm$ 52.276|56.304 $\pm$ 29.520|  
+|Card $/ \\% $|58.550 $\pm$  8.288|56.356 $\pm$ 10.075|  
 # Cake  
     
 ![Image](./png/frequency.png)  
@@ -49,18 +49,18 @@ last update: 17.10.2024, Thursday, time: 18:24
 # Seven Days A Week  
 |||Whole|Half|  
 |---|---|---|---|  
-|Monday|Total $/ \textup{€}$|158.77 $\pm$ 36.36|101.02 $\pm$ 23.93|  
-||Ratio $/ \frac{\textup{€}}{\textup{h}}$|  4.13 $\pm$  0.74|  5.41 $\pm$  1.12|  
+|Monday|Total $/ \textup{€}$|161.01 $\pm$ 37.38|101.02 $\pm$ 23.93|  
+||Ratio $/ \frac{\textup{€}}{\textup{h}}$|  4.16 $\pm$  0.74|  5.41 $\pm$  1.12|  
 |Tuesday|Total $/ \textup{€}$|160.40 $\pm$ 37.40| 87.62 $\pm$ 17.87|  
 ||Ratio $/ \frac{\textup{€}}{\textup{h}}$|  4.38 $\pm$  0.82|  4.96 $\pm$  1.07|  
-|Wednesday|Total $/ \textup{€}$|165.90 $\pm$ 28.60| 93.17 $\pm$ 20.39|  
-||Ratio $/ \frac{\textup{€}}{\textup{h}}$|  4.47 $\pm$  0.75|  5.10 $\pm$  1.05|  
-|Thursday|Total $/ \textup{€}$|155.80 $\pm$ 44.06| 88.34 $\pm$ 18.21|  
-||Ratio $/ \frac{\textup{€}}{\textup{h}}$|  4.13 $\pm$  0.63|  4.77 $\pm$  0.96|  
+|Wednesday|Total $/ \textup{€}$|166.88 $\pm$ 28.71| 93.17 $\pm$ 20.39|  
+||Ratio $/ \frac{\textup{€}}{\textup{h}}$|  4.48 $\pm$  0.74|  5.10 $\pm$  1.05|  
+|Thursday|Total $/ \textup{€}$|155.80 $\pm$ 44.06| 92.39 $\pm$ 20.84|  
+||Ratio $/ \frac{\textup{€}}{\textup{h}}$|  4.13 $\pm$  0.63|  4.68 $\pm$  0.99|  
 |Friday|Total $/ \textup{€}$|195.97 $\pm$ 35.36|104.48 $\pm$ 25.23|  
 ||Ratio $/ \frac{\textup{€}}{\textup{h}}$|  4.42 $\pm$  0.73|  4.96 $\pm$  1.14|  
-|Saturday|Total $/ \textup{€}$|222.84 $\pm$ 44.02|117.47 $\pm$ 31.42|  
-||Ratio $/ \frac{\textup{€}}{\textup{h}}$|  4.58 $\pm$  0.63|  4.94 $\pm$  1.05|  
+|Saturday|Total $/ \textup{€}$|225.38 $\pm$ 41.69|117.75 $\pm$ 30.57|  
+||Ratio $/ \frac{\textup{€}}{\textup{h}}$|  4.58 $\pm$  0.64|  4.90 $\pm$  1.03|  
 |Sunday|Total $/ \textup{€}$|255.95 $\pm$ 45.84|138.03 $\pm$ 28.18|  
 ||Ratio $/ \frac{\textup{€}}{\textup{h}}$|  5.16 $\pm$  0.65|  5.49 $\pm$  1.09|  
 # Make Me Feel Special  
@@ -68,45 +68,45 @@ Special: Holidays and Weekends
 ## Whole day  
 ||Total $/ \textup{€}$|Ratio $/ \frac{\textup{€}}{\textup{h}}$|Count|  
 |---|---|---|---|  
-|All|193.21 $\pm$ 54.94|  4.52 $\pm$  0.78|237  
-|Normal|167.78 $\pm$ 39.50|  4.32 $\pm$  0.75|154  
-|Weekend|240.39 $\pm$ 47.93|  4.89 $\pm$  0.70|83  
-|Holiday|184.73 $\pm$ 54.53|  4.45 $\pm$  0.83|65  
-|Special|213.93 $\pm$ 59.31|  4.67 $\pm$  0.79|129  
-|Special \& Friday|211.75 $\pm$ 56.09|  4.65 $\pm$  0.79|154  
+|All|193.61 $\pm$ 54.67|  4.52 $\pm$  0.78|238  
+|Normal|168.29 $\pm$ 39.51|  4.32 $\pm$  0.75|156  
+|Weekend|241.78 $\pm$ 46.53|  4.89 $\pm$  0.71|82  
+|Holiday|185.42 $\pm$ 53.88|  4.46 $\pm$  0.82|67  
+|Special|214.50 $\pm$ 58.60|  4.67 $\pm$  0.79|130  
+|Special \& Friday|212.24 $\pm$ 55.50|  4.65 $\pm$  0.78|155  
     
 ![Image](./png/special_whole.png)  
 ## Half day  
 ||Total $/ \textup{€}$|Ratio $/ \frac{\textup{€}}{\textup{h}}$|Count|  
 |---|---|---|---|  
-|All|109.35 $\pm$ 31.23|  5.13 $\pm$  1.10|181  
-|Normal| 95.66 $\pm$ 22.70|  5.05 $\pm$  1.09|106  
-|Weekend|128.71 $\pm$ 31.41|  5.24 $\pm$  1.11|75  
-|Holiday|108.86 $\pm$ 28.20|  5.02 $\pm$  1.07|30  
-|Special|123.67 $\pm$ 32.06|  5.21 $\pm$  1.11|92  
-|Special \& Friday|120.68 $\pm$ 31.06|  5.19 $\pm$  1.10|113  
+|All|109.54 $\pm$ 30.93|  5.10 $\pm$  1.11|187  
+|Normal| 96.24 $\pm$ 22.86|  5.02 $\pm$  1.10|110  
+|Weekend|128.55 $\pm$ 31.02|  5.22 $\pm$  1.10|77  
+|Holiday|109.18 $\pm$ 27.53|  4.93 $\pm$  1.09|34  
+|Special|123.15 $\pm$ 31.46|  5.16 $\pm$  1.12|98  
+|Special \& Friday|120.41 $\pm$ 30.58|  5.15 $\pm$  1.10|119  
     
 ![Image](./png/special_half.png)  
 # AM / PM  
 ## AM  
 ||Total $/ \textup{€}$|Ratio $/ \frac{\textup{€}}{\textup{h}}$|Count|  
 |---|---|---|---|  
-|All|111.37 $\pm$ 28.80|  5.22 $\pm$  0.99|114  
-|Normal| 99.61 $\pm$ 19.99|  5.33 $\pm$  1.00|70  
-|Weekend|130.06 $\pm$ 30.73|  5.04 $\pm$  0.95|44  
-|Holiday|112.39 $\pm$ 24.57|  5.14 $\pm$  0.96|18  
-|Special|126.51 $\pm$ 30.02|  5.13 $\pm$  0.94|54  
-|Special \& Friday|124.14 $\pm$ 28.36|  5.20 $\pm$  0.96|65  
+|All|111.73 $\pm$ 28.54|  5.21 $\pm$  0.98|117  
+|Normal|100.33 $\pm$ 20.19|  5.33 $\pm$  0.99|72  
+|Weekend|129.98 $\pm$ 30.40|  5.03 $\pm$  0.94|45  
+|Holiday|113.68 $\pm$ 23.74|  5.16 $\pm$  0.92|20  
+|Special|126.47 $\pm$ 29.26|  5.12 $\pm$  0.92|57  
+|Special \& Friday|124.21 $\pm$ 27.76|  5.19 $\pm$  0.94|68  
     
 ![Image](./png/AM.png)  
 ## PM  
 ||Total $/ \textup{€}$|Ratio $/ \frac{\textup{€}}{\textup{h}}$|Count|  
 |---|---|---|---|  
-|All|105.93 $\pm$ 34.72|  4.98 $\pm$  1.26|67  
-|Normal| 87.97 $\pm$ 25.50|  4.50 $\pm$  1.06|36  
-|Weekend|126.79 $\pm$ 32.24|  5.53 $\pm$  1.25|31  
-|Holiday|103.55 $\pm$ 32.18|  4.84 $\pm$  1.18|12  
-|Special|119.63 $\pm$ 34.34|  5.34 $\pm$  1.30|38  
-|Special \& Friday|116.00 $\pm$ 33.82|  5.19 $\pm$  1.26|48  
+|All|105.88 $\pm$ 34.24|  4.91 $\pm$  1.27|70  
+|Normal| 88.49 $\pm$ 25.46|  4.43 $\pm$  1.07|38  
+|Weekend|126.54 $\pm$ 31.77|  5.48 $\pm$  1.25|32  
+|Holiday|102.75 $\pm$ 31.06|  4.61 $\pm$  1.23|14  
+|Special|118.55 $\pm$ 33.76|  5.21 $\pm$  1.34|41  
+|Special \& Friday|115.34 $\pm$ 33.30|  5.09 $\pm$  1.29|51  
     
 ![Image](./png/PM.png)  

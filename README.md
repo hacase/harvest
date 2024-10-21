@@ -1,13 +1,13 @@
-last update: 21.10.2024, Monday, time: 16:45  
+last update: 21.10.2024, Monday, time: 18:08  
 # Panorama  
 || Whole | Half |  
 |---|---|---|  
-|Total $/ \textup{€}$|194.211 $\pm$ 54.930|109.544 $\pm$ 30.927|  
-|Ratio $/ \frac{\textup{€}}{\textup{h}}$| 4.520 $\pm$  0.784| 5.102 $\pm$  1.108|  
-|Cash $/ \textup{€}$|66.675 $\pm$ 35.000|42.721 $\pm$ 21.473|  
-|Cash $/ \\% $|41.401 $\pm$  8.258|43.644 $\pm$ 10.075|  
-|Card $/ \textup{€}$|96.128 $\pm$ 52.399|56.304 $\pm$ 29.520|  
-|Card $/ \\% $|58.599 $\pm$  8.258|56.356 $\pm$ 10.075|  
+|Total $/ \textup{€}$|194.112 $\pm$ 54.838|109.544 $\pm$ 30.927|  
+|Ratio $/ \frac{\textup{€}}{\textup{h}}$| 4.519 $\pm$  0.782| 5.102 $\pm$  1.108|  
+|Cash $/ \textup{€}$|66.680 $\pm$ 34.928|42.721 $\pm$ 21.473|  
+|Cash $/ \\% $|41.393 $\pm$  8.239|43.644 $\pm$ 10.075|  
+|Card $/ \textup{€}$|96.156 $\pm$ 52.293|56.304 $\pm$ 29.520|  
+|Card $/ \\% $|58.607 $\pm$  8.239|56.356 $\pm$ 10.075|  
 # Cake  
     
 ![Image](./png/frequency.png)  
@@ -57,8 +57,8 @@ last update: 21.10.2024, Monday, time: 16:45
 # Seven Days A Week  
 |||Whole|Half|  
 |---|---|---|---|  
-|Monday|Total $/ \textup{€}$|161.01 $\pm$ 37.38|101.02 $\pm$ 23.93|  
-||Ratio $/ \frac{\textup{€}}{\textup{h}}$|  4.16 $\pm$  0.74|  5.41 $\pm$  1.12|  
+|Monday|Total $/ \textup{€}$|161.36 $\pm$ 36.72|101.02 $\pm$ 23.93|  
+||Ratio $/ \frac{\textup{€}}{\textup{h}}$|  4.16 $\pm$  0.72|  5.41 $\pm$  1.12|  
 |Tuesday|Total $/ \textup{€}$|160.40 $\pm$ 37.40| 87.62 $\pm$ 17.87|  
 ||Ratio $/ \frac{\textup{€}}{\textup{h}}$|  4.38 $\pm$  0.82|  4.96 $\pm$  1.07|  
 |Wednesday|Total $/ \textup{€}$|166.88 $\pm$ 28.71| 93.17 $\pm$ 20.39|  
@@ -76,12 +76,12 @@ Special: Holidays and Weekends
 ## Whole day  
 ||Total $/ \textup{€}$|Ratio $/ \frac{\textup{€}}{\textup{h}}$|Count|  
 |---|---|---|---|  
-|All|194.21 $\pm$ 54.93|  4.52 $\pm$  0.78|241  
-|Weekday|168.41 $\pm$ 39.42|  4.32 $\pm$  0.75|157  
+|All|194.11 $\pm$ 54.84|  4.52 $\pm$  0.78|242  
+|Weekday|168.42 $\pm$ 39.29|  4.32 $\pm$  0.75|158  
 |Weekend|242.43 $\pm$ 46.73|  4.90 $\pm$  0.71|84  
-|Holiday|185.98 $\pm$ 53.27|  4.45 $\pm$  0.81|69  
-|Special|215.12 $\pm$ 58.65|  4.68 $\pm$  0.79|133  
-|Special \& Friday|212.81 $\pm$ 55.63|  4.65 $\pm$  0.78|158  
+|Holiday|185.76 $\pm$ 52.92|  4.45 $\pm$  0.80|70  
+|Special|214.79 $\pm$ 58.55|  4.67 $\pm$  0.79|134  
+|Special \& Friday|212.54 $\pm$ 55.55|  4.65 $\pm$  0.78|159  
     
 ![Image](./png/special_whole.png)  
 ## Half day  
@@ -148,8 +148,8 @@ August |All|154.88 $\pm$ 61.44|4.50 $\pm$ 0.93
 September |All|160.31 $\pm$ 63.34|4.78 $\pm$ 0.90  
 ||Weekday|141.71 $\pm$ 49.05|4.73 $\pm$ 1.00  
 ||Weekend|198.23 $\pm$ 71.70|4.90 $\pm$ 0.63  
-October |All|179.57 $\pm$ 73.53|4.90 $\pm$ 0.93  
-||Weekday|149.98 $\pm$ 55.76|4.46 $\pm$ 0.78  
+October |All|179.42 $\pm$ 72.91|4.89 $\pm$ 0.93  
+||Weekday|150.61 $\pm$ 55.00|4.45 $\pm$ 0.77  
 ||Weekend|213.55 $\pm$ 76.71|5.41 $\pm$ 0.82  
 November |All|140.32 $\pm$ 64.45|4.79 $\pm$ 0.95  
 ||Weekday|133.73 $\pm$ 55.86|4.70 $\pm$ 0.80  

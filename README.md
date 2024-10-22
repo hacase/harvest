@@ -1,4 +1,5 @@
 last update: 22.10.2024, Tuesday, time: 18:02  
+
 # Panorama  
 || Whole | Half |  
 |---|---|---|  

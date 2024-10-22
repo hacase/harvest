@@ -1,0 +1,5 @@
+--- old
++++ new
+@@ -3,2 +3,0 @@
+-$\text{A long division}\longdiv{12345}{13}$
+-$3$

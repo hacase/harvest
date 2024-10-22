@@ -1,20 +1,19 @@
-last update: 22.10.2024, Tuesday, time: 18:02  
-
+last update: 22.10.2024, Tuesday, time: 22:33  
 # Panorama  
 || Whole | Half |  
 |---|---|---|  
-|Total $\text{123}1$|193.985 $\pm$ 54.761|109.544 $\pm$ 30.927|  
+|Total $/ \text{€}$|193.985 $\pm$ 54.761|109.544 $\pm$ 30.927|  
 |Ratio $/ \frac{\text{€}}{\text{h}}$| 4.517 $\pm$  0.782| 5.102 $\pm$  1.108|  
-|Cash $/ \textup{€}$|66.683 $\pm$ 34.856|42.721 $\pm$ 21.473|  
+|Cash $/ \text{€}$|66.683 $\pm$ 34.856|42.721 $\pm$ 21.473|  
 |Cash $/ \\% $|41.393 $\pm$  8.219|43.644 $\pm$ 10.075|  
-|Card $/ \textup{€}$|96.153 $\pm$ 52.185|56.304 $\pm$ 29.520|  
+|Card $/ \text{€}$|96.153 $\pm$ 52.185|56.304 $\pm$ 29.520|  
 |Card $/ \\% $|58.607 $\pm$  8.219|56.356 $\pm$ 10.075|  
 # Cake  
     
 ![Image](./png/frequency.png)  
 # No. 1  
 ## Whole day  
-||Total $/ \textup{€}$|Ratio $/ \frac{\textup{€}}{\textup{h}}$|Timestamp|Holiday|  
+||Total $/ \text{€}$|Ratio $/ \frac{\text{€}}{\text{h}}$|Timestamp|Holiday|  
 |---|---|---|---|---|  
 |1"|334.35|  6.52|22.10.2023 Sun|False|  
 |2"|334.35|  6.52|22.10.2023 Sun|False|  
@@ -23,7 +22,7 @@ last update: 22.10.2024, Tuesday, time: 18:02
 |5"|321.66|  5.90|06.10.2024 Sun|False|  
   
   
-||Ratio $/ \frac{\textup{€}}{\textup{h}}$|Total $/ \textup{€}$|Timestamp|Holiday|  
+||Ratio $/ \frac{\text{€}}{\text{h}}$|Total $/ \text{€}$|Timestamp|Holiday|  
 |---|---|---|---|---|  
 |1"|  6.52|334.35|22.10.2023 Sun|False|  
 |2"|  6.52|334.35|22.10.2023 Sun|False|  
@@ -35,7 +34,7 @@ last update: 22.10.2024, Tuesday, time: 18:02
     
 ![Image](./png/total_ratio_whole.png)  
 ## Half day  
-||Total $/ \textup{€}$|Ratio $/ \frac{\textup{€}}{\textup{h}}$|Timestamp|Holiday|  
+||Total $/ \text{€}$|Ratio $/ \frac{\text{€}}{\text{h}}$|Timestamp|Holiday|  
 |---|---|---|---|---|  
 |1"|186.83|  6.13|03.03.2024 Sun AM|False|  
 |2"|184.50|  6.10|13.08.2023 Sun AM|False|  
@@ -44,7 +43,7 @@ last update: 22.10.2024, Tuesday, time: 18:02
 |5"|171.88|  6.81|14.10.2023 Sat PM|Herbstferien|  
   
   
-||Ratio $/ \frac{\textup{€}}{\textup{h}}$|Total $/ \textup{€}$|Timestamp|Holiday|  
+||Ratio $/ \frac{\text{€}}{\text{h}}$|Total $/ \text{€}$|Timestamp|Holiday|  
 |---|---|---|---|---|  
 |1"|  8.27|140.53|25.09.2023 Mon AM|False|  
 |2"|  7.94|142.93|22.03.2024 Fri AM|False|  
@@ -58,24 +57,24 @@ last update: 22.10.2024, Tuesday, time: 18:02
 # Seven Days A Week  
 |||Whole|Half|  
 |---|---|---|---|  
-|Monday|Total $/ \textup{€}$|161.36 $\pm$ 36.72|101.02 $\pm$ 23.93|  
-||Ratio $/ \frac{\textup{€}}{\textup{h}}$|  4.16 $\pm$  0.72|  5.41 $\pm$  1.12|  
-|Tuesday|Total $/ \textup{€}$|160.48 $\pm$ 36.88| 87.62 $\pm$ 17.87|  
-||Ratio $/ \frac{\textup{€}}{\textup{h}}$|  4.37 $\pm$  0.81|  4.96 $\pm$  1.07|  
-|Wednesday|Total $/ \textup{€}$|166.88 $\pm$ 28.71| 93.17 $\pm$ 20.39|  
-||Ratio $/ \frac{\textup{€}}{\textup{h}}$|  4.48 $\pm$  0.74|  5.10 $\pm$  1.05|  
-|Thursday|Total $/ \textup{€}$|155.80 $\pm$ 44.06| 92.39 $\pm$ 20.84|  
-||Ratio $/ \frac{\textup{€}}{\textup{h}}$|  4.13 $\pm$  0.63|  4.68 $\pm$  0.99|  
-|Friday|Total $/ \textup{€}$|195.73 $\pm$ 34.85|104.48 $\pm$ 25.23|  
-||Ratio $/ \frac{\textup{€}}{\textup{h}}$|  4.40 $\pm$  0.72|  4.96 $\pm$  1.14|  
-|Saturday|Total $/ \textup{€}$|225.29 $\pm$ 41.15|117.75 $\pm$ 30.57|  
-||Ratio $/ \frac{\textup{€}}{\textup{h}}$|  4.58 $\pm$  0.63|  4.90 $\pm$  1.03|  
-|Sunday|Total $/ \textup{€}$|257.29 $\pm$ 46.19|138.03 $\pm$ 28.18|  
-||Ratio $/ \frac{\textup{€}}{\textup{h}}$|  5.17 $\pm$  0.65|  5.49 $\pm$  1.09|  
+|Monday|Total $/ \text{€}$|161.36 $\pm$ 36.72|101.02 $\pm$ 23.93|  
+||Ratio $/ \frac{\text{€}}{\text{h}}$|  4.16 $\pm$  0.72|  5.41 $\pm$  1.12|  
+|Tuesday|Total $/ \text{€}$|160.48 $\pm$ 36.88| 87.62 $\pm$ 17.87|  
+||Ratio $/ \frac{\text{€}}{\text{h}}$|  4.37 $\pm$  0.81|  4.96 $\pm$  1.07|  
+|Wednesday|Total $/ \text{€}$|166.88 $\pm$ 28.71| 93.17 $\pm$ 20.39|  
+||Ratio $/ \frac{\text{€}}{\text{h}}$|  4.48 $\pm$  0.74|  5.10 $\pm$  1.05|  
+|Thursday|Total $/ \text{€}$|155.80 $\pm$ 44.06| 92.39 $\pm$ 20.84|  
+||Ratio $/ \frac{\text{€}}{\text{h}}$|  4.13 $\pm$  0.63|  4.68 $\pm$  0.99|  
+|Friday|Total $/ \text{€}$|195.73 $\pm$ 34.85|104.48 $\pm$ 25.23|  
+||Ratio $/ \frac{\text{€}}{\text{h}}$|  4.40 $\pm$  0.72|  4.96 $\pm$  1.14|  
+|Saturday|Total $/ \text{€}$|225.29 $\pm$ 41.15|117.75 $\pm$ 30.57|  
+||Ratio $/ \frac{\text{€}}{\text{h}}$|  4.58 $\pm$  0.63|  4.90 $\pm$  1.03|  
+|Sunday|Total $/ \text{€}$|257.29 $\pm$ 46.19|138.03 $\pm$ 28.18|  
+||Ratio $/ \frac{\text{€}}{\text{h}}$|  5.17 $\pm$  0.65|  5.49 $\pm$  1.09|  
 # Make Me Feel Special  
 Special: Holidays and Weekends  
 ## Whole day  
-||Total $/ \textup{€}$|Ratio $/ \frac{\textup{€}}{\textup{h}}$|Count|  
+||Total $/ \text{€}$|Ratio $/ \frac{\text{€}}{\text{h}}$|Count|  
 |---|---|---|---|  
 |All|193.98 $\pm$ 54.76|  4.52 $\pm$  0.78|243  
 |Weekday|168.39 $\pm$ 39.17|  4.32 $\pm$  0.74|159  
@@ -86,7 +85,7 @@ Special: Holidays and Weekends
     
 ![Image](./png/special_whole.png)  
 ## Half day  
-||Total $/ \textup{€}$|Ratio $/ \frac{\textup{€}}{\textup{h}}$|Count|  
+||Total $/ \text{€}$|Ratio $/ \frac{\text{€}}{\text{h}}$|Count|  
 |---|---|---|---|  
 |All|109.54 $\pm$ 30.93|  5.10 $\pm$  1.11|187  
 |Weekday| 96.24 $\pm$ 22.86|  5.02 $\pm$  1.10|110  
@@ -98,7 +97,7 @@ Special: Holidays and Weekends
 ![Image](./png/special_half.png)  
 # 2PM  
 ## AM  
-||Total $/ \textup{€}$|Ratio $/ \frac{\textup{€}}{\textup{h}}$|Count|  
+||Total $/ \text{€}$|Ratio $/ \frac{\text{€}}{\text{h}}$|Count|  
 |---|---|---|---|  
 |All|111.73 $\pm$ 28.54|  5.21 $\pm$  0.98|117  
 |Weekday|100.33 $\pm$ 20.19|  5.33 $\pm$  0.99|72  
@@ -109,7 +108,7 @@ Special: Holidays and Weekends
     
 ![Image](./png/AM.png)  
 ## PM  
-||Total $/ \textup{€}$|Ratio $/ \frac{\textup{€}}{\textup{h}}$|Count|  
+||Total $/ \text{€}$|Ratio $/ \frac{\text{€}}{\text{h}}$|Count|  
 |---|---|---|---|  
 |All|105.88 $\pm$ 34.24|  4.91 $\pm$  1.27|70  
 |Weekday| 88.49 $\pm$ 25.46|  4.43 $\pm$  1.07|38  
@@ -120,7 +119,7 @@ Special: Holidays and Weekends
     
 ![Image](./png/PM.png)  
 # Month And The Weekend  
-| Month || Total $/ \textup{€}$ | Ratio $/ \frac{\textup{€}}{\textup{h}}$ |  
+| Month || Total $/ \text{€}$ | Ratio $/ \frac{\text{€}}{\text{h}}$ |  
 |---|---|---|---|  
 January |All|121.44 $\pm$ 25.93|5.52 $\pm$ 1.12  
 ||Weekday|106.52 $\pm$ 20.77|5.43 $\pm$ 0.64  

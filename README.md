@@ -1,13 +1,13 @@
-last update: 22.10.2024, Tuesday, time: 22:40  
+last update: 22.10.2024, Tuesday, time: 22:49  
 # Panorama  
 || Whole | Half |  
 |---|---|---|  
 |Total $/ \text{€}$|193.985 $\pm$ 54.761|109.544 $\pm$ 30.927|  
 |Ratio $/ \frac{\text{€}}{\text{h}}$| 4.517 $\pm$  0.782| 5.102 $\pm$  1.108|  
 |Cash $/ \text{€}$|66.683 $\pm$ 34.856|42.721 $\pm$ 21.473|  
-|Cash $/ \text{%} $|41.393 $\pm$  8.219|43.644 $\pm$ 10.075|  
+|Cash $/ \text{\%} $|41.393 $\pm$  8.219|43.644 $\pm$ 10.075|  
 |Card $/ \text{€}$|96.153 $\pm$ 52.185|56.304 $\pm$ 29.520|  
-|Card $/ \text{%} $|58.607 $\pm$  8.219|56.356 $\pm$ 10.075|  
+|Card $/ \text{\%} $|58.607 $\pm$  8.219|56.356 $\pm$ 10.075|  
 # Cake  
     
 ![Image](./png/frequency.png)  

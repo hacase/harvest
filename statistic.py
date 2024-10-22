@@ -25,8 +25,8 @@ AX_WEEKDAY = ['', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 COLOR = ['tab:blue', 'tab:orange', 'tab:green', 'tab:red', 'tab:purple', 'tab:brown', 'tab:pink']
 PATH = './json/'
 SP_DAY = 3
-LTX_RATIO = '$/ \\frac{\\textup{€}}{\\textup{h}}$'
-LTX_EURO = '$/ \\textup{€}$'
+LTX_RATIO = '$/ \\frac{\\text{€}}{\\text{h}}$'
+LTX_EURO = '$/ \\text{€}$'
 L_LTX = [LTX_EURO, LTX_RATIO]
 
 def sorterkey(line):

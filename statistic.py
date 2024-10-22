@@ -243,7 +243,7 @@ def statistic():
             else:
                 keyword = theme
             
-            row = '|' + keyword.capitalize() +' '+ r'$/ \\% $|'
+            row = '|' + keyword.capitalize() +' '+ r'$/ \text{%} $|'
             for d in d_all:
                 mask = [item not in ['None', 'False', 'false', None, False] for item in d[theme]]
                 x1 = np.array(d[theme])[mask]
